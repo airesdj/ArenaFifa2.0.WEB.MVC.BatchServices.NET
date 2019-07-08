@@ -1,0 +1,1160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3A6C8C78-8B42-42D3-9699-7574498F27EE}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ArenaFifa20.BatchServices.NET</RootNamespace>
+    <AssemblyName>ArenaFifa2.0.BatchServices.NET</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Commons">
+      <HintPath>..\..\fifa2.0\ArenaFifa2.0\Source\SYSEmail\bin\Release\Commons.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.2\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.2\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="SYSEmail">
+      <HintPath>..\..\fifa2.0\ArenaFifa2.0\Source\SYSEmail\bin\Release\SYSEmail.dll</HintPath>
+    </Reference>
+    <Reference Include="SYSError">
+      <HintPath>..\..\fifa2.0\ArenaFifa2.0\Source\DBConnection\bin\Release\SYSError.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\CheckUserModerator.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalVariables.cs" />
+    <Compile Include="Models\HomeModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin-GitHub\ArenaFifa2.0.BatchServices.NET.dll" />
+    <Content Include="bin-GitHub\Commons.dll" />
+    <Content Include="bin-GitHub\EntityFramework.dll" />
+    <Content Include="bin-GitHub\EntityFramework.SqlServer.xml" />
+    <Content Include="bin-GitHub\EntityFramework.xml" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.Identity.Owin.xml" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.TelemetryCorrelation.dll" />
+    <Content Include="bin-GitHub\Microsoft.AspNet.TelemetryCorrelation.xml" />
+    <Content Include="bin-GitHub\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin-GitHub\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin-GitHub\Microsoft.Owin.dll" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Security.Cookies.xml" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Security.dll" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Security.OAuth.xml" />
+    <Content Include="bin-GitHub\Microsoft.Owin.Security.xml" />
+    <Content Include="bin-GitHub\Microsoft.Owin.xml" />
+    <Content Include="bin-GitHub\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin-GitHub\Newtonsoft.Json.dll" />
+    <Content Include="bin-GitHub\Newtonsoft.Json.xml" />
+    <Content Include="bin-GitHub\OldEncryption.xml" />
+    <Content Include="bin-GitHub\Owin.dll" />
+    <Content Include="bin-GitHub\SYSEmail.dll" />
+    <Content Include="bin-GitHub\SYSError.dll" />
+    <Content Include="bin-GitHub\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin-GitHub\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="bin-GitHub\System.Net.Http.Formatting.dll" />
+    <Content Include="bin-GitHub\System.Net.Http.Formatting.xml" />
+    <Content Include="bin-GitHub\System.Web.Helpers.dll" />
+    <Content Include="bin-GitHub\System.Web.Helpers.xml" />
+    <Content Include="bin-GitHub\System.Web.Mvc.dll" />
+    <Content Include="bin-GitHub\System.Web.Mvc.xml" />
+    <Content Include="bin-GitHub\System.Web.Optimization.dll" />
+    <Content Include="bin-GitHub\System.Web.Optimization.xml" />
+    <Content Include="bin-GitHub\System.Web.Razor.dll" />
+    <Content Include="bin-GitHub\System.Web.Razor.xml" />
+    <Content Include="bin-GitHub\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin-GitHub\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin-GitHub\System.Web.WebPages.dll" />
+    <Content Include="bin-GitHub\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin-GitHub\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin-GitHub\System.Web.WebPages.xml" />
+    <Content Include="bin-GitHub\WebGrease.dll" />
+    <Content Include="Content\animate.min.css" />
+    <Content Include="Content\arena20-icons.css" />
+    <Content Include="Content\bootstrap-default.css" />
+    <Content Include="Content\bootstrap-default.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-4-navbar.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-panel.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-panel.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\js\bootstrap-4-navbar.js" />
+    <Content Include="Content\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\custom-responsive.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\dashboard-gentelella\bootstrap-colorpicker.min.css" />
+    <Content Include="Content\dashboard-gentelella\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\dashboard-gentelella\bootstrap.min-checkbox.css" />
+    <Content Include="Content\dashboard-gentelella\bootstrap.min-website.css" />
+    <Content Include="Content\dashboard-gentelella\bootstrap.min.css" />
+    <Content Include="Content\dashboard-gentelella\buttons.bootstrap.min.css" />
+    <Content Include="Content\dashboard-gentelella\cropper.min.css" />
+    <Content Include="Content\dashboard-gentelella\custom.min.css" />
+    <Content Include="Content\dashboard-gentelella\dataTables.bootstrap.min.css" />
+    <Content Include="Content\dashboard-gentelella\daterangepicker.css" />
+    <Content Include="Content\dashboard-gentelella\docs.min-2.css" />
+    <Content Include="Content\dashboard-gentelella\docs.min.css" />
+    <Content Include="Content\dashboard-gentelella\flat\aero%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\aero.css" />
+    <Content Include="Content\dashboard-gentelella\flat\aero.png" />
+    <Content Include="Content\dashboard-gentelella\flat\blue%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\blue.css" />
+    <Content Include="Content\dashboard-gentelella\flat\blue.png" />
+    <Content Include="Content\dashboard-gentelella\flat\flat%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\flat.css" />
+    <Content Include="Content\dashboard-gentelella\flat\flat.png" />
+    <Content Include="Content\dashboard-gentelella\flat\green%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\green.css" />
+    <Content Include="Content\dashboard-gentelella\flat\green.png" />
+    <Content Include="Content\dashboard-gentelella\flat\grey%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\grey.css" />
+    <Content Include="Content\dashboard-gentelella\flat\grey.png" />
+    <Content Include="Content\dashboard-gentelella\flat\orange%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\orange.css" />
+    <Content Include="Content\dashboard-gentelella\flat\orange.png" />
+    <Content Include="Content\dashboard-gentelella\flat\pink%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\pink.css" />
+    <Content Include="Content\dashboard-gentelella\flat\pink.png" />
+    <Content Include="Content\dashboard-gentelella\flat\purple%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\purple.css" />
+    <Content Include="Content\dashboard-gentelella\flat\purple.png" />
+    <Content Include="Content\dashboard-gentelella\flat\red%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\red.css" />
+    <Content Include="Content\dashboard-gentelella\flat\red.png" />
+    <Content Include="Content\dashboard-gentelella\flat\yellow%402x.png" />
+    <Content Include="Content\dashboard-gentelella\flat\yellow.css" />
+    <Content Include="Content\dashboard-gentelella\flat\yellow.png" />
+    <Content Include="Content\dashboard-gentelella\flat\_all.css" />
+    <Content Include="Content\dashboard-gentelella\font-awesome.css" />
+    <Content Include="Content\dashboard-gentelella\font-awesome.min.css" />
+    <Content Include="Content\dashboard-gentelella\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\dashboard-gentelella\fullcalendar.min.css" />
+    <Content Include="Content\dashboard-gentelella\fullcalendar.print.css" />
+    <Content Include="Content\dashboard-gentelella\nprogress.css" />
+    <Content Include="Content\dashboard-gentelella\prettify.css" />
+    <Content Include="Content\dashboard-gentelella\prettify.min.css" />
+    <Content Include="Content\dashboard-gentelella\smart_wizard_vertical.css" />
+    <Content Include="Content\dashboard-gentelella\switchery.min.css" />
+    <Content Include="Content\dashboard-gentelella\tooltip-premier-league.css" />
+    <Content Include="Content\datatables-plugins\dataTables.bootstrap.css" />
+    <Content Include="Content\datatables-plugins\dataTables.bootstrap.js" />
+    <Content Include="Content\datatables-plugins\dataTables.bootstrap.min.js" />
+    <Content Include="Content\datatables-plugins\dataTables.responsive.css" />
+    <Content Include="Content\datatables-plugins\dataTables.responsive.js" />
+    <Content Include="Content\fancybox-master\jquery.fancybox.min.css" />
+    <Content Include="Content\fancybox-master\jquery.fancybox.min.js" />
+    <Content Include="Content\fontawesome\css\fa-brands.css" />
+    <Content Include="Content\fontawesome\css\fa-brands.min.css" />
+    <Content Include="Content\fontawesome\css\fa-regular.css" />
+    <Content Include="Content\fontawesome\css\fa-regular.min.css" />
+    <Content Include="Content\fontawesome\css\fa-solid.css" />
+    <Content Include="Content\fontawesome\css\fa-solid.min.css" />
+    <Content Include="Content\fontawesome\css\fontawesome-all.css" />
+    <Content Include="Content\fontawesome\css\fontawesome-all.min.css" />
+    <Content Include="Content\fontawesome\css\fontawesome.css" />
+    <Content Include="Content\fontawesome\css\fontawesome.min.css" />
+    <Content Include="Content\fontawesome\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\fontawesome\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\fontawesome\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\jplist\jplist.core.min.css" />
+    <Content Include="Content\jplist\jplist.demo-pages.min.css" />
+    <Content Include="Content\jplist\jplist.list-grid-view.min.css" />
+    <Content Include="Content\jplist\jplist.pagination-bundle.min.css" />
+    <Content Include="Content\jplist\styles.min.css" />
+    <Content Include="Content\line-up-playoff.css" />
+    <Content Include="Content\owlcarousel\ajax-loader.gif" />
+    <Content Include="Content\owlcarousel\owl.carousel.min.css" />
+    <Content Include="Content\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Content\owlcarousel\owl.theme.default.min.css" />
+    <Content Include="Content\owlcarousel\owl.video.play.png" />
+    <Content Include="Content\portfolio-filter-gallery\jquery.isotope.min.js" />
+    <Content Include="Content\portfolio-filter-gallery\portfolio-filter-gallery.css" />
+    <Content Include="Content\portfolio-filter-gallery\portfolio-filter-gallery.js" />
+    <Content Include="Content\range-slider\range-slider.css" />
+    <Content Include="Content\range-slider\range-slider.js" />
+    <Content Include="Content\sb-admin-2.css" />
+    <Content Include="Content\sb-admin-2.min.css" />
+    <Content Include="Content\show-score-details.css" />
+    <Content Include="Content\spinkit.css" />
+    <Content Include="Content\timeline\jquery.timelify.js" />
+    <Content Include="Content\timeline\modernizr.js" />
+    <Content Include="Content\timeline\timelify.css" />
+    <Content Include="Content\timeline\timeline.css" />
+    <Content Include="Content\timeline\timeline.js" />
+    <Content Include="Content\timeline\timelinex.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\typeahead.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\fables.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="images\aguarde.gif" />
+    <Content Include="images\arenafifa20.jpg" />
+    <Content Include="images\championship-logo\COPA DO MUNDO.jpg" />
+    <Content Include="images\championship-logo\COPA DO MUNDO.png" />
+    <Content Include="images\championship-logo\COPA-DA-UEFA-Beige.jpg" />
+    <Content Include="images\championship-logo\COPA-DA-UEFA.jpg" />
+    <Content Include="images\championship-logo\COPA___DA___UEFA.jpg" />
+    <Content Include="images\championship-logo\Copa___Do___Mundo___Do___Arena.jpg" />
+    <Content Include="images\championship-logo\Copa___FUT___Arena.jpg" />
+    <Content Include="images\championship-logo\Copa___PRO___CLUB___Arena.jpg" />
+    <Content Include="images\championship-logo\Eurocopa_Do_Arena.jpg" />
+    <Content Include="images\championship-logo\FUT-SERIE_A.jpg" />
+    <Content Include="images\championship-logo\FUT___-___SÉRIE_A.jpg" />
+    <Content Include="images\championship-logo\H2H-SERIE_A-beige.jpg" />
+    <Content Include="images\championship-logo\H2H-SERIE_A.jpg" />
+    <Content Include="images\championship-logo\H2H-SERIE_B.jpg" />
+    <Content Include="images\championship-logo\H2H-SERIE_C.jpg" />
+    <Content Include="images\championship-logo\H2H__-__SÉRIE_D.jpg" />
+    <Content Include="images\championship-logo\H2H___-___SÉRIE_A.jpg" />
+    <Content Include="images\championship-logo\H2H___-___SÉRIE_B.jpg" />
+    <Content Include="images\championship-logo\H2H___-___SÉRIE_C.jpg" />
+    <Content Include="images\championship-logo\Liga-Dos-Campeões-Da-Europa-Beige.jpg" />
+    <Content Include="images\championship-logo\Liga-Dos-Campeões-Da-Europa.jpg" />
+    <Content Include="images\championship-logo\Liga-Europa.jpg" />
+    <Content Include="images\championship-logo\Liga___dos___Campeões___da___Europa.jpg" />
+    <Content Include="images\championship-logo\Liga___Europa.jpg" />
+    <Content Include="images\championship-logo\modalidades\WhatsApp Image 2019-01-26 at 22.54.01.jpeg" />
+    <Content Include="images\championship-logo\modalidades\WhatsApp Image 2019-01-28 at 23.42.59.jpeg" />
+    <Content Include="images\championship-logo\modalidades\WhatsApp Image 2019-01-29 at 00.14.34.jpeg" />
+    <Content Include="images\championship-logo\modalidades\WhatsApp Image 2019-01-30 at 00.05.19.jpeg" />
+    <Content Include="images\championship-logo\modalidades\WhatsApp Image 2019-01-30 at 00.05.20 %281%29.jpeg" />
+    <Content Include="images\championship-logo\modalidades\WhatsApp Image 2019-01-30 at 10.26.04.jpeg" />
+    <Content Include="images\championship-logo\PRO_CLUB-SERIE_A.jpg" />
+    <Content Include="images\championship-logo\PRO_CLUB___-___SÉRIE_A.jpg" />
+    <Content Include="images\championship-logo\Super___Copa___Europa.jpg" />
+    <Content Include="images\Fifa19.jpg" />
+    <Content Include="images\fundo-jogo.jpg" />
+    <Content Include="images\goal.png" />
+    <Content Include="images\logo-FUT-beige.jpg" />
+    <Content Include="images\logo-FUT-white.jpg" />
+    <Content Include="images\logo-H2H-beige.jpg" />
+    <Content Include="images\logo-H2H-white.jpg" />
+    <Content Include="images\logo-PRO-beige.jpg" />
+    <Content Include="images\logo-PRO-white.jpg" />
+    <Content Include="images\notfound.png" />
+    <Content Include="images\team-logo\1899 Hoffenheim.jpg" />
+    <Content Include="images\team-logo\19 de Setembro.JPG" />
+    <Content Include="images\team-logo\301306.png" />
+    <Content Include="images\team-logo\A.C. Cesena.jpg" />
+    <Content Include="images\team-logo\ABC-RN.jpg" />
+    <Content Include="images\team-logo\Adap-PR.jpg" />
+    <Content Include="images\team-logo\Ajax.jpg" />
+    <Content Include="images\team-logo\Alagoinhas-AL.jpg" />
+    <Content Include="images\team-logo\Alecrim-RN.jpg" />
+    <Content Include="images\team-logo\ALEMANHA FC.jpg" />
+    <Content Include="images\team-logo\Alemanha.jpg" />
+    <Content Include="images\team-logo\ALL GAZARRA E-SPORTS.jpg" />
+    <Content Include="images\team-logo\americana-sp.jpg" />
+    <Content Include="images\team-logo\Americano-RJ.jpg" />
+    <Content Include="images\team-logo\América De Natal-RN.jpg" />
+    <Content Include="images\team-logo\América-AM.JPG" />
+    <Content Include="images\team-logo\América-MG.jpg" />
+    <Content Include="images\team-logo\América-RJ.jpg" />
+    <Content Include="images\team-logo\América.jpg" />
+    <Content Include="images\team-logo\Anderlecht.jpg" />
+    <Content Include="images\team-logo\Antalyaspor.jpg" />
+    <Content Include="images\team-logo\Anzhi Makhachkala.jpg" />
+    <Content Include="images\team-logo\Araguaína-TO.JPG" />
+    <Content Include="images\team-logo\Arena Fifa E-Sports.jpg" />
+    <Content Include="images\team-logo\Arena Verde FC.jpg" />
+    <Content Include="images\team-logo\ARENAFIFA FC.jpg" />
+    <Content Include="images\team-logo\Argentina.jpg" />
+    <Content Include="images\team-logo\Argélia.jpg" />
+    <Content Include="images\team-logo\Arizona Cardinals.JPG" />
+    <Content Include="images\team-logo\Armageddon F.C.jpg" />
+    <Content Include="images\team-logo\AroundWorld FC.jpg" />
+    <Content Include="images\team-logo\AroundWorldFC.jpg" />
+    <Content Include="images\team-logo\Arsenal de Sarandí.jpg" />
+    <Content Include="images\team-logo\Arsenal.jpg" />
+    <Content Include="images\team-logo\As Reborn.jpg" />
+    <Content Include="images\team-logo\ASA-AL.jpg" />
+    <Content Include="images\team-logo\Aston Villa.JPG" />
+    <Content Include="images\team-logo\Atalanta.jpg" />
+    <Content Include="images\team-logo\Athletic de Bilbao.jpg" />
+    <Content Include="images\team-logo\Athletic United FC.jpg" />
+    <Content Include="images\team-logo\Atlanta Hawks.JPG" />
+    <Content Include="images\team-logo\Atlante.jpg" />
+    <Content Include="images\team-logo\Atlas.jpg" />
+    <Content Include="images\team-logo\Atlethic Bilbao.jpg" />
+    <Content Include="images\team-logo\Atlético Bauru.jpg" />
+    <Content Include="images\team-logo\Atlético de Madrid.jpg" />
+    <Content Include="images\team-logo\Atlético Nacional.jpg" />
+    <Content Include="images\team-logo\Atlético PR.jpg" />
+    <Content Include="images\team-logo\Atlético-GO.jpg" />
+    <Content Include="images\team-logo\Atlético-MG.jpg" />
+    <Content Include="images\team-logo\Atlético-PR.jpg" />
+    <Content Include="images\team-logo\Australia.jpg" />
+    <Content Include="images\team-logo\Austrália.jpg" />
+    <Content Include="images\team-logo\Avaí-SC.jpg" />
+    <Content Include="images\team-logo\Avaí.jpg" />
+    <Content Include="images\team-logo\AZ Alkmaar.jpg" />
+    <Content Include="images\team-logo\Baah FC.jpg" />
+    <Content Include="images\team-logo\BAFO CHOPP E-Sports-old.jpg" />
+    <Content Include="images\team-logo\BAFO CHOPP E-Sports.jpg" />
+    <Content Include="images\team-logo\Bahia-BA.jpg" />
+    <Content Include="images\team-logo\Bahia.jpg" />
+    <Content Include="images\team-logo\Bahía Blanca.jpg" />
+    <Content Include="images\team-logo\Baltimore Ravens.JPG" />
+    <Content Include="images\team-logo\Banfield.jpg" />
+    <Content Include="images\team-logo\Bangu-RJ.jpg" />
+    <Content Include="images\team-logo\BAR SEM LONA.jpg" />
+    <Content Include="images\team-logo\Baraúnas-RN.jpg" />
+    <Content Include="images\team-logo\Barcelona.jpg" />
+    <Content Include="images\team-logo\Baré-RR.jpg" />
+    <Content Include="images\team-logo\Bayer Leverkusen.jpg" />
+    <Content Include="images\team-logo\Bayern de Munique.jpg" />
+    <Content Include="images\team-logo\Bayern Leverkusen.jpg" />
+    <Content Include="images\team-logo\Belenenses-POR.jpg" />
+    <Content Include="images\team-logo\Belgium.jpg" />
+    <Content Include="images\team-logo\Belgrano de Córdoba.jpg" />
+    <Content Include="images\team-logo\Benfica.jpg" />
+    <Content Include="images\team-logo\Besiktas.jpg" />
+    <Content Include="images\team-logo\Bixcoito FV.jpg" />
+    <Content Include="images\team-logo\Boa Vista-RJ.jpg" />
+    <Content Include="images\team-logo\Boavista-RJ.jpg" />
+    <Content Include="images\team-logo\Boca Juniors.jpg" />
+    <Content Include="images\team-logo\Boka Jr FC.jpg" />
+    <Content Include="images\team-logo\Boleiros.jpg" />
+    <Content Include="images\team-logo\Bologna.jpg" />
+    <Content Include="images\team-logo\Bordeaux.jpg" />
+    <Content Include="images\team-logo\Borussia Dortmund.jpg" />
+    <Content Include="images\team-logo\Borussia Mongladbach.jpg" />
+    <Content Include="images\team-logo\Boston Celtics.jpg" />
+    <Content Include="images\team-logo\Botafogo FR.jpg" />
+    <Content Include="images\team-logo\Botafogo-DF.JPG" />
+    <Content Include="images\team-logo\Botafogo-PB.jpg" />
+    <Content Include="images\team-logo\Botafogo-RJ.jpg" />
+    <Content Include="images\team-logo\Botafogo-SP.JPG" />
+    <Content Include="images\team-logo\Botafogo.jpg" />
+    <Content Include="images\team-logo\Bournemouth.jpg" />
+    <Content Include="images\team-logo\Bragantino-SP.jpg" />
+    <Content Include="images\team-logo\Brasil de Pelotas-RS.JPG" />
+    <Content Include="images\team-logo\Brasil.jpg" />
+    <Content Include="images\team-logo\Brasiliense-DF.jpg" />
+    <Content Include="images\team-logo\Brasília-DF.JPG" />
+    <Content Include="images\team-logo\Bravo FC.JPG" />
+    <Content Include="images\team-logo\Brazil.jpg" />
+    <Content Include="images\team-logo\Brazukas FC.jpg" />
+    <Content Include="images\team-logo\Buffalo Bills.JPG" />
+    <Content Include="images\team-logo\Burnley.jpg" />
+    <Content Include="images\team-logo\Bélgica.jpg" />
+    <Content Include="images\team-logo\Bósnia.jpg" />
+    <Content Include="images\team-logo\Cabofriense-RJ.jpg" />
+    <Content Include="images\team-logo\Cagliari.jpg" />
+    <Content Include="images\team-logo\Cajazeiras-PB.jpg" />
+    <Content Include="images\team-logo\Camarões.jpg" />
+    <Content Include="images\team-logo\Camaçari-BA.jpg" />
+    <Content Include="images\team-logo\Cametá-PA.JPG" />
+    <Content Include="images\team-logo\Campinense-PB.jpg" />
+    <Content Include="images\team-logo\Carolina Panthers.JPG" />
+    <Content Include="images\team-logo\Cascavel-PR.jpg" />
+    <Content Include="images\team-logo\Catania.jpg" />
+    <Content Include="images\team-logo\Caxias-RS.jpg" />
+    <Content Include="images\team-logo\Ceará-CE.jpg" />
+    <Content Include="images\team-logo\Ceará.jpg" />
+    <Content Include="images\team-logo\Ceilândia-DF.jpg" />
+    <Content Include="images\team-logo\Celta de Vigo.jpg" />
+    <Content Include="images\team-logo\Celtic.jpg" />
+    <Content Include="images\team-logo\Cene-MS.JPG" />
+    <Content Include="images\team-logo\Central-PE.jpg" />
+    <Content Include="images\team-logo\Chapecoense-SC.jpg" />
+    <Content Include="images\team-logo\Chapecoense.jpg" />
+    <Content Include="images\team-logo\Chelsea.jpg" />
+    <Content Include="images\team-logo\Chicago Bears.JPG" />
+    <Content Include="images\team-logo\Chicago Bulls.jpg" />
+    <Content Include="images\team-logo\Chicago Fire.jpg" />
+    <Content Include="images\team-logo\Chievo Verona.jpg" />
+    <Content Include="images\team-logo\Chievo Verona.png" />
+    <Content Include="images\team-logo\Chile.jpg" />
+    <Content Include="images\team-logo\Chivas USA.jpg" />
+    <Content Include="images\team-logo\Churumes fc.jpg" />
+    <Content Include="images\team-logo\Cincinnatti Begals.JPG" />
+    <Content Include="images\team-logo\Cleveland Cavaliers.jpg" />
+    <Content Include="images\team-logo\Club Brugge KV.jpg" />
+    <Content Include="images\team-logo\Club León.jpg" />
+    <Content Include="images\team-logo\Club Tijuana.jpg" />
+    <Content Include="images\team-logo\Colo Colo-BA.jpg" />
+    <Content Include="images\team-logo\Colo Colo.jpg" />
+    <Content Include="images\team-logo\Colombia.jpg" />
+    <Content Include="images\team-logo\Colômbia.jpg" />
+    <Content Include="images\team-logo\Confiança-SE.JPG" />
+    <Content Include="images\team-logo\Corinthians-AL.jpg" />
+    <Content Include="images\team-logo\Corinthians-SP.jpg" />
+    <Content Include="images\team-logo\Corinthians.jpg" />
+    <Content Include="images\team-logo\Coritiba-PR.jpg" />
+    <Content Include="images\team-logo\Coritiba.jpg" />
+    <Content Include="images\team-logo\Coréia do Sul.jpg" />
+    <Content Include="images\team-logo\Costa do Marfim.jpg" />
+    <Content Include="images\team-logo\Costa Rica.jpg" />
+    <Content Include="images\team-logo\CRAC-GO.jpg" />
+    <Content Include="images\team-logo\CRB-AL.JPG" />
+    <Content Include="images\team-logo\Criciúma-SC.JPG" />
+    <Content Include="images\team-logo\Cristal-AP.jpg" />
+    <Content Include="images\team-logo\Cristal-AP.png" />
+    <Content Include="images\team-logo\Croatia.jpg" />
+    <Content Include="images\team-logo\Crocodilos FC.jpg" />
+    <Content Include="images\team-logo\Croácia.jpg" />
+    <Content Include="images\team-logo\Cruz Azul.jpg" />
+    <Content Include="images\team-logo\Cruzeiro-BRA.jpg" />
+    <Content Include="images\team-logo\Cruzeiro-MG.jpg" />
+    <Content Include="images\team-logo\Cruzeiro.jpg" />
+    <Content Include="images\team-logo\Crystal Palace.jpg" />
+    <Content Include="images\team-logo\Crítica F.c.jpg" />
+    <Content Include="images\team-logo\CSA-AL.jpg" />
+    <Content Include="images\team-logo\CSKA Moscou.jpg" />
+    <Content Include="images\team-logo\D.C. United.jpg" />
+    <Content Include="images\team-logo\Dallas Cowboys.JPG" />
+    <Content Include="images\team-logo\Dallas Mavericks.jpg" />
+    <Content Include="images\team-logo\Defensa y Justicia.jpg" />
+    <Content Include="images\team-logo\Denmark.jpg" />
+    <Content Include="images\team-logo\Denver Broncos.JPG" />
+    <Content Include="images\team-logo\Deportes Tolima.jpg" />
+    <Content Include="images\team-logo\Detroit Lions.JPG" />
+    <Content Include="images\team-logo\Dinamarca.jpg" />
+    <Content Include="images\team-logo\Dinamo Moscou.JPG" />
+    <Content Include="images\team-logo\Divino FC.jpg" />
+    <Content Include="images\team-logo\Duque de Caxias-RJ.jpg" />
+    <Content Include="images\team-logo\Egito.jpg" />
+    <Content Include="images\team-logo\Egypt.jpg" />
+    <Content Include="images\team-logo\Eintracht Frankfurt.jpg" />
+    <Content Include="images\team-logo\England.jpg" />
+    <Content Include="images\team-logo\Equador.jpg" />
+    <Content Include="images\team-logo\ErEtUs HaSvEzS-old.jpg" />
+    <Content Include="images\team-logo\ErEtUs HaSvEzS.jpg" />
+    <Content Include="images\team-logo\Escócia.jpg" />
+    <Content Include="images\team-logo\Eslovênia.jpg" />
+    <Content Include="images\team-logo\Espanha.jpg" />
+    <Content Include="images\team-logo\Espanyol.jpg" />
+    <Content Include="images\team-logo\Esportivo-RS.jpg" />
+    <Content Include="images\team-logo\Estados Unidos.jpg" />
+    <Content Include="images\team-logo\Estudiantes de La Plata.jpg" />
+    <Content Include="images\team-logo\Estudiantes.jpg" />
+    <Content Include="images\team-logo\Everton.jpg" />
+    <Content Include="images\team-logo\Faith FC.jpg" />
+    <Content Include="images\team-logo\FAMILIA CHAGAS.jpg" />
+    <Content Include="images\team-logo\FC Barcelona.jpg" />
+    <Content Include="images\team-logo\FC Basel.jpg" />
+    <Content Include="images\team-logo\FC Krasnodar.jpg" />
+    <Content Include="images\team-logo\FC Köln.jpg" />
+    <Content Include="images\team-logo\FC København.jpg" />
+    <Content Include="images\team-logo\FC Nantes.jpg" />
+    <Content Include="images\team-logo\FC Porto.jpg" />
+    <Content Include="images\team-logo\FC Schalke 04.jpg" />
+    <Content Include="images\team-logo\FEA FV.jpg" />
+    <Content Include="images\team-logo\Fenerbahce.jpg" />
+    <Content Include="images\team-logo\Feyenoord.jpg" />
+    <Content Include="images\team-logo\Figueirense-SC.jpg" />
+    <Content Include="images\team-logo\Figueirense.jpg" />
+    <Content Include="images\team-logo\Finest Shoot E-sports.jpg" />
+    <Content Include="images\team-logo\Fiorentina.jpg" />
+    <Content Include="images\team-logo\Flamengo-PI.jpg" />
+    <Content Include="images\team-logo\Flamengo-RJ.jpg" />
+    <Content Include="images\team-logo\Flamengo.jpg" />
+    <Content Include="images\team-logo\Florencio Varela.jpg" />
+    <Content Include="images\team-logo\FLORIPA FC.jpg" />
+    <Content Include="images\team-logo\Fluminense-BA.jpg" />
+    <Content Include="images\team-logo\Fluminense-BRA.jpg" />
+    <Content Include="images\team-logo\Fluminense-RJ.jpg" />
+    <Content Include="images\team-logo\Fluminense.jpg" />
+    <Content Include="images\team-logo\FonFon FC.jpg" />
+    <Content Include="images\team-logo\Fortaleza-CE.jpg" />
+    <Content Include="images\team-logo\Four Toques e-sports.jpg" />
+    <Content Include="images\team-logo\France.jpg" />
+    <Content Include="images\team-logo\França.jpg" />
+    <Content Include="images\team-logo\Friburguense-RJ.jpg" />
+    <Content Include="images\team-logo\FSV Mainz 05.jpg" />
+    <Content Include="images\team-logo\Fugueteros FC.jpg" />
+    <Content Include="images\team-logo\Fulham.jpg" />
+    <Content Include="images\team-logo\Full House FC.jpg" />
+    <Content Include="images\team-logo\Fussball Kunst FC.jpg" />
+    <Content Include="images\team-logo\Fut Style.jpg" />
+    <Content Include="images\team-logo\G. Prudente-SP.jpg" />
+    <Content Include="images\team-logo\Galatasaray SK.jpg" />
+    <Content Include="images\team-logo\Galatasaray.jpg" />
+    <Content Include="images\team-logo\Galáticos CFC.jpg" />
+    <Content Include="images\team-logo\Gama-DF.JPG" />
+    <Content Include="images\team-logo\Game Over Fv.jpg" />
+    <Content Include="images\team-logo\Gana.jpg" />
+    <Content Include="images\team-logo\Genoa.jpg" />
+    <Content Include="images\team-logo\Germany.jpg" />
+    <Content Include="images\team-logo\Getafe.jpg" />
+    <Content Include="images\team-logo\Gimnasia y Esgrima.jpg" />
+    <Content Include="images\team-logo\Godoy Cruz.jpg" />
+    <Content Include="images\team-logo\Goela Seca F.C.jpg" />
+    <Content Include="images\team-logo\Goiás-GO.jpg" />
+    <Content Include="images\team-logo\Golden State Warriors.jpg" />
+    <Content Include="images\team-logo\Green Bay Packers.JPG" />
+    <Content Include="images\team-logo\Grécia.jpg" />
+    <Content Include="images\team-logo\Gréciia.jpg" />
+    <Content Include="images\team-logo\Grêmio Prudente-SP.jpg" />
+    <Content Include="images\team-logo\Grêmio-AC.jpg" />
+    <Content Include="images\team-logo\Grêmio-MT.jpg" />
+    <Content Include="images\team-logo\Grêmio-RS.jpg" />
+    <Content Include="images\team-logo\Grêmio.jpg" />
+    <Content Include="images\team-logo\Grêmio_Prudente-SP.jpg" />
+    <Content Include="images\team-logo\Guadalajara.jpg" />
+    <Content Include="images\team-logo\Guarani-SP.jpg" />
+    <Content Include="images\team-logo\Guarany-CE.jpg" />
+    <Content Include="images\team-logo\Guaratinguetá-SP.jpg" />
+    <Content Include="images\team-logo\Hamburgo SV.jpg" />
+    <Content Include="images\team-logo\Hannover 96.jpg" />
+    <Content Include="images\team-logo\Hertha BSC.jpg" />
+    <Content Include="images\team-logo\Holanda.jpg" />
+    <Content Include="images\team-logo\Honduras.jpg" />
+    <Content Include="images\team-logo\Houston Rockets.jpg" />
+    <Content Include="images\team-logo\Hull City.jpg" />
+    <Content Include="images\team-logo\Hungria.jpg" />
+    <Content Include="images\team-logo\Icasa-CE.jpg" />
+    <Content Include="images\team-logo\Iceland.jpg" />
+    <Content Include="images\team-logo\Independente.jpg" />
+    <Content Include="images\team-logo\Independiente Medellín.jpg" />
+    <Content Include="images\team-logo\Independiente Santa Fe.jpg" />
+    <Content Include="images\team-logo\Independiente.jpg" />
+    <Content Include="images\team-logo\Indiana Pacers.jpg" />
+    <Content Include="images\team-logo\Indianapolis Colts.JPG" />
+    <Content Include="images\team-logo\Inglaterra.jpg" />
+    <Content Include="images\team-logo\Internacional-RS.jpg" />
+    <Content Include="images\team-logo\Internacional.jpg" />
+    <Content Include="images\team-logo\Internazionale.jpg" />
+    <Content Include="images\team-logo\Ipatinga-MG.jpg" />
+    <Content Include="images\team-logo\Iran.jpg" />
+    <Content Include="images\team-logo\Iraty-PR.jpg" />
+    <Content Include="images\team-logo\Irlanda.jpg" />
+    <Content Include="images\team-logo\Irã.jpg" />
+    <Content Include="images\team-logo\Islândia.jpg" />
+    <Content Include="images\team-logo\Istanbul Basaksehir.jpg" />
+    <Content Include="images\team-logo\Itapipoca-CE.jpg" />
+    <Content Include="images\team-logo\Ituano-SP.jpg" />
+    <Content Include="images\team-logo\Ituiutaba-MG.jpg" />
+    <Content Include="images\team-logo\Itália.jpg" />
+    <Content Include="images\team-logo\IV de Janeiro.jpg" />
+    <Content Include="images\team-logo\J. Maluceli-PR.jpg" />
+    <Content Include="images\team-logo\Jaguares de Chiapas.jpg" />
+    <Content Include="images\team-logo\Japan.jpg" />
+    <Content Include="images\team-logo\Japão.jpg" />
+    <Content Include="images\team-logo\Jesus Freak FC.jpg" />
+    <Content Include="images\team-logo\Ji Paraná-PR.jpg" />
+    <Content Include="images\team-logo\Jogadinha E-Sports.jpg" />
+    <Content Include="images\team-logo\Joinville-SC.jpg" />
+    <Content Include="images\team-logo\Juazeiro-BA.jpg" />
+    <Content Include="images\team-logo\Juventude-RS.jpg" />
+    <Content Include="images\team-logo\Juventus-SP.jpg" />
+    <Content Include="images\team-logo\Juventus.jpg" />
+    <Content Include="images\team-logo\JV Lideral-MA.JPG" />
+    <Content Include="images\team-logo\Kansas City Chiefs.JPG" />
+    <Content Include="images\team-logo\Lanús.jpg" />
+    <Content Include="images\team-logo\Las Palmas.jpg" />
+    <Content Include="images\team-logo\Lazio.jpg" />
+    <Content Include="images\team-logo\Leicester City.jpg" />
+    <Content Include="images\team-logo\Levante.jpg" />
+    <Content Include="images\team-logo\Lile.jpg" />
+    <Content Include="images\team-logo\Lille.jpg" />
+    <Content Include="images\team-logo\Linense-SP.jpg" />
+    <Content Include="images\team-logo\Linhares-SE.jpg" />
+    <Content Include="images\team-logo\Litoral rock cl.JPG" />
+    <Content Include="images\team-logo\Liverpool.jpg" />
+    <Content Include="images\team-logo\Logo ArenaFC.jpg" />
+    <Content Include="images\team-logo\Lokomotiv Moscou.jpg" />
+    <Content Include="images\team-logo\Londrina-PR.jpg" />
+    <Content Include="images\team-logo\Lorient.jpg" />
+    <Content Include="images\team-logo\Los Angeles Clippers.jpg" />
+    <Content Include="images\team-logo\Los Angeles Galaxy.jpg" />
+    <Content Include="images\team-logo\Los Angeles Lakers.jpg" />
+    <Content Include="images\team-logo\Los Malas FC.jpg" />
+    <Content Include="images\team-logo\Luverdense-MT.jpg" />
+    <Content Include="images\team-logo\Macaé-RJ.JPG" />
+    <Content Include="images\team-logo\Madureira-RJ.jpg" />
+    <Content Include="images\team-logo\Mallorca.jpg" />
+    <Content Include="images\team-logo\Manchester City.jpg" />
+    <Content Include="images\team-logo\Manchester United.jpg" />
+    <Content Include="images\team-logo\MaquinaTricolor.jpg" />
+    <Content Include="images\team-logo\Marcílio Dias-SC.JPG" />
+    <Content Include="images\team-logo\Marília-SP.JPG" />
+    <Content Include="images\team-logo\Memphis Grizzlies.jpg" />
+    <Content Include="images\team-logo\Metropolitano-SC.JPG" />
+    <Content Include="images\team-logo\Mexico.jpg" />
+    <Content Include="images\team-logo\Miami Dolphins.JPG" />
+    <Content Include="images\team-logo\Miami Heat.jpg" />
+    <Content Include="images\team-logo\Milan.jpg" />
+    <Content Include="images\team-logo\Millonarios FC.jpg" />
+    <Content Include="images\team-logo\Mirassol-SP.jpg" />
+    <Content Include="images\team-logo\Mixto-MT.JPG" />
+    <Content Include="images\team-logo\Mogi Mirim-SP.jpg" />
+    <Content Include="images\team-logo\Monaco.jpg" />
+    <Content Include="images\team-logo\Monarcas Morelia.jpg" />
+    <Content Include="images\team-logo\Monstros FC.jpg" />
+    <Content Include="images\team-logo\Monterrey.jpg" />
+    <Content Include="images\team-logo\Montpellier.jpg" />
+    <Content Include="images\team-logo\Montreal Impact.jpg" />
+    <Content Include="images\team-logo\Morocco.jpg" />
+    <Content Include="images\team-logo\Moto Clube-SE.jpg" />
+    <Content Include="images\team-logo\Murici-AL.JPG" />
+    <Content Include="images\team-logo\Málaga.jpg" />
+    <Content Include="images\team-logo\México.jpg" />
+    <Content Include="images\team-logo\Nacional-AM.jpg" />
+    <Content Include="images\team-logo\Nalhapa Smonking.jpg" />
+    <Content Include="images\team-logo\Napoli.jpg" />
+    <Content Include="images\team-logo\Negrettisons.jpg" />
+    <Content Include="images\team-logo\New England Patriots.JPG" />
+    <Content Include="images\team-logo\New Orleans Saints.JPG" />
+    <Content Include="images\team-logo\New York City.jpg" />
+    <Content Include="images\team-logo\New York Giants.JPG" />
+    <Content Include="images\team-logo\New York Red Bulls.jpg" />
+    <Content Include="images\team-logo\New York Team.jpg" />
+    <Content Include="images\team-logo\Newcastle United.jpg" />
+    <Content Include="images\team-logo\Newcastle.jpg" />
+    <Content Include="images\team-logo\Newells Old Boys.jpg" />
+    <Content Include="images\team-logo\Nigeria.jpg" />
+    <Content Include="images\team-logo\Nigéria.jpg" />
+    <Content Include="images\team-logo\Noroeste-SP.jpg" />
+    <Content Include="images\team-logo\Noruega.jpg" />
+    <Content Include="images\team-logo\Nova Iguaçu-RJ.jpg" />
+    <Content Include="images\team-logo\Náuas-AC.jpg" />
+    <Content Include="images\team-logo\Náutico-PE.jpg" />
+    <Content Include="images\team-logo\Oeste-SP.jpg" />
+    <Content Include="images\team-logo\OGC Nice.jpg" />
+    <Content Include="images\team-logo\Oklahoma City Thunder.jpg" />
+    <Content Include="images\team-logo\Olaria-RJ.jpg" />
+    <Content Include="images\team-logo\Olympiakos.jpg" />
+    <Content Include="images\team-logo\Olympique Lyonnais.jpg" />
+    <Content Include="images\team-logo\Olympique Marselha.jpg" />
+    <Content Include="images\team-logo\Operário-PR.JPG" />
+    <Content Include="images\team-logo\Osasuna.jpg" />
+    <Content Include="images\team-logo\Oscar Alho FC.jpg" />
+    <Content Include="images\team-logo\OscarAlho FC.jpg" />
+    <Content Include="images\team-logo\Oscaralho.jpg" />
+    <Content Include="images\team-logo\Pachuca.jpg" />
+    <Content Include="images\team-logo\Palmas-TO.jpg" />
+    <Content Include="images\team-logo\Palmeiras-SP.jpg" />
+    <Content Include="images\team-logo\Palmeiras.jpg" />
+    <Content Include="images\team-logo\Panama.jpg" />
+    <Content Include="images\team-logo\Paraguai.jpg" />
+    <Content Include="images\team-logo\Paraná-PR.jpg" />
+    <Content Include="images\team-logo\Paris Saint-Germain.jpg" />
+    <Content Include="images\team-logo\Parma.jpg" />
+    <Content Include="images\team-logo\Paulista-SP.jpg" />
+    <Content Include="images\team-logo\Payssandú-PA.jpg" />
+    <Content Include="images\team-logo\País de Gales.jpg" />
+    <Content Include="images\team-logo\Pelotas-RS.JPG" />
+    <Content Include="images\team-logo\peru.jpg" />
+    <Content Include="images\team-logo\Philadelpgia Eagles.JPG" />
+    <Content Include="images\team-logo\Philadelphia Eagles.JPG" />
+    <Content Include="images\team-logo\Pittsburgh Steelers.JPG" />
+    <Content Include="images\team-logo\Poland.jpg" />
+    <Content Include="images\team-logo\Polônia.jpg" />
+    <Content Include="images\team-logo\Ponte Preta-SP.jpg" />
+    <Content Include="images\team-logo\Ponte Preta.jpg" />
+    <Content Include="images\team-logo\Portland Trail Blazers.jpg" />
+    <Content Include="images\team-logo\Porto-PE.jpg" />
+    <Content Include="images\team-logo\Porto.jpg" />
+    <Content Include="images\team-logo\Portugal.jpg" />
+    <Content Include="images\team-logo\Portuguesa-SP.jpg" />
+    <Content Include="images\team-logo\Potiguar-RN.JPG" />
+    <Content Include="images\team-logo\Poções-BA.jpg" />
+    <Content Include="images\team-logo\PSV.jpg" />
+    <Content Include="images\team-logo\Puebla.jpg" />
+    <Content Include="images\team-logo\Pumas U.N.A.M..jpg" />
+    <Content Include="images\team-logo\Queens Park Rangers.jpg" />
+    <Content Include="images\team-logo\Querétaro.jpg" />
+    <Content Include="images\team-logo\Quilmes.jpg" />
+    <Content Include="images\team-logo\Racing Club.jpg" />
+    <Content Include="images\team-logo\Rafaela.jpg" />
+    <Content Include="images\team-logo\RAS SPFC.JPG" />
+    <Content Include="images\team-logo\Rayo Vallecano.jpg" />
+    <Content Include="images\team-logo\RB Leipzig.jpg" />
+    <Content Include="images\team-logo\Real Audaces FC.jpg" />
+    <Content Include="images\team-logo\Real Betis.jpg" />
+    <Content Include="images\team-logo\Real Madrid-ESP.jpg" />
+    <Content Include="images\team-logo\Real Madrid.jpg" />
+    <Content Include="images\team-logo\Real Salt Lake.jpg" />
+    <Content Include="images\team-logo\Real Sociedad.jpg" />
+    <Content Include="images\team-logo\REDGEARS E-SPORTS.jpg" />
+    <Content Include="images\team-logo\Remo-PA.JPG" />
+    <Content Include="images\team-logo\República Tcheca.jpg" />
+    <Content Include="images\team-logo\Resende-RJ.jpg" />
+    <Content Include="images\team-logo\Rio Branco-AC.jpg" />
+    <Content Include="images\team-logo\Rio Branco-ES.JPG" />
+    <Content Include="images\team-logo\Rio Claro-SP.jpg" />
+    <Content Include="images\team-logo\River Plate-SE.JPG" />
+    <Content Include="images\team-logo\River Plate.jpg" />
+    <Content Include="images\team-logo\ROMA UNITED.jpg" />
+    <Content Include="images\team-logo\Roma.jpg" />
+    <Content Include="images\team-logo\Romênia.jpg" />
+    <Content Include="images\team-logo\Roraima-RO.jpg" />
+    <Content Include="images\team-logo\Rosario Central.jpg" />
+    <Content Include="images\team-logo\Rubin Kazan.jpg" />
+    <Content Include="images\team-logo\Russia.jpg" />
+    <Content Include="images\team-logo\Rússia.jpg" />
+    <Content Include="images\team-logo\Saint-Etienne.jpg" />
+    <Content Include="images\team-logo\Salgueiro-PE.jpg" />
+    <Content Include="images\team-logo\Sampaio Corrêa-MA.JPG" />
+    <Content Include="images\team-logo\Sampdoria.jpg" />
+    <Content Include="images\team-logo\San Antonio Spurs.jpg" />
+    <Content Include="images\team-logo\San Diego Chargers.JPG" />
+    <Content Include="images\team-logo\San Francisco 49ers.JPG" />
+    <Content Include="images\team-logo\San Lorenzo.jpg" />
+    <Content Include="images\team-logo\San Luis.jpg" />
+    <Content Include="images\team-logo\Santa Cruz-PE.JPG" />
+    <Content Include="images\team-logo\Santo André-SP.jpg" />
+    <Content Include="images\team-logo\Santos Laguna.jpg" />
+    <Content Include="images\team-logo\Santos-SP.jpg" />
+    <Content Include="images\team-logo\Santos.jpg" />
+    <Content Include="images\team-logo\Sassuolo.jpg" />
+    <Content Include="images\team-logo\Saudi Arabia.jpg" />
+    <Content Include="images\team-logo\SC Braga.jpg" />
+    <Content Include="images\team-logo\Schalke 04.jpg" />
+    <Content Include="images\team-logo\SD Eibar.jpg" />
+    <Content Include="images\team-logo\Seattle Seahawks.JPG" />
+    <Content Include="images\team-logo\Seattle Sounders FC.jpg" />
+    <Content Include="images\team-logo\Seattle Sounders.jpg" />
+    <Content Include="images\team-logo\SEM MARCA FC.jpg" />
+    <Content Include="images\team-logo\Senegal.jpg" />
+    <Content Include="images\team-logo\SEP Guedes United FC.jpg" />
+    <Content Include="images\team-logo\SEP Guedes Utd..jpg" />
+    <Content Include="images\team-logo\SER CAXIAS.jpg" />
+    <Content Include="images\team-logo\Serbia.jpg" />
+    <Content Include="images\team-logo\Serra-ES.jpg" />
+    <Content Include="images\team-logo\Serrano-PE.jpg" />
+    <Content Include="images\team-logo\Sertãozinho-SP.jpg" />
+    <Content Include="images\team-logo\Sevilla.jpg" />
+    <Content Include="images\team-logo\Shakhtar Donetsk.jpg" />
+    <Content Include="images\team-logo\Showmen FC.jpg" />
+    <Content Include="images\team-logo\Soberano FC.jpg" />
+    <Content Include="images\team-logo\Sokanelas FC.JPG" />
+    <Content Include="images\team-logo\South Korea.jpg" />
+    <Content Include="images\team-logo\Southampton.jpg" />
+    <Content Include="images\team-logo\Spain.jpg" />
+    <Content Include="images\team-logo\Spartak Moscou.jpg" />
+    <Content Include="images\team-logo\Sport-PE.jpg" />
+    <Content Include="images\team-logo\Sporting Lisboa-POR.jpg" />
+    <Content Include="images\team-logo\Sporting Lisboa.jpg" />
+    <Content Include="images\team-logo\Spurs E-Sports.jpg" />
+    <Content Include="images\team-logo\Stoke City.jpg" />
+    <Content Include="images\team-logo\Sunderland.jpg" />
+    <Content Include="images\team-logo\Super Fifa FC.jpg" />
+    <Content Include="images\team-logo\Super Star Soccer FC .jpg" />
+    <Content Include="images\team-logo\Suécia.jpg" />
+    <Content Include="images\team-logo\Suíça.jpg" />
+    <Content Include="images\team-logo\Swansea City.jpg" />
+    <Content Include="images\team-logo\Sweden.jpg" />
+    <Content Include="images\team-logo\Switzerland.jpg" />
+    <Content Include="images\team-logo\São Bernardo-SP.jpg" />
+    <Content Include="images\team-logo\São Caetano-SP.jpg" />
+    <Content Include="images\team-logo\São José-RS.jpg" />
+    <Content Include="images\team-logo\São Paulo-SP.jpg" />
+    <Content Include="images\team-logo\São Paulo.jpg" />
+    <Content Include="images\team-logo\São Raimundo-PA.jpg" />
+    <Content Include="images\team-logo\são_bernardo-sp.jpg" />
+    <Content Include="images\team-logo\São_Caetano.jpg" />
+    <Content Include="images\team-logo\Só Canelas FC.jpg" />
+    <Content Include="images\team-logo\Ticomia FC.jpg" />
+    <Content Include="images\team-logo\Tigre.jpg" />
+    <Content Include="images\team-logo\Tigres do Brasil-RJ.jpg" />
+    <Content Include="images\team-logo\Tigres U.A.N.L..jpg" />
+    <Content Include="images\team-logo\TNT FC.jpg" />
+    <Content Include="images\team-logo\Tocantinópolis-TO.jpg" />
+    <Content Include="images\team-logo\Toluca.jpg" />
+    <Content Include="images\team-logo\TOP FIFA UT.jpg" />
+    <Content Include="images\team-logo\Torino.jpg" />
+    <Content Include="images\team-logo\Tornado FC.jpg" />
+    <Content Include="images\team-logo\Toronto FC.jpg" />
+    <Content Include="images\team-logo\Toronto Raptors.jpg" />
+    <Content Include="images\team-logo\Toronto.jpg" />
+    <Content Include="images\team-logo\Tottenham Hotspur.jpg" />
+    <Content Include="images\team-logo\Trabzonspor.jpg" />
+    <Content Include="images\team-logo\Treze-PB.jpg" />
+    <Content Include="images\team-logo\Triumph E-sports.jpg" />
+    <Content Include="images\team-logo\Tunisia.jpg" />
+    <Content Include="images\team-logo\Tupi-MG.jpg" />
+    <Content Include="images\team-logo\Turquia.jpg" />
+    <Content Include="images\team-logo\Uberaba-MG.JPG" />
+    <Content Include="images\team-logo\Udinese.jpg" />
+    <Content Include="images\team-logo\Ulbra-RS.jpg" />
+    <Content Include="images\team-logo\Ultimate League FC.jpg" />
+    <Content Include="images\team-logo\Universidad Católica.jpg" />
+    <Content Include="images\team-logo\Universidad de Chile.jpg" />
+    <Content Include="images\team-logo\União Rondonópolis-RO.jpg" />
+    <Content Include="images\team-logo\União-MT.jpg" />
+    <Content Include="images\team-logo\Uruguai.jpg" />
+    <Content Include="images\team-logo\Uruguay.jpg" />
+    <Content Include="images\team-logo\Valencia.jpg" />
+    <Content Include="images\team-logo\Vasco Da Gama-RJ.jpg" />
+    <Content Include="images\team-logo\Vasco Da Gama.jpg" />
+    <Content Include="images\team-logo\Vasco-RJ.jpg" />
+    <Content Include="images\team-logo\Vasco.jpg" />
+    <Content Include="images\team-logo\venezuela.jpg" />
+    <Content Include="images\team-logo\Veranópolis-RS.jpg" />
+    <Content Include="images\team-logo\Vfb Stuttgart.jpg" />
+    <Content Include="images\team-logo\Vila Aurora-MT.JPG" />
+    <Content Include="images\team-logo\Vila Nova-GO.jpg" />
+    <Content Include="images\team-logo\Vila Nova-MG.jpg" />
+    <Content Include="images\team-logo\Vila_Nova-MG.jpg" />
+    <Content Include="images\team-logo\Vilhena-RO.JPG" />
+    <Content Include="images\team-logo\Villarreal.jpg" />
+    <Content Include="images\team-logo\vitória-BA.jpg" />
+    <Content Include="images\team-logo\Volta Redonda-RJ.jpg" />
+    <Content Include="images\team-logo\Vélez Sarsfield.jpg" />
+    <Content Include="images\team-logo\Washington Wizards.jpg" />
+    <Content Include="images\team-logo\Watford.jpg" />
+    <Content Include="images\team-logo\Werder Bremen.jpg" />
+    <Content Include="images\team-logo\West Bromwich Albion.jpg" />
+    <Content Include="images\team-logo\West Ham United.jpg" />
+    <Content Include="images\team-logo\white dragon FC.jpg" />
+    <Content Include="images\team-logo\Wolfsburg.jpg" />
+    <Content Include="images\team-logo\Wolverhampton Wanderers.jpg" />
+    <Content Include="images\team-logo\Zenit.jpg" />
+    <Content Include="images\team-logo\África do Sul.jpg" />
+    <Content Include="images\team-logo\Águia-PA.JPG" />
+    <Content Include="images\team-logo\Áustria.jpg" />
+    <Content Include="images\user.png" />
+    <Content Include="Scripts\calculate-history-matches.js" />
+    <Content Include="Scripts\calculate-score.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\dashboard-gentelella\bootstrap-colorpicker.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\bootstrap-wysiwyg.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\bootstrap.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\buttons.bootstrap.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\buttons.flash.js" />
+    <Content Include="Scripts\dashboard-gentelella\buttons.html5.js" />
+    <Content Include="Scripts\dashboard-gentelella\buttons.print.js" />
+    <Content Include="Scripts\dashboard-gentelella\cropper.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\custom.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\dataTables.buttons.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\dataTables.fixedHeader.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\dataTables.keyTable.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\dataTables.responsive.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\dataTables.scroller.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\daterangepicker.js" />
+    <Content Include="Scripts\dashboard-gentelella\fastclick.js" />
+    <Content Include="Scripts\dashboard-gentelella\fullcalendar.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\i18n\fr.js" />
+    <Content Include="Scripts\dashboard-gentelella\i18n\it.js" />
+    <Content Include="Scripts\dashboard-gentelella\icheck.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\ion.rangeSlider.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\jquery.dataTables.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\jquery.hotkeys.js" />
+    <Content Include="Scripts\dashboard-gentelella\jquery.inputmask.bundle.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\jquery.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\jquery.smartWizard.js" />
+    <Content Include="Scripts\dashboard-gentelella\jquery.tagsinput.js" />
+    <Content Include="Scripts\dashboard-gentelella\moment.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\nprogress.js" />
+    <Content Include="Scripts\dashboard-gentelella\parsley.js" />
+    <Content Include="Scripts\dashboard-gentelella\parsley.min.js" />
+    <Content Include="Scripts\dashboard-gentelella\prettify.js" />
+    <Content Include="Scripts\dashboard-gentelella\responsive.bootstrap.js" />
+    <Content Include="Scripts\dashboard-gentelella\switchery.min.js" />
+    <Content Include="Scripts\functions-custom.js" />
+    <Content Include="Scripts\functions-launch-result.js" />
+    <Content Include="Scripts\functions-registrations.js" />
+    <Content Include="Scripts\jplist\jplist.core.min.js" />
+    <Content Include="Scripts\jplist\jplist.list-grid-view.min.js" />
+    <Content Include="Scripts\jplist\jplist.pagination-bundle.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery\circle-progress.min.js" />
+    <Content Include="Scripts\jquery\circle.js" />
+    <Content Include="Scripts\jquery\jquery-1.10.0.min.js" />
+    <Content Include="Scripts\jquery\jquery-1.7.min.js" />
+    <Content Include="Scripts\jquery\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery\jquery-data-to.js" />
+    <Content Include="Scripts\jquery\jquery-ui.js" />
+    <Content Include="Scripts\jquery\jquery.countdown.min.js" />
+    <Content Include="Scripts\jquery\jquery.min.js" />
+    <Content Include="Scripts\jquery\jquery.timelify.js" />
+    <Content Include="images\team-logo\Thumbs.db" />
+    <Content Include="bin-GitHub\ArenaFifa2.0.BatchServices.NET.dll.config" />
+    <Content Include="bin-GitHub\OldEncryption.dll.config" />
+    <Content Include="bin-GitHub\SYSEmail.dll.config" />
+    <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.validate.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ju-loading-screen.js" />
+    <Content Include="Scripts\paginate-matches-list.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
+    <Content Include="Scripts\wow.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LayoutMainPage.cshtml" />
+    <Content Include="Views\Home\Signin.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_MenuNavBar.cshtml" />
+    <Content Include="Views\Shared\_MenuSideBarBatchServices.cshtml" />
+    <Content Include="Views\Shared\_MessageValidate.cshtml" />
+    <Content Include="Views\Shared\_QuestionModal.cshtml" />
+    <Content Include="Views\Shared\_QuestionModalv2.cshtml" />
+    <Content Include="Views\Shared\_ResultModal.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap\css\bootstrap-panel.min.css.bak" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.bak" />
+    <Content Include="Content\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css.bak" />
+    <Content Include="Content\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\dashboard-gentelella\bootstrap.min.css.bak" />
+    <Content Include="Content\dashboard-gentelella\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\dashboard-gentelella\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\dashboard-gentelella\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\dashboard-gentelella\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\dashboard-gentelella\fonts\FontAwesome.otf" />
+    <Content Include="Content\datatables-plugins\dataTables.responsive.scss" />
+    <Content Include="Content\fontawesome\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\fontawesome\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\fontawesome\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\fontawesome\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\fontawesome\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\fontawesome\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\fontawesome\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\fontawesome\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\fontawesome\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\fontawesome\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\fontawesome\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="fonts\fables.eot" />
+    <Content Include="fonts\fables.ttf" />
+    <Content Include="fonts\fables.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49971</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49971/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

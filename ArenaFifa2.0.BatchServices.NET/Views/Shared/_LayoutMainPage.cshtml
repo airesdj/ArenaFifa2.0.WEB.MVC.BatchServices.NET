@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arena Fifa 2.0">
+    <meta name="author" content="Arena Fifa">
+    <title>@ViewBag.Title - Arena Fifa 2.0</title>
+
+    @if (ViewBag.inGentelella == "0" || String.IsNullOrEmpty(ViewBag.inGentelella))
+    {
+        @Styles.Render("~/Content/default-css")
+        @Styles.Render("~/Content/main-css")
+        @Scripts.Render("~/bundles/default-jquery")
+        @Scripts.Render("~/bundles/default-script")
+        @Scripts.Render("~/bundles/carousel-portfolio-script")
+    }
+    else
+    {
+        if (ViewBag.inMyPaginateMatches == "1" || ViewBag.inScorerDetails == "1")
+        {
+            <link href="/Content/dashboard-gentelella/tooltip-premier-league.css" rel="stylesheet" />
+        }
+        @Styles.Render("~/Content/gentelella-css")
+
+        if (ViewBag.inModeratorMenu == "1" && ViewBag.inLineUpPlayOffGames != "1" && ViewBag.inMyPaginateMatches != "1")
+        {
+            @Styles.Render("~/Content/gentelella-datatable-css")
+            <link href="/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
+            <link href="/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
+        }
+        else if (ViewBag.inDataTables == "1" && ViewBag.inLineUpPlayOffGames != "1" && ViewBag.inMyPaginateMatches != "1")
+        {
+            @Styles.Render("~/Content/gentelella-datatable-css")
+        }
+
+        if (ViewBag.inScorerDetails == "1")
+        {
+            <link href="/Content/show-score-details.css" rel="stylesheet" />
+            <link href="/Content/jplist/jplist.demo-pages.min.css" rel="stylesheet" />
+        }
+        if (ViewBag.inSmartWizardMenu == "1")
+        {
+            <link href="/Content/dashboard-gentelella/smart_wizard_vertical-new.css" rel="stylesheet" />
+        }
+        if (ViewBag.inLineUpPlayOffGames == "1")
+        {
+            <link href="/Content/line-up-playoff.css" rel="stylesheet" />
+        }
+        if (ViewBag.inMyPaginateMatches == "1")
+        {
+            <link href="/Content/jplist/jplist.demo-pages.min.css" rel="stylesheet" />
+        }
+
+    }
+</head>
+
+@if (ViewBag.inGentelella == "0" || String.IsNullOrEmpty(ViewBag.inGentelella))
+{
+    <body>
+        @Html.Partial("_MenuNavBar")
+        @RenderBody()
+        @Html.Partial("_Footer")
+        @RenderSection("scripts", required: false)
+
+        @ViewBag.ReturnUrl
+    </body>
+}
+else
+{
+    <body class="gentelella-nav-md">
+
+        @Html.Partial("_MenuNavBar")
+        <div class="gentelella-container gentelella-body">
+            <div class="gentelella-main_container" style="background-color:#2C3E4F">
+                <!-- /sidebar menu -->
+                @if (ViewBag.inBatchServices == "1")
+                    { @Html.Partial("_MenuSideBarBatchServices"); }
+                <!-- /sidebar menu -->
+
+                @RenderBody()
+
+                <!-- footer content -->
+                <footer id="footerMobile" style="display:none"><div style="line-height:1%">&nbsp;</div></footer>
+                <!-- /footer content -->
+            </div>
+            <!-- /page content -->
+        </div>
+        @Scripts.Render("~/bundles/gentelella-script")
+        @Scripts.Render("~/bundles/default-jquery")
+        @Scripts.Render("~/bundles/default-script")
+        @Scripts.Render("~/bundles/jqueryaux")
+        @Scripts.Render("~/bundles/carousel-portfolio-script")
+
+        @if (@ViewBag.inUsingAjaxRazor == "1")
+        {@Scripts.Render("~/bundles/jqueryajax");
+    }
+        @if (@ViewBag.inCalculateScore == "1")
+        {
+            <script src="/Scripts/calculate-score.js"></script>}
+
+        @if (@ViewBag.inModeratorMenu == "1")
+        {
+            if (@ViewBag.inCalculateHistoryMatches != "1")
+            {
+                @Scripts.Render("~/bundles/gentelella-datatable-script")
+            }
+            @Scripts.Render("~/bundles/gentelella-form-script")
+
+            if (@ViewBag.inModeratorMenuTextEditor == "1")
+            {
+                @Scripts.Render("~/bundles/gentelella-editor-script")
+            }
+            if (@ViewBag.inLaunchResult == "1")
+            {
+                <script src="/Scripts/functions-launch-result.js"></script>
+            }
+            if (@ViewBag.inSmartWizardMenu == "1")
+            {
+                <script src="/Scripts/dashboard-gentelella/jquery.smartWizard.js"></script>
+            }
+            if (@ViewBag.inCalculateHistoryMatches == "1")
+            {
+                <script src="/Scripts/calculate-history-matches.js"></script>
+            }
+            if (@ViewBag.inMyPaginateMatches == "1")
+            {
+                <script src="/Scripts/paginate-matches-list.js"></script>
+            }
+        }
+        else if (ViewBag.inDataTables == "1")
+        {
+            @Scripts.Render("~/bundles/gentelella-datatable-script")
+        }
+
+        @Html.Partial("_Footer")
+        @RenderSection("scripts", required: false)
+
+        @ViewBag.ReturnUrl
+    </body>
+}
+</html>

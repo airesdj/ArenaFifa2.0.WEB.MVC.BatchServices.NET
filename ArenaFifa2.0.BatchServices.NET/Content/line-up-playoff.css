@@ -1,0 +1,51 @@
+main, .ul-game {
+    display: flex;
+}
+
+.ul-game {
+    flex-direction: column;
+    width: 200px;
+    list-style: none;
+    padding: 0;
+}
+
+.game + li {
+    flex-grow: 1;
+}
+
+li:first-child, li:last-child {
+    flex-grow: .5;
+}
+
+.game {
+    padding-left: 20px;
+    color: steelblue;
+    font-size: 14px;
+}
+
+.winner {
+    font-weight: bold;
+}
+
+.champion {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+.game span {
+    float: right;
+    margin-right: 5px;
+}
+
+.game-top {
+    border-bottom: 2px solid #aaa;
+}
+
+    .game-top + li {
+        border-right: 2px solid #aaa;
+        min-height: 40px;
+    }
+
+.game-bottom {
+    border-top: 2px solid #aaa;
+}
