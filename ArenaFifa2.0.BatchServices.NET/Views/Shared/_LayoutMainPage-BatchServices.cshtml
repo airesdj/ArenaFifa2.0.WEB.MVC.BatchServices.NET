@@ -31,9 +31,9 @@
 @if (ViewBag.inGentelella == "0" || String.IsNullOrEmpty(ViewBag.inGentelella))
 {
     <body>
-        @Html.Partial("_MenuNavBar-Staging")
+        @Html.Partial("_MenuNavBar-BatchServices")
         @RenderBody()
-        @Html.Partial("_Footer-Staging")
+        @Html.Partial("_Footer-BatchServices")
         @RenderSection("scripts", required: false)
 
         @ViewBag.ReturnUrl
@@ -43,7 +43,7 @@ else
 {
     <body class="gentelella-nav-md">
 
-        @Html.Partial("_MenuNavBar-Staging")
+        @Html.Partial("_MenuNavBar-BatchServices")
         <div class="gentelella-container gentelella-body">
             <div class="gentelella-main_container" style="background-color:#2C3E4F">
                 <!-- /sidebar menu -->
@@ -72,7 +72,7 @@ else
             @Scripts.Render("~/bundles/gentelella-datatable-script")
         }
 
-        @Html.Partial("_Footer-Staging")
+        @Html.Partial("_Footer-BatchServices")
         @RenderSection("scripts", required: false)
 
         @ViewBag.ReturnUrl

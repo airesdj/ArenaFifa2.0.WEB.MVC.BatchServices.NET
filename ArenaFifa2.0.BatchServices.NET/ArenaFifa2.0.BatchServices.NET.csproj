@@ -1067,9 +1067,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LayoutMainPage-Staging.cshtml" />
-    <Content Include="Views\Shared\_Footer-Staging.cshtml" />
-    <Content Include="Views\Shared\_MenuNavBar-Staging.cshtml" />
+    <Content Include="Views\Shared\_LayoutMainPage-BatchServices.cshtml" />
+    <Content Include="Views\Shared\_Footer-BatchServices.cshtml" />
+    <Content Include="Views\Shared\_MenuNavBar-BatchServices.cshtml" />
     <Content Include="Views\Shared\_MenuSideBarBatchServices.cshtml" />
     <Content Include="Views\Shared\_MessageValidate.cshtml" />
     <Content Include="Views\Shared\_QuestionModal.cshtml" />
