@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arena Fifa 2.0">
+    <meta name="author" content="Arena Fifa">
+    <title>@ViewBag.Title - Arena Fifa 2.0</title>
+
+    @if (ViewBag.inGentelella == "0" || String.IsNullOrEmpty(ViewBag.inGentelella))
+    {
+        @Styles.Render("~/Content/default-css")
+        @Styles.Render("~/Content/main-css")
+        @Scripts.Render("~/bundles/default-jquery")
+        @Scripts.Render("~/bundles/default-script")
+        @Scripts.Render("~/bundles/carousel-portfolio-script")
+    }
+    else
+    {
+        @Styles.Render("~/Content/gentelella-css")
+
+        if (ViewBag.inDataTables == "1")
+        {
+            @Styles.Render("~/Content/gentelella-datatable-css")
+            <link href="/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
+            <link href="/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
+        }
+    }
+</head>
+
+@if (ViewBag.inGentelella == "0" || String.IsNullOrEmpty(ViewBag.inGentelella))
+{
+    <body>
+        @Html.Partial("_MenuNavBar-Staging")
+        @RenderBody()
+        @Html.Partial("_Footer-Staging")
+        @RenderSection("scripts", required: false)
+
+        @ViewBag.ReturnUrl
+    </body>
+}
+else
+{
+    <body class="gentelella-nav-md">
+
+        @Html.Partial("_MenuNavBar-Staging")
+        <div class="gentelella-container gentelella-body">
+            <div class="gentelella-main_container" style="background-color:#2C3E4F">
+                <!-- /sidebar menu -->
+                @if (ViewBag.inBatchServices == "1")
+                {@Html.Partial("_MenuSideBarBatchServices");
+            }
+                <!-- /sidebar menu -->
+
+                @RenderBody()
+
+                <!-- footer content -->
+                <footer id="footerMobile" style="display:none"><div style="line-height:1%">&nbsp;</div></footer>
+                <!-- /footer content -->
+            </div>
+            <!-- /page content -->
+        </div>
+        @Scripts.Render("~/bundles/gentelella-script")
+        @Scripts.Render("~/bundles/default-jquery")
+        @Scripts.Render("~/bundles/default-script")
+        @Scripts.Render("~/bundles/jqueryaux")
+        @Scripts.Render("~/bundles/carousel-portfolio-script")
+
+        @if (ViewBag.inDataTables == "1")
+        {
+            @Scripts.Render("~/bundles/gentelella-datatable-script")
+            @Scripts.Render("~/bundles/gentelella-datatable-script")
+        }
+
+        @Html.Partial("_Footer-Staging")
+        @RenderSection("scripts", required: false)
+
+        @ViewBag.ReturnUrl
+    </body>
+}
+</html>

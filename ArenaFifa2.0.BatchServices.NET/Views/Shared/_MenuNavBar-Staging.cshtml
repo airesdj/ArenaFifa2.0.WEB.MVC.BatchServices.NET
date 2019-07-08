@@ -1,0 +1,81 @@
+﻿<div class="fables-navigation fables-main-background-color py-3 py-lg-0">
+    <div class="container">
+        <div class="row" style="white-space:nowrap;">
+            <div class="col-12 col-md-10 pr-md-0">
+                <nav class="navbar navbar-expand-md btco-hover-menu py-lg-2" style="vertical-align:middle">
+
+                    <span class="navbar-brand fables-logo-brand pl-0"><img src="/images/arenafifa20.jpg" width="150" class="fables-logo"></span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fablesNavDropdown" aria-controls="fablesNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="fables-iconmenu-icon text-white font-16"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="fablesNavDropdown" style="color:white">
+
+                        <div class="col-12 col-md-10 mb-10 mb-md-0 text-center"><b>ARENAFIFA - MAINTENANCE OF ALL BATCH SERVICES</b></div>
+
+                        @if (!Convert.ToBoolean(HttpContext.Current.Session["session.active"].ToString()))
+                        {
+                            <div class="fables-header-icons text-center" style="padding-left:50px">
+                                <a href="/HomeBatchServices/Signin" class="fables-third-text-color fables-second-hover-color font-10 top-header-link px-3 px-md-2 px-lg-4">
+                                    <span class="fables-iconuser-register fa-2x" title="Faça o login"></span><br><span title="Faça o login">Login Arena</span>
+                                </a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="fables-third-text-color fables-second-hover-color font-10 top-header-link px-3 px-md-2 px-lg-4" id="avatarUserLogged" style="padding-left:50px">
+                                <img src="@(HttpContext.Current.Session["user.pathAvatar"].ToString() + "?time=" + DateTime.Now)" title="Avatar do Técnico Logado" width="80px">
+                            </div>
+                            <div class="fables-third-text-color icons-header-mobile" style="vertical-align:middle;padding-left:10px" id="menuUserLogged">
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary border-0 bg-transparent font-12 lang-dropdown-btn pl-0 nav-link" type="button" id="dropdownLangButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="fables-iconmenu-icon"></span>&nbsp;&nbsp;<u>Welcome, @HttpContext.Current.Session["user.psnID"].ToString()</u> @if (Convert.ToBoolean(HttpContext.Current.Session["user.isModerator"].ToString()))
+                                        {@MvcHtmlString.Create(" (moderator)")}
+                                    </button>
+                                    <div class="dropdown-menu p-0 fables-forth-background-color rounded-0 m-0 border-0 lang-dropdown" aria-labelledby="dropdownLangButton">
+                                        <a class="dropdown-item font-11 fables-second-hover-color" style="color:#F3A100;font-size:12px" href="/HomeBatchServices/Signout">
+                                            <span class="fables-iconuser-register"></span>&nbsp;&nbsp;Log Out
+                                        </a>
+                                    </div>
+                                </div>
+                                <p class="fables-third-text-color font-12">
+                                    @if (!String.IsNullOrEmpty(HttpContext.Current.Session["user.currentTeam"].ToString()))
+                                    {
+                                        <span class="fables-iconarrow-light"></span>
+                                        <b>Atual Time: </b>@HttpContext.Current.Session["user.currentTeam"].ToString();
+                                    }
+                                    else
+                                    {
+                                        <b>Atual Time: </b>@MvcHtmlString.Create(" You are currently without a team.")
+                                    }
+                                </p>
+                                <p class="fables-third-text-color font-12">
+                                    @if (Convert.ToInt16(HttpContext.Current.Session["user.totalTitlesWon"].ToString()) > 0 ||
+                                        Convert.ToInt16(HttpContext.Current.Session["user.totalVices"].ToString()) > 0)
+                                    {
+                                        <span style="padding-left:50px">
+                                            <b>
+                                                @if (Convert.ToInt16(HttpContext.Current.Session["user.totalTitlesWon"].ToString()) > 0)
+                                                {
+                                                    @MvcHtmlString.Create(HttpContext.Current.Session["user.totalTitlesWon"].ToString() + "x");
+                                                    <img src="/images/t1.gif" width="20px">
+                                                }
+                                                &nbsp; &nbsp;
+                                                @if (Convert.ToInt16(HttpContext.Current.Session["user.totalVices"].ToString()) > 0)
+                                                {
+                                                    @MvcHtmlString.Create(HttpContext.Current.Session["user.totalVices"].ToString() + "x");
+                                                    <img src="/images/t2.gif" width="20px">
+                                                }
+                                            </b>
+                                        </span>
+
+                                    }
+                                </p>
+                            </div>
+                        }
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

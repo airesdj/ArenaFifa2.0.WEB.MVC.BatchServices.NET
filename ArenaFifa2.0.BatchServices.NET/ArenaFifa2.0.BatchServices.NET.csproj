@@ -174,12 +174,13 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\BatchServicesController.cs" />
+    <Compile Include="Controllers\HomeBatchServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalVariables.cs" />
-    <Compile Include="Models\HomeModels.cs" />
+    <Compile Include="Models\HomeBatchServicesModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1066,15 +1067,16 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LayoutMainPage.cshtml" />
-    <Content Include="Views\Home\Signin.cshtml" />
-    <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Shared\_MenuNavBar.cshtml" />
+    <Content Include="Views\Shared\_LayoutMainPage-Staging.cshtml" />
+    <Content Include="Views\Shared\_Footer-Staging.cshtml" />
+    <Content Include="Views\Shared\_MenuNavBar-Staging.cshtml" />
     <Content Include="Views\Shared\_MenuSideBarBatchServices.cshtml" />
     <Content Include="Views\Shared\_MessageValidate.cshtml" />
     <Content Include="Views\Shared\_QuestionModal.cshtml" />
     <Content Include="Views\Shared\_QuestionModalv2.cshtml" />
     <Content Include="Views\Shared\_ResultModal.cshtml" />
+    <Content Include="Views\HomeBatchServices\Signin.cshtml" />
+    <Content Include="Views\BatchServices\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

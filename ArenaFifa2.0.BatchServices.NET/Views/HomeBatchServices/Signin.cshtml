@@ -1,0 +1,66 @@
+﻿@using ArenaFifa20.BatchServices.NET.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<!-- Start Breadcrumbs -->
+<div class="fables-light-background-color">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="fables-breadcrumb breadcrumb px-0 py-3">
+                <li class="breadcrumb-item active" aria-current="page">Login</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+<!-- /End Breadcrumbs -->
+<!-- Start page content -->
+<div class="container">
+    <div class="row my-4 my-lg-5">
+        <div class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3 text-center">
+            <section id="loginForm">
+                <h2 class="fables-second-text-color mb-8 font-weight-bold"> Login in the Arena Fifa<br /> Batch Services </h2><br />
+                @using (Html.BeginForm("Signin", "HomeBatchServices", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <span class="fables-iconuser-register fables-input-icon mt-2 font-13"></span>
+                            @Html.TextBoxFor(m => m.psnID, new { @class = "form-control rounded-0 py-3 pl-5 font-13 sign-register-input", @placeholder = "PSN ID" })
+                            @Html.ValidationMessageFor(m => m.psnID, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon">
+                            <span class="fables-iconpassword fables-input-icon font-19 mt-1"></span>
+                            @Html.PasswordFor(m => m.password, new { @class = "form-control rounded-0 py-3 pl-5 font-13 sign-register-input", @placeholder = "Senha" })
+                            @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-block rounded-0 white-color fables-main-hover-background-color fables-second-background-color font-16 semi-font py-3">Enviar</button>
+                }
+            </section>
+        </div>
+    </div>
+</div>
+
+<!-- /End page content -->
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+
+<script>
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+        });
+
+</script>
+}
+

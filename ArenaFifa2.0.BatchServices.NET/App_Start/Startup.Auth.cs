@@ -25,7 +25,7 @@ namespace ArenaFifa20.NET
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Home/Signin"),
+                LoginPath = new PathString("/HomeBatchServices/Signin"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

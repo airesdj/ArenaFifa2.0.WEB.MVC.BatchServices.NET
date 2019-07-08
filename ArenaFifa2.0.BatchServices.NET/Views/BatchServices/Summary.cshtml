@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Batch Services - Summary";
+}
+
+
+<!-- page content -->
+<div class="gentelella-right_col" role="main" style="padding-left:50px">
+    <div class="gentelella-page-title">
+        <div class="gentelella-col-md-12 gentelella-col-sm-6 gentelella-col-xs-12">
+            <h3>BATCH SERVICES - PANEL</h3>
+        </div>
+        <div class="gentelella-title_right">
+            <div class="gentelella-col-md-5 gentelella-col-sm-5 gentelella-col-xs-12 gentelella-form-group gentelella-pull-right gentelella-top_search">
+                <div class="gentelella-input-group">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+
+    
+</div>
+<!-- /page content -->
+@section Scripts {
+    <script>
+        $(function () {
+            if (detectMobileDevice() == 1) {
+                //$("#includedContentMenuMobile").load("/arena20/includes/menu-logged-mobile.html");
+                //$("#includedContentMenuRankingMobile").load("menu-my-matches-mobile.html");
+                hidden_show_ObjectMobile("footerMobile", "block");
+            }
+        });
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+
+        });
+
+    </script>
+}
+
