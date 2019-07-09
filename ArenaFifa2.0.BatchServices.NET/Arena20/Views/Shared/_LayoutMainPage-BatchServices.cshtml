@@ -14,7 +14,6 @@
         @Scripts.Render("~/bundles/default-jquery")
         @Scripts.Render("~/bundles/default-script")
         @Scripts.Render("~/bundles/carousel-portfolio-script")
-        @("Teste....")
     }
     else
     {
@@ -23,8 +22,8 @@
         if (ViewBag.inDataTables == "1")
         {
             @Styles.Render("~/bundles/gentelella-datatable-css")
-            <link href="/Arena20/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
-            <link href="/Arena20/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
+            <link href="~/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
+            <link href="~/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
         }
     }
 </head>
