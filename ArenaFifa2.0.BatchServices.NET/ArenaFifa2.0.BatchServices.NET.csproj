@@ -174,8 +174,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\BatchServicesController.cs" />
-    <Compile Include="Controllers\HomeBatchServicesController.cs" />
+    <Compile Include="Controllers\Arena20\BatchServicesController.cs" />
+    <Compile Include="Controllers\Arena20\HomeBatchServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +186,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="30.ico" />
     <Content Include="bin-GitHub\ArenaFifa2.0.BatchServices.NET.dll" />
     <Content Include="bin-GitHub\Commons.dll" />
     <Content Include="bin-GitHub\EntityFramework.dll" />
@@ -394,6 +395,210 @@
     <Content Include="images\championship-logo\PRO_CLUB-SERIE_A.jpg" />
     <Content Include="images\championship-logo\PRO_CLUB___-___SÉRIE_A.jpg" />
     <Content Include="images\championship-logo\Super___Copa___Europa.jpg" />
+    <Content Include="images\coach-avatar\1001.jpg" />
+    <Content Include="images\coach-avatar\1004_1.jpg" />
+    <Content Include="images\coach-avatar\1014.jpg" />
+    <Content Include="images\coach-avatar\1018.jpg" />
+    <Content Include="images\coach-avatar\1021.jpg" />
+    <Content Include="images\coach-avatar\1028.jpg" />
+    <Content Include="images\coach-avatar\1031.jpg" />
+    <Content Include="images\coach-avatar\1036.jpg" />
+    <Content Include="images\coach-avatar\1037.jpg" />
+    <Content Include="images\coach-avatar\1069.jpg" />
+    <Content Include="images\coach-avatar\1073.jpg" />
+    <Content Include="images\coach-avatar\1098.jpg" />
+    <Content Include="images\coach-avatar\1100_1.jpg" />
+    <Content Include="images\coach-avatar\1110.jpg" />
+    <Content Include="images\coach-avatar\1119.jpg" />
+    <Content Include="images\coach-avatar\1120_1.jpg" />
+    <Content Include="images\coach-avatar\1130.jpg" />
+    <Content Include="images\coach-avatar\1168.jpg" />
+    <Content Include="images\coach-avatar\1177.jpg" />
+    <Content Include="images\coach-avatar\1184.jpg" />
+    <Content Include="images\coach-avatar\1190.jpg" />
+    <Content Include="images\coach-avatar\1198.jpg" />
+    <Content Include="images\coach-avatar\1204.jpg" />
+    <Content Include="images\coach-avatar\1210.jpg" />
+    <Content Include="images\coach-avatar\1211.jpg" />
+    <Content Include="images\coach-avatar\1213.jpg" />
+    <Content Include="images\coach-avatar\1250.jpg" />
+    <Content Include="images\coach-avatar\1274.jpg" />
+    <Content Include="images\coach-avatar\1281-old.jpg" />
+    <Content Include="images\coach-avatar\1281.jpg" />
+    <Content Include="images\coach-avatar\1415.jpg" />
+    <Content Include="images\coach-avatar\1480.jpg" />
+    <Content Include="images\coach-avatar\1497.jpg" />
+    <Content Include="images\coach-avatar\150565.jpg" />
+    <Content Include="images\coach-avatar\1517.jpg" />
+    <Content Include="images\coach-avatar\152912.jpg" />
+    <Content Include="images\coach-avatar\1548.jpg" />
+    <Content Include="images\coach-avatar\1567.jpg" />
+    <Content Include="images\coach-avatar\1580.jpg" />
+    <Content Include="images\coach-avatar\159240.jpg" />
+    <Content Include="images\coach-avatar\163631.jpg" />
+    <Content Include="images\coach-avatar\171364.jpg" />
+    <Content Include="images\coach-avatar\177537.jpg" />
+    <Content Include="images\coach-avatar\177635.jpg" />
+    <Content Include="images\coach-avatar\1791.jpg" />
+    <Content Include="images\coach-avatar\1814.jpg" />
+    <Content Include="images\coach-avatar\184344.jpg" />
+    <Content Include="images\coach-avatar\186999.jpg" />
+    <Content Include="images\coach-avatar\187421.jpg" />
+    <Content Include="images\coach-avatar\189712.jpg" />
+    <Content Include="images\coach-avatar\1900.jpg" />
+    <Content Include="images\coach-avatar\193738.jpg" />
+    <Content Include="images\coach-avatar\1943.jpg" />
+    <Content Include="images\coach-avatar\198347.jpg" />
+    <Content Include="images\coach-avatar\2012_1.jpg" />
+    <Content Include="images\coach-avatar\204077.jpg" />
+    <Content Include="images\coach-avatar\2100.jpg" />
+    <Content Include="images\coach-avatar\2106.jpg" />
+    <Content Include="images\coach-avatar\2108.jpg" />
+    <Content Include="images\coach-avatar\2206.jpg" />
+    <Content Include="images\coach-avatar\2243.jpg" />
+    <Content Include="images\coach-avatar\2362.jpg" />
+    <Content Include="images\coach-avatar\2371.jpg" />
+    <Content Include="images\coach-avatar\2382.jpg" />
+    <Content Include="images\coach-avatar\2385_1.jpg" />
+    <Content Include="images\coach-avatar\2389.jpg" />
+    <Content Include="images\coach-avatar\2490.jpg" />
+    <Content Include="images\coach-avatar\2590.jpg" />
+    <Content Include="images\coach-avatar\2684.jpg" />
+    <Content Include="images\coach-avatar\2761.jpg" />
+    <Content Include="images\coach-avatar\2948.jpg" />
+    <Content Include="images\coach-avatar\2958.jpg" />
+    <Content Include="images\coach-avatar\3032_1.jpg" />
+    <Content Include="images\coach-avatar\381-old.jpg" />
+    <Content Include="images\coach-avatar\381.jpg" />
+    <Content Include="images\coach-avatar\381_1.jpg" />
+    <Content Include="images\coach-avatar\382.jpg" />
+    <Content Include="images\coach-avatar\383.jpg" />
+    <Content Include="images\coach-avatar\384.jpg" />
+    <Content Include="images\coach-avatar\385.jpg" />
+    <Content Include="images\coach-avatar\390.jpg" />
+    <Content Include="images\coach-avatar\391.jpg" />
+    <Content Include="images\coach-avatar\394.jpg" />
+    <Content Include="images\coach-avatar\399_1.jpg" />
+    <Content Include="images\coach-avatar\401.jpg" />
+    <Content Include="images\coach-avatar\402.jpg" />
+    <Content Include="images\coach-avatar\409.jpg" />
+    <Content Include="images\coach-avatar\410.jpg" />
+    <Content Include="images\coach-avatar\411.jpg" />
+    <Content Include="images\coach-avatar\414.jpg" />
+    <Content Include="images\coach-avatar\415.jpg" />
+    <Content Include="images\coach-avatar\422.jpg" />
+    <Content Include="images\coach-avatar\425.jpg" />
+    <Content Include="images\coach-avatar\426.jpg" />
+    <Content Include="images\coach-avatar\431.jpg" />
+    <Content Include="images\coach-avatar\435.jpg" />
+    <Content Include="images\coach-avatar\436.jpg" />
+    <Content Include="images\coach-avatar\465.jpg" />
+    <Content Include="images\coach-avatar\484.jpg" />
+    <Content Include="images\coach-avatar\489.jpg" />
+    <Content Include="images\coach-avatar\494.jpg" />
+    <Content Include="images\coach-avatar\49756.jpg" />
+    <Content Include="images\coach-avatar\500.jpg" />
+    <Content Include="images\coach-avatar\5005.jpg" />
+    <Content Include="images\coach-avatar\502.jpg" />
+    <Content Include="images\coach-avatar\504.jpg" />
+    <Content Include="images\coach-avatar\508.jpg" />
+    <Content Include="images\coach-avatar\511.jpg" />
+    <Content Include="images\coach-avatar\512.jpg" />
+    <Content Include="images\coach-avatar\513.jpg" />
+    <Content Include="images\coach-avatar\517.jpg" />
+    <Content Include="images\coach-avatar\521.jpg" />
+    <Content Include="images\coach-avatar\526.jpg" />
+    <Content Include="images\coach-avatar\528.jpg" />
+    <Content Include="images\coach-avatar\529.jpg" />
+    <Content Include="images\coach-avatar\532.jpg" />
+    <Content Include="images\coach-avatar\538_1.jpg" />
+    <Content Include="images\coach-avatar\545.jpg" />
+    <Content Include="images\coach-avatar\546.jpg" />
+    <Content Include="images\coach-avatar\548.jpg" />
+    <Content Include="images\coach-avatar\550.jpg" />
+    <Content Include="images\coach-avatar\552_1.jpg" />
+    <Content Include="images\coach-avatar\556.jpg" />
+    <Content Include="images\coach-avatar\560.jpg" />
+    <Content Include="images\coach-avatar\565.jpg" />
+    <Content Include="images\coach-avatar\577.jpg" />
+    <Content Include="images\coach-avatar\579.jpg" />
+    <Content Include="images\coach-avatar\580.jpg" />
+    <Content Include="images\coach-avatar\581.jpg" />
+    <Content Include="images\coach-avatar\590.jpg" />
+    <Content Include="images\coach-avatar\592.jpg" />
+    <Content Include="images\coach-avatar\596_1.jpg" />
+    <Content Include="images\coach-avatar\608.jpg" />
+    <Content Include="images\coach-avatar\615.jpg" />
+    <Content Include="images\coach-avatar\617.jpg" />
+    <Content Include="images\coach-avatar\633.jpg" />
+    <Content Include="images\coach-avatar\647.jpg" />
+    <Content Include="images\coach-avatar\649.jpg" />
+    <Content Include="images\coach-avatar\671.jpg" />
+    <Content Include="images\coach-avatar\687_1.jpg" />
+    <Content Include="images\coach-avatar\689_1.jpg" />
+    <Content Include="images\coach-avatar\697.jpg" />
+    <Content Include="images\coach-avatar\711.jpg" />
+    <Content Include="images\coach-avatar\720.jpg" />
+    <Content Include="images\coach-avatar\722.jpg" />
+    <Content Include="images\coach-avatar\726_1.jpg" />
+    <Content Include="images\coach-avatar\729_1.jpg" />
+    <Content Include="images\coach-avatar\734.jpg" />
+    <Content Include="images\coach-avatar\736.jpg" />
+    <Content Include="images\coach-avatar\740.jpg" />
+    <Content Include="images\coach-avatar\767.jpg" />
+    <Content Include="images\coach-avatar\781.jpg" />
+    <Content Include="images\coach-avatar\788.jpg" />
+    <Content Include="images\coach-avatar\789.jpg" />
+    <Content Include="images\coach-avatar\792.jpg" />
+    <Content Include="images\coach-avatar\793.jpg" />
+    <Content Include="images\coach-avatar\794.jpg" />
+    <Content Include="images\coach-avatar\797_1.jpg" />
+    <Content Include="images\coach-avatar\800.jpg" />
+    <Content Include="images\coach-avatar\808.jpg" />
+    <Content Include="images\coach-avatar\814.jpg" />
+    <Content Include="images\coach-avatar\816.jpg" />
+    <Content Include="images\coach-avatar\820.jpg" />
+    <Content Include="images\coach-avatar\822.jpg" />
+    <Content Include="images\coach-avatar\833.jpg" />
+    <Content Include="images\coach-avatar\835.jpg" />
+    <Content Include="images\coach-avatar\838.jpg" />
+    <Content Include="images\coach-avatar\842.jpg" />
+    <Content Include="images\coach-avatar\855.jpg" />
+    <Content Include="images\coach-avatar\856.jpg" />
+    <Content Include="images\coach-avatar\858.jpg" />
+    <Content Include="images\coach-avatar\862.jpg" />
+    <Content Include="images\coach-avatar\863.jpg" />
+    <Content Include="images\coach-avatar\870.jpg" />
+    <Content Include="images\coach-avatar\871.jpg" />
+    <Content Include="images\coach-avatar\876.jpg" />
+    <Content Include="images\coach-avatar\879.jpg" />
+    <Content Include="images\coach-avatar\880.jpg" />
+    <Content Include="images\coach-avatar\883.jpg" />
+    <Content Include="images\coach-avatar\886.jpg" />
+    <Content Include="images\coach-avatar\907.jpg" />
+    <Content Include="images\coach-avatar\910.jpg" />
+    <Content Include="images\coach-avatar\911.jpg" />
+    <Content Include="images\coach-avatar\916.jpg" />
+    <Content Include="images\coach-avatar\920.jpg" />
+    <Content Include="images\coach-avatar\921.jpg" />
+    <Content Include="images\coach-avatar\922.jpg" />
+    <Content Include="images\coach-avatar\923.jpg" />
+    <Content Include="images\coach-avatar\924.jpg" />
+    <Content Include="images\coach-avatar\932.jpg" />
+    <Content Include="images\coach-avatar\935.jpg" />
+    <Content Include="images\coach-avatar\942.jpg" />
+    <Content Include="images\coach-avatar\944_1.jpg" />
+    <Content Include="images\coach-avatar\952.jpg" />
+    <Content Include="images\coach-avatar\958.jpg" />
+    <Content Include="images\coach-avatar\960.jpg" />
+    <Content Include="images\coach-avatar\977.jpg" />
+    <Content Include="images\coach-avatar\980.jpg" />
+    <Content Include="images\coach-avatar\981.jpg" />
+    <Content Include="images\coach-avatar\982.jpg" />
+    <Content Include="images\coach-avatar\985.jpg" />
+    <Content Include="images\coach-avatar\996.jpg" />
+    <Content Include="images\FIFA-19-DEMO_FOOTER_v2.jpg" />
+    <Content Include="images\FIFA-19-DEMO_v2.jpg" />
     <Content Include="images\Fifa19.jpg" />
     <Content Include="images\fundo-jogo.jpg" />
     <Content Include="images\goal.png" />
@@ -404,6 +609,8 @@
     <Content Include="images\logo-PRO-beige.jpg" />
     <Content Include="images\logo-PRO-white.jpg" />
     <Content Include="images\notfound.png" />
+    <Content Include="images\t1.gif" />
+    <Content Include="images\t2.gif" />
     <Content Include="images\team-logo\1899 Hoffenheim.jpg" />
     <Content Include="images\team-logo\19 de Setembro.JPG" />
     <Content Include="images\team-logo\301306.png" />
@@ -1038,50 +1245,22 @@
     <Content Include="Scripts\jquery\jquery.countdown.min.js" />
     <Content Include="Scripts\jquery\jquery.min.js" />
     <Content Include="Scripts\jquery\jquery.timelify.js" />
-    <Content Include="images\team-logo\Thumbs.db" />
     <Content Include="bin-GitHub\ArenaFifa2.0.BatchServices.NET.dll.config" />
     <Content Include="bin-GitHub\OldEncryption.dll.config" />
     <Content Include="bin-GitHub\SYSEmail.dll.config" />
-    <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery\jquery.validate.js" />
-    <Content Include="Scripts\jquery\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\ju-loading-screen.js" />
-    <Content Include="Scripts\paginate-matches-list.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\toastr.js" />
-    <Content Include="Scripts\toastr.min.js" />
-    <Content Include="Scripts\typeahead.bundle.js" />
-    <Content Include="Scripts\typeahead.bundle.min.js" />
-    <Content Include="Scripts\typeahead.jquery.js" />
-    <Content Include="Scripts\typeahead.jquery.min.js" />
-    <Content Include="Scripts\wow.min.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LayoutMainPage-BatchServices.cshtml" />
-    <Content Include="Views\Shared\_Footer-BatchServices.cshtml" />
-    <Content Include="Views\Shared\_MenuNavBar-BatchServices.cshtml" />
-    <Content Include="Views\Shared\_MenuSideBarBatchServices.cshtml" />
-    <Content Include="Views\Shared\_MessageValidate.cshtml" />
-    <Content Include="Views\Shared\_QuestionModal.cshtml" />
-    <Content Include="Views\Shared\_QuestionModalv2.cshtml" />
-    <Content Include="Views\Shared\_ResultModal.cshtml" />
-    <Content Include="Views\HomeBatchServices\Signin.cshtml" />
-    <Content Include="Views\BatchServices\Summary.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="Arena20\Views\BatchServices\Summary.cshtml" />
+    <Content Include="Arena20\Views\HomeBatchServices\Signin.cshtml" />
+    <Content Include="Arena20\Views\Shared\Error.cshtml" />
+    <Content Include="Arena20\Views\Shared\_Footer-BatchServices.cshtml" />
+    <Content Include="Arena20\Views\Shared\_LayoutMainPage-BatchServices.cshtml" />
+    <Content Include="Arena20\Views\Shared\_MenuNavBar-BatchServices.cshtml" />
+    <Content Include="Arena20\Views\Shared\_MenuSideBarBatchServices.cshtml" />
+    <Content Include="Arena20\Views\Shared\_MessageValidate.cshtml" />
+    <Content Include="Arena20\Views\Shared\_QuestionModal.cshtml" />
+    <Content Include="Arena20\Views\Shared\_QuestionModalv2.cshtml" />
+    <Content Include="Arena20\Views\Shared\_ResultModal.cshtml" />
+    <Content Include="Arena20\Views\Web.config" />
+    <Content Include="Arena20\Views\_ViewStart.cshtml" />
     <Content Include="Content\bootstrap\css\bootstrap-panel.min.css.bak" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap\css\bootstrap-theme.min.css.map" />
@@ -1117,11 +1296,43 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="images\coach-avatar\Thumbs.db" />
+    <Content Include="images\team-logo\Thumbs.db" />
+    <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.validate.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ju-loading-screen.js" />
+    <Content Include="Scripts\paginate-matches-list.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
+    <Content Include="Scripts\wow.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>30.ico</ApplicationIcon>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -1137,7 +1348,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>49971</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:49971/</IISUrl>
+          <IISUrl>http://localhost:49971/Arena20/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:49971/Arena20/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -9,21 +9,22 @@
 
     @if (ViewBag.inGentelella == "0" || String.IsNullOrEmpty(ViewBag.inGentelella))
     {
-        @Styles.Render("~/Content/default-css")
-        @Styles.Render("~/Content/main-css")
+        @Styles.Render("~/bundles/default-css")
+        @Styles.Render("~/bundles/main-css")
         @Scripts.Render("~/bundles/default-jquery")
         @Scripts.Render("~/bundles/default-script")
         @Scripts.Render("~/bundles/carousel-portfolio-script")
+        @("Teste....")
     }
     else
     {
-        @Styles.Render("~/Content/gentelella-css")
+        @Styles.Render("~/bundles/gentelella-css")
 
         if (ViewBag.inDataTables == "1")
         {
-            @Styles.Render("~/Content/gentelella-datatable-css")
-            <link href="/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
-            <link href="/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
+            @Styles.Render("~/bundles/gentelella-datatable-css")
+            <link href="/Arena20/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
+            <link href="/Arena20/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
         }
     }
 </head>
@@ -54,7 +55,7 @@ else
 
                 @RenderBody()
 
-                <!-- footer content -->
+                <!-- footer content -->222222
                 <footer id="footerMobile" style="display:none"><div style="line-height:1%">&nbsp;</div></footer>
                 <!-- /footer content -->
             </div>

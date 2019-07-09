@@ -271,7 +271,7 @@
     </member>
     <member name="P:System.Web.Mvc.AjaxHelper.GlobalizationScriptPath">
       <summary>Gets or sets the root path for the location to use for globalization script files.</summary>
-      <returns>The location of the folder where globalization script files are stored. The default location is "~/Scripts/Globalization".</returns>
+      <returns>The location of the folder where globalization script files are stored. The default location is "~/Arena20/Scripts/Globalization".</returns>
     </member>
     <member name="M:System.Web.Mvc.AjaxHelper.JavaScriptStringEncode(System.String)">
       <summary>Serializes the specified message and returns the resulting JSON-formatted string.</summary>
@@ -8045,12 +8045,12 @@
     </member>
     <member name="M:System.Web.Mvc.Ajax.AjaxExtensions.GlobalizationScript(System.Web.Mvc.AjaxHelper)">
       <summary>Returns an HTML script element that contains a reference to a globalization script that defines the culture information.</summary>
-      <returns>A script element whose src attribute is set to the globalization script, as in the following example: &lt;script type="text/javascript"     src="/MvcApplication1/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
+      <returns>A script element whose src attribute is set to the globalization script, as in the following example: &lt;script type="text/javascript"     src="/MvcApplication1/Arena20/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
       <param name="ajaxHelper">The AJAX helper object that this method extends.</param>
     </member>
     <member name="M:System.Web.Mvc.Ajax.AjaxExtensions.GlobalizationScript(System.Web.Mvc.AjaxHelper,System.Globalization.CultureInfo)">
       <summary>Returns an HTML script element that contains a reference to a globalization script that defines the specified culture information.</summary>
-      <returns>An HTML script element whose src attribute is set to the globalization script, as in the following example:&lt;script type="text/javascript"    src="/MvcApplication1/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
+      <returns>An HTML script element whose src attribute is set to the globalization script, as in the following example:&lt;script type="text/javascript"    src="/MvcApplication1/Arena20/Scripts/Globalization/en-US.js"&gt;&lt;/script&gt;</returns>
       <param name="ajaxHelper">The AJAX helper object that this method extends.</param>
       <param name="cultureInfo">Encapsulates information about the target culture, such as date formats.</param>
       <exception cref="T:System.ArgumentNullException">The <paramref name="cultureInfo" /> parameter is null.</exception>

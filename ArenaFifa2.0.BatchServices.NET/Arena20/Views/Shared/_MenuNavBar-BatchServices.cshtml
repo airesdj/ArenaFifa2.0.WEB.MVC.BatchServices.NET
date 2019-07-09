@@ -4,7 +4,7 @@
             <div class="col-12 col-md-10 pr-md-0">
                 <nav class="navbar navbar-expand-md btco-hover-menu py-lg-2" style="vertical-align:middle">
 
-                    <span class="navbar-brand fables-logo-brand pl-0"><img src="/images/arenafifa20.jpg" width="150" class="fables-logo"></span>
+                    <span class="navbar-brand fables-logo-brand pl-0"><img src="/Arena20/images/arenafifa20.jpg" width="150" class="fables-logo"></span>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#fablesNavDropdown" aria-controls="fablesNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="fables-iconmenu-icon text-white font-16"></span>
@@ -16,7 +16,7 @@
                         @if (!Convert.ToBoolean(HttpContext.Current.Session["session.active"].ToString()))
                         {
                             <div class="fables-header-icons text-center" style="padding-left:50px">
-                                <a href="/HomeBatchServices/Signin" class="fables-third-text-color fables-second-hover-color font-10 top-header-link px-3 px-md-2 px-lg-4">
+                                <a href="/Arena20/HomeBatchServices/Signin" class="fables-third-text-color fables-second-hover-color font-10 top-header-link px-3 px-md-2 px-lg-4">
                                     <span class="fables-iconuser-register fa-2x" title="Faça o login"></span><br><span title="Faça o login">Login Arena</span>
                                 </a>
                             </div>
@@ -33,7 +33,7 @@
                                         {@MvcHtmlString.Create(" (moderator)")}
                                     </button>
                                     <div class="dropdown-menu p-0 fables-forth-background-color rounded-0 m-0 border-0 lang-dropdown" aria-labelledby="dropdownLangButton">
-                                        <a class="dropdown-item font-11 fables-second-hover-color" style="color:#F3A100;font-size:12px" href="/HomeBatchServices/Signout">
+                                        <a class="dropdown-item font-11 fables-second-hover-color" style="color:#F3A100;font-size:12px" href="/Arena20/HomeBatchServices/Signout">
                                             <span class="fables-iconuser-register"></span>&nbsp;&nbsp;Log Out
                                         </a>
                                     </div>
@@ -58,13 +58,13 @@
                                                 @if (Convert.ToInt16(HttpContext.Current.Session["user.totalTitlesWon"].ToString()) > 0)
                                                 {
                                                     @MvcHtmlString.Create(HttpContext.Current.Session["user.totalTitlesWon"].ToString() + "x");
-                                                    <img src="/images/t1.gif" width="20px">
+                                                    <img src="/Arena20/images/t1.gif" width="20px">
                                                 }
                                                 &nbsp; &nbsp;
                                                 @if (Convert.ToInt16(HttpContext.Current.Session["user.totalVices"].ToString()) > 0)
                                                 {
                                                     @MvcHtmlString.Create(HttpContext.Current.Session["user.totalVices"].ToString() + "x");
-                                                    <img src="/images/t2.gif" width="20px">
+                                                    <img src="/Arena20/images/t2.gif" width="20px">
                                                 }
                                             </b>
                                         </span>

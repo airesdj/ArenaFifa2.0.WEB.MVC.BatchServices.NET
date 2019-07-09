@@ -83,7 +83,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
 
                                 if (System.IO.File.Exists(HttpContext.Server.MapPath(new_path_atavar))) { Session["user.pathAvatar"] = new_path_atavar; }
 
-                                return RedirectToLocal("/BatchServices/Summary");
+                                return RedirectToLocal("/Arena20/BatchServices/Summary");
                             }
                         }
                         else
@@ -136,7 +136,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
         {
             Session.Abandon();
             ViewBag.ReturnUrl = returnUrl;
-            return RedirectToLocal("Signin");
+            return RedirectToLocal("/Arena20/HomeBatchServices/Signin");
         }
 
 
@@ -146,7 +146,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Signin", "HomeBatchServices");
+            return RedirectToAction("Signin", "/Arena20/HomeBatchServices");
         }
 
     }

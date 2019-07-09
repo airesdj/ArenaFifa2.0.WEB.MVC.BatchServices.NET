@@ -72,7 +72,7 @@ namespace ArenaFifa20.BatchServices.NET
                       "~/Scripts/dashboard-gentelella/jquery.tagsinput.js",
                       "~/Scripts/dashboard-gentelella/switchery.min.js"));
 
-            bundles.Add(new StyleBundle("~/Content/default-css").Include(
+            bundles.Add(new StyleBundle("~/bundles/default-css").Include(
                       "~/Content/fontawesome/css/fontawesome-all.min.css",
                       "~/Content/arena20-icons.css",
                       "~/Content/custom.css",
@@ -80,7 +80,7 @@ namespace ArenaFifa20.BatchServices.NET
                       "~/Content/toastr.css",
                       "~/Content/custom-responsive.css"));
 
-            bundles.Add(new StyleBundle("~/Content/main-css").Include(
+            bundles.Add(new StyleBundle("~/bundles/main-css").Include(
                       "~/Content/animate.min.css",
                       "~/Content/bootstrap/css/bootstrap.min.css",
                       "~/Content/bootstrap/css/bootstrap-4-navbar.css",
@@ -90,7 +90,7 @@ namespace ArenaFifa20.BatchServices.NET
                       "~/Content/owlcarousel/owl.carousel.min.css",
                       "~/Content/owlcarousel/owl.theme.default.min.css"));
 
-            bundles.Add(new StyleBundle("~/Content/gentelella-css").Include(
+            bundles.Add(new StyleBundle("~/bundles/gentelella-css").Include(
                       "~/Content/dashboard-gentelella/bootstrap.min-website.css",
                       "~/Content/bootstrap/css/bootstrap-4-navbar.css",
                       "~/Content/dashboard-gentelella/bootstrap.min.css",
@@ -104,7 +104,7 @@ namespace ArenaFifa20.BatchServices.NET
                       "~/Content/custom-responsive.css",
                       "~/Content/portfolio-filter-gallery/portfolio-filter-gallery.css"));
 
-            bundles.Add(new StyleBundle("~/Content/gentelella-datatable-css").Include(
+            bundles.Add(new StyleBundle("~/bundles/gentelella-datatable-css").Include(
                       "~/Content/dashboard-gentelella/dataTables.bootstrap.min.css",
                       "~/Content/dashboard-gentelella/buttons.bootstrap.min.css"));
 

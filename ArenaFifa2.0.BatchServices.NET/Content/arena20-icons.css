@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'fables';
-  src:  url('/fonts/fables.eot?gq2yr8');
-  src:  url('/fonts/fables.eot?gq2yr8#iefix') format('embedded-opentype'),
-    url('/fonts/fables.ttf?gq2yr8') format('truetype'),
-    url('/fonts/fables.woff?gq2yr8') format('woff'),
-    url('/fonts/fables.svg?gq2yr8#fables') format('svg');
+  src:  url('/Arena20/fonts/fables.eot?gq2yr8');
+  src:  url('/Arena20/fonts/fables.eot?gq2yr8#iefix') format('embedded-opentype'),
+    url('/Arena20/fonts/fables.ttf?gq2yr8') format('truetype'),
+    url('/Arena20/fonts/fables.woff?gq2yr8') format('woff'),
+    url('/Arena20/fonts/fables.svg?gq2yr8#fables') format('svg');
   font-weight: normal;
   font-style: normal;
 }

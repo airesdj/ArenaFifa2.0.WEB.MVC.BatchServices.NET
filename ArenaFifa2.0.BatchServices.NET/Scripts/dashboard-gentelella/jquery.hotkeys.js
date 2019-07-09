@@ -10,7 +10,7 @@
  * https://github.com/tzuryby/jquery.hotkeys
  *
  * Original idea by:
- * Binny V A, http://www.openjs.com/scripts/events/keyboard_shortcuts/
+ * Binny V A, http://www.openjs.com/Arena20/Scripts/events/keyboard_shortcuts/
  */
 
 /*
