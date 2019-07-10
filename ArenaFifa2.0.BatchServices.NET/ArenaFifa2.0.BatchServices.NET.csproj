@@ -174,12 +174,15 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\Arena20\BatchServicesValidateController.cs" />
     <Compile Include="Controllers\Arena20\BatchServicesController.cs" />
     <Compile Include="Controllers\Arena20\HomeBatchServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="GlobalVariables.cs" />
+    <Compile Include="Models\BatchServicesValidateModels.cs" />
+    <Compile Include="Models\BatchServicesModels.cs" />
     <Compile Include="Models\HomeBatchServicesModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -377,10 +380,11 @@
     <Content Include="images\championship-logo\H2H-SERIE_A.jpg" />
     <Content Include="images\championship-logo\H2H-SERIE_B.jpg" />
     <Content Include="images\championship-logo\H2H-SERIE_C.jpg" />
-    <Content Include="images\championship-logo\H2H__-__SÉRIE_D.jpg" />
+    <Content Include="images\championship-logo\H2H-SERIE_D.jpg" />
     <Content Include="images\championship-logo\H2H___-___SÉRIE_A.jpg" />
     <Content Include="images\championship-logo\H2H___-___SÉRIE_B.jpg" />
     <Content Include="images\championship-logo\H2H___-___SÉRIE_C.jpg" />
+    <Content Include="images\championship-logo\H2H___-___SÉRIE_D.jpg" />
     <Content Include="images\championship-logo\Liga-Dos-Campeões-Da-Europa-Beige.jpg" />
     <Content Include="images\championship-logo\Liga-Dos-Campeões-Da-Europa.jpg" />
     <Content Include="images\championship-logo\Liga-Europa.jpg" />
@@ -602,6 +606,7 @@
     <Content Include="images\Fifa19.jpg" />
     <Content Include="images\fundo-jogo.jpg" />
     <Content Include="images\goal.png" />
+    <Content Include="images\InscricaoBancoReservas.jpg" />
     <Content Include="images\logo-FUT-beige.jpg" />
     <Content Include="images\logo-FUT-white.jpg" />
     <Content Include="images\logo-H2H-beige.jpg" />
@@ -1185,6 +1190,7 @@
     <Content Include="images\team-logo\África do Sul.jpg" />
     <Content Include="images\team-logo\Águia-PA.JPG" />
     <Content Include="images\team-logo\Áustria.jpg" />
+    <Content Include="images\tracejada.jpg" />
     <Content Include="images\user.png" />
     <Content Include="Scripts\calculate-history-matches.js" />
     <Content Include="Scripts\calculate-score.js" />
@@ -1298,6 +1304,13 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="images\coach-avatar\Thumbs.db" />
     <Content Include="images\team-logo\Thumbs.db" />
+    <Content Include="Arena20\Views\BatchServices\GenerateRenewal.cshtml" />
+    <Content Include="Arena20\Views\BatchServicesValidate\AcceptingNewSeason.cshtml" />
+    <Content Include="Arena20\Views\BatchServicesValidate\AcceptingNewSeasonDetails.cshtml" />
+    <Content Include="Arena20\Views\BatchServicesValidate\RenewalFUT.cshtml" />
+    <Content Include="Arena20\Views\BatchServicesValidate\RenewalH2H.cshtml" />
+    <Content Include="Arena20\Views\BatchServicesValidate\RenewalPRO.cshtml" />
+    <Content Include="Arena20\Views\BatchServicesValidate\RenewalPROSquad.cshtml" />
     <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery\jquery.validate.js" />
     <Content Include="Scripts\jquery\jquery.validate.min.js" />

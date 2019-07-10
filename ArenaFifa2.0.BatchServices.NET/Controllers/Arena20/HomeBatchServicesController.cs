@@ -126,7 +126,6 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
                 response = null;
                 modelReturnJSON = null;
             }
-
         }
 
         //

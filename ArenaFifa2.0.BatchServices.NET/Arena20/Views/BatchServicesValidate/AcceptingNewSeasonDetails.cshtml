@@ -1,0 +1,164 @@
+﻿@using ArenaFifa20.BatchServices.NET.Models
+@model AcceptingDetails
+@{
+    ViewBag.Title = "Moderator Menu - Accepting New Season Details";
+}
+
+
+<!-- page content -->
+<div class="gentelella-right_col" role="main" style="padding-left:20px">
+    <div class="gentelella-page-title">
+        <div class="gentelella-title">
+            <h3>MANUTENÇÃO DO CADASTRO DE CONFIRMAÇÕES PARA A NOVA TEMPORADA - @Model.actionUser</h3>
+        </div>
+    </div>
+    <br>
+
+    <div class="gentelella-col-md-14 gentelella-col-sm-14 gentelella-col-xs-14" style="background-color:#F7F7F7">
+        <div class="gentelella-x_panel">
+            <div class="gentelella-x_content">
+
+                @Html.Partial("_MessageValidate")
+
+                <form id="comeback-form" action=""></form>
+
+                <form action="/Arena20/Moderator/AcceptingNewSeasonDetails" class="form-horizontal" id="registration-form" method="post" role="form" data-parsley-validate>
+
+
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" id="actionForm" name="actionForm" value="SAVE" />
+                    <input type="hidden" id="selectedID" name="selectedID" value="" />
+                    <input type="hidden" id="seasonID" name="seasonID" value="@Model.seasonID" />
+                    <p>
+                        <code style="background-color:#fff">Todos os campos com (*) são de preenchimento obrigatório.</code>
+                    </p>
+                    <br />
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <label for="nome">Data:</label>
+                            <input type="text" id="txtData" name="txtData" class="gentelella-form-control" value="@Model.DateconfirmationFormatted"/>
+                        </div>
+                        <div class="gentelella-col-md-6 gentelella-col-sm-6 gentelella-col-xs-12">
+                            <label for="nome">Técnico ou Manager <i style="color:red">*</i> :</label>
+                            <select id="cmbTecnico" name="cmbTecnico" class="gentelella-form-control" required>
+                                @if (Model.actionUser.ToUpper() == "ADD")
+                                {
+                                    <option value="">Selecione..</option>
+                                }
+                                @foreach (var item in Model.listOfUser)
+                                {
+                                    <option value="@item.id">@(item.name + " (" + item.psnID + ")")</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                            <label for="nome">Campeonato <i style="color:red">*</i> :</label>
+                            <select id="cmbCampeonato" name="cmbCampeonato" class="gentelella-form-control" required>
+                                @if (Model.actionUser.ToUpper() == "ADD")
+                                {
+                                    <option value="">Selecione..</option>
+                                }
+                                @foreach (var item in Model.listOfChampionship)
+                                {
+                                    <option value="@item.id">@item.name</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                            <label for="nome">Inscrição <i style="color:red">*</i> :</label>
+                            <select id="cmbConfirma" name="cmbConfirma" class="gentelella-form-control" required>
+                                @if (Model.actionUser.ToUpper() == "ADD")
+                                {
+                                    <option value="">Selecione..</option>
+                                }
+                                <option value="-">Ainda Não Confirmou</option>
+                                <option value="0">Não Deseja Participar</option>
+                                <option value="1">Confirmou Participação</option>
+                                <option value="9">Participação Recusada Pela Moderação</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                            <label for="nome">Status <i style="color:red">*</i> :</label>
+                            <select id="cmbStatus" name="cmbStatus" class="gentelella-form-control" required>
+                                @if (Model.actionUser.ToUpper() == "ADD")
+                                {
+                                    <option value="">Selecione..</option>
+                                }
+                                <option value="AP">APROVADO</option>
+                                <option value="EA">EM ANÁLISE</option>
+                                <option value="NA">NÃO ACEITO</option>
+                            </select>
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                            <label for="url">Observação do Status:</label><br>
+                            <input type="text" id="txtStatus" name="txtStatus" class="gentelella-form-control" data-parsley-maxlength="20" value="@Model.statusDescription"/>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="tecnico">Time FUT ou Clube PRO CLUB :</label>
+                            <input type="text" id="txtTime" name="txtTime" class="gentelella-form-control" data-parsley-maxlength="30" value="@Model.teamName"/>
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="tecnico">Ordenação<i style="color:red">*</i> :</label>
+                            <input type="text" id="txtOrdem" name="txtOrdem" value="@Model.ordering" class="gentelella-form-control" data-parsley-min="0" data-parsley-max="9999" data-parsley-maxlength="4" data-parsley-type="integer" required />
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="gentelella-form-group gentelella-a-right">
+                        <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                            <br>
+                            <div class="gentelella-ln_solid"></div>
+                            <input type="button" class="gentelella-btn gentelella-btn-primary" onClick="JAVASCRIPT: submeteModerator('AcceptingNewSeason', 'VOLTAR', '');" value="Voltar" />
+                            <input type="submit" class="gentelella-btn gentelella-btn-success" value="Salvar Dados" />
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page content -->
+@section Scripts {
+<script>
+        $(function () {
+            if (detectMobileDevice() == 1) {
+                //$("#includedContentMenuMobile").load("/arena20/includes/menu-logged-mobile.html");
+                //$("#includedContentMenuRankingMobile").load("menu-my-matches-mobile.html");
+                hidden_show_ObjectMobile("footerMobile", "block");
+            }
+        });
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+
+            activateRegistrationForm("AcceptingNewSeasonDetails", '@Model.actionUser');
+
+            if (detectMobileDevice() == 0)
+                activeSidebarMenu(window.location.pathname.replace("Details", ""));
+
+            $("#cmbTecnico").find("option[value='@Model.userID']").attr("selected", "true");
+            $("#cmbCampeonato").find("option[value='@Model.championshipID']").attr("selected", "true");
+            $("#cmbConfirma").find("option[value='@Model.confirmation']").attr("selected", "true");
+            $("#cmbStatus").find("option[value='@Model.statusID']").attr("selected", "true");
+            $("#txtData").addClass("disabled");
+            $("#txtData").attr("disabled", "true");
+            $("#txtStatus").addClass("disabled");
+            $("#txtStatus").attr("disabled", "true");
+
+            if ($("#seasonID").val() == "") { $("#seasonID").val("0"); }
+        });
+
+</script>
+}
+

@@ -1,0 +1,289 @@
+﻿@using ArenaFifa20.BatchServices.NET.Models
+@model RenewalViewModel
+@{
+    ViewBag.Title = "Hall Of Fame - Renewal FUT";
+    string nameImgCurrentFifa = HttpContext.Current.Application["fifa.codImgCurrent"].ToString() + ".jpg";
+    int totalRecords = 0;
+    int totalAccepted = 0;
+    int i = 0;
+}
+
+<!-- page content -->
+<div class="gentelella-right_col" role="main" style="padding-left:50px">
+    <div class="gentelella-page-title">
+        <div class="gentelella-col-md-12 gentelella-col-sm-6 gentelella-col-xs-12">
+            <h3>CONFIRMAÇÃO PARA PARTICIPAR DA @Model.seasonName - FUT (Ultimate Team)</h3>
+        </div>
+    </div>
+
+    <div class="gentelella-x_content">
+
+        <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+            <div class="gentelella-x_panel">
+                <div class="gentelella-x_title">
+                    <center>
+                        <img src="/Arena20/images/logo-FUT-white.jpg" width="150" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img src="/Arena20/images/@nameImgCurrentFifa" width="180" />
+                    </center>
+                    <br><br>
+                    <div class="gentelella-clearfix"></div>
+                </div>
+
+                <div class="gentelella-x_content">
+                    <div class="gallery-filter">
+                        <div class="portfolioFilter my-3 clearfix">
+                            <a href="#" data-filter=".firstItemSelected" class="current fables-forth-text-color fables-second-hover-color">SÉRIE A</a>
+                            <a href="#" data-filter=".bco" class="fables-forth-text-color fables-second-hover-color">BANCO DE RESERVAS</a>
+                        </div>
+                        <div class="portfolioContainer gentelella-row filter-masonry" style="padding-left:15px">
+
+                            <div class="firstItemSelected circle-effect">
+                                <div class="gentelella-row">
+
+                                    <br>
+                                    <center><img src="/Arena20/images/championship-logo/FUT-SERIE_A.jpg" width="120" /></center>
+                                    <br>
+
+                                    <p><code>A lista da Série A está ordenada por status de confirmação e de maior pontuação do Ranking.  </code></p>
+
+                                    <p>
+                                        Obs.: Os técnicos que possuírem Pontos na Lista Negra, durante a @Model.previousSeasonName, deverão ter sua conduta reavaliada pelos moderadores para saber se sua inscrição será aprovada.
+                                    </p>
+                                    <br>
+                                    <div class="gentelella-table-responsive">
+                                        <table class="gentelella-table gentelella-table-striped gentelella-jambo_table bulk_action">
+                                            <thead style="background-color:#2C3E4F">
+                                                <tr class="gentelella-headings">
+                                                    <th class="gentelella-column-title gentelella-a-center" width="5%"># </th>
+                                                    <th class="gentelella-column-title" width="30%">Técnico </th>
+                                                    <th class="gentelella-column-title" width="15%">PSN </th>
+                                                    <th class="gentelella-column-title" width="15%">Nome Time </th>
+                                                    <th class="gentelella-column-title gentelella-a-center" width="10%">Status </th>
+                                                    <th class="gentelella-column-title gentelella-a-center" width="5%">Pts.</th>
+                                                    <th class="gentelella-column-title gentelella-a-center" width="5%">L.Negra</th>
+                                                    <th class="gentelella-column-title" width="15%">Ação</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.listOfRenewal)
+                                                {
+                                                    if (item.championshipID == 8)
+                                                    {
+                                                        i++;
+                                                        totalRecords += 1;
+                                                <tr class="gentelella-even gentelella-pointer">
+                                                    <td class="gentelella-a-center ">@i.ToString("00")º</td>
+                                                    <td class=" ">@Html.DisplayFor(modelItem => item.userName)</td>
+                                                    <td class=" ">@Html.DisplayFor(modelItem => item.psnID)</td>
+                                                    <td class=" ">@Html.DisplayFor(modelItem => item.teamName)</td>
+
+                                                    @if (item.status == "APROVADO")
+                                                    {
+                                                        totalAccepted += 1;
+                                                        <td class="gentelella-a-center" style="color:green;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+                                                    else if (item.status == "RECUSADO" || item.status == "DESISTIU" || item.status == "NÃO ACEITO")
+                                                    {
+                                                        <td class="gentelella-a-center" style="color:red;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+                                                    else if (item.status == "EM ANÁLISE")
+                                                    {
+                                                        <td class="gentelella-a-center" style="color:blue;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="gentelella-a-center" style="color:black;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+
+                                                    <td class="gentelella-a-center" style="vertical-align:right">@Html.DisplayFor(modelItem => item.grandTotal)</td>
+                                                    <td class="gentelella-a-right">@Html.DisplayFor(modelItem => item.blackListtotal)</td>
+
+                                                    @if (item.acceptedRenewal == "1")
+                                                    {
+                                                        <td style="color:steelblue">@Html.DisplayFor(modelItem => item.actionRenewal)</td>
+                                                    }
+                                                    else if (item.acceptedRenewal == "0" || item.acceptedRenewal == "9")
+                                                    {
+                                                        <td style="color:red;padding-right:20px">@Html.DisplayFor(modelItem => item.actionRenewal)</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>@Html.DisplayFor(modelItem => item.actionRenewal)</td>
+                                                    }
+                                                </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                        <br>
+
+                                        <center>
+                                            <span style="color:#2C3E4F;font-weight:bold">
+                                                Total de Inscrições: @totalRecords<br>
+                                                Total de Total de Confirmações: @totalAccepted
+                                            </span>
+                                        </center>
+
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="bco circle-effect">
+                                <div class="gentelella-row">
+
+                                    <br>
+                                    <center><img src="/Arena20/images/InscricaoBancoReservas.jpg" width="180" /></center>
+                                    <br>
+
+                                    <p><code>A lista do Banco de Reservas está ordenada por ordem de entrada.   </code></p>
+                                    <br>
+                                    <div class="gentelella-table-responsive">
+                                        <table class="gentelella-table gentelella-table-striped gentelella-jambo_table bulk_action">
+                                            <thead style="background-color:#2C3E4F">
+                                                <tr class="gentelella-headings">
+                                                    <th class="gentelella-column-title gentelella-a-center" width="5%"># </th>
+                                                    <th class="gentelella-column-title" width="30%">Técnico </th>
+                                                    <th class="gentelella-column-title" width="15%">PSN </th>
+                                                    <th class="gentelella-column-title" width="15%">Nome Time </th>
+                                                    <th class="gentelella-column-title gentelella-a-center" width="10%">Status </th>
+                                                    <th class="gentelella-column-title gentelella-a-center" width="5%">Pts.</th>
+                                                    <th class="gentelella-column-title gentelella-a-center" width="5%">Negra</th>
+                                                    <th class="gentelella-column-title" width="15%">Ação</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    totalRecords = 0;
+                                                    totalAccepted = 0;
+                                                    i = 0;
+                                                }
+                                                @foreach (var item in Model.listOfRenewal)
+                                                {
+                                                    if (item.championshipID == 7)
+                                                    {
+                                                        i++;
+                                                        totalRecords += 1;
+                                                <tr class="gentelella-even gentelella-pointer">
+                                                    <td class="gentelella-a-center ">@i.ToString("00")º</td>
+                                                    <td class=" ">@Html.DisplayFor(modelItem => item.userName)</td>
+                                                    <td class=" ">@Html.DisplayFor(modelItem => item.psnID)</td>
+                                                    <td class=" ">@Html.DisplayFor(modelItem => item.teamName)</td>
+
+                                                    @if (item.status == "APROVADO")
+                                                    {
+                                                        totalAccepted += 1;
+                                                        <td class="gentelella-a-center" style="color:green;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+                                                    else if (item.status == "RECUSADO" || item.status == "DESISTIU" || item.status == "NÃO ACEITO")
+                                                    {
+                                                        <td class="gentelella-a-center" style="color:red;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+                                                    else if (item.status == "EM ANÁLISE")
+                                                    {
+                                                        <td class="gentelella-a-center" style="color:blue;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td class="gentelella-a-center" style="color:black;font-weight:bold">@Html.DisplayFor(modelItem => item.status)</td>
+                                                    }
+
+                                                    <td class="gentelella-a-center" style="vertical-align:right">@Html.DisplayFor(modelItem => item.grandTotal)</td>
+                                                    <td class="gentelella-a-right">@Html.DisplayFor(modelItem => item.blackListtotal)</td>
+
+                                                    @if (item.acceptedRenewal == "1")
+                                                    {
+                                                        <td style="color:steelblue">@Html.DisplayFor(modelItem => item.actionRenewal)</td>
+                                                    }
+                                                    else if (item.acceptedRenewal == "0" || item.acceptedRenewal == "9")
+                                                    {
+                                                        <td style="color:red;padding-right:20px">@Html.DisplayFor(modelItem => item.actionRenewal)</td>
+                                                    }
+                                                    else
+                                                    {
+                                                        <td>@Html.DisplayFor(modelItem => item.actionRenewal)</td>
+                                                    }
+                                                </tr>
+                                                    }
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                        <br>
+
+                                        <center>
+                                            <span style="color:#2C3E4F;font-weight:bold">
+                                                Total de Inscrições: @totalRecords<br>
+                                                Total de Total de Confirmações: @totalAccepted
+                                            </span>
+                                        </center>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+
+
+                        </div>
+
+                        <center>
+                            <br>
+                            <img width="850px" src="/Arena20/images/tracejada.jpg">
+                            <br><br>
+                            <p style="font-weight:bold;">
+                                Total de Inscrições Efetuadas para FUT: @Model.totalApprovedRenewal (Deste total, @Model.totalUnderAnalysisRenewal inscrições estão em análise por causa da lista negra)
+                            </p>
+                        </center>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- /page content -->
+@section Scripts {
+    <script>
+        $(function () {
+            if (detectMobileDevice() == 1) {
+                //$("#includedContentMenuMobile").load("/arena20/includes/menu-logged-mobile.html");
+                //$("#includedContentMenuRankingMobile").load("menu-my-matches-mobile.html");
+                hidden_show_ObjectMobile("footerMobile", "block");
+            }
+            if ('@ViewBag.inRenewNextSeason' == '1')
+                $("#liRenewNextSeason").show();
+            else
+                $("#liRenewNextSeason").hide();
+        });
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+
+            if (detectMobileDevice() == 0)
+                activeSidebarMenu(window.location.pathname);
+
+            $(".gentelella-right_col").height($("div").find(".bco").height());
+            $("h4").attr("style", "height:3px")
+            $("code").attr("style", "height:0px;background-color:#fff")
+        });
+
+    </script>
+}
+

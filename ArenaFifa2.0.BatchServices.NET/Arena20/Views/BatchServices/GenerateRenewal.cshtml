@@ -1,0 +1,306 @@
+﻿@using ArenaFifa20.BatchServices.NET.Models
+@model GenerateRenewalViewModel
+@{
+    ViewBag.Title = "Batch Services - Generate Renewal";
+}
+
+
+<!-- page content -->
+<div class="gentelella-right_col" role="main" style="padding-left:50px">
+    <div class="gentelella-page-title">
+        <div class="gentelella-col-md-12 gentelella-col-sm-6 gentelella-col-xs-12">
+            <h3>BATCH SERVICES - GENERATE RENEWAL</h3>
+        </div>
+        <div class="gentelella-title_right">
+            <div class="gentelella-col-md-5 gentelella-col-sm-5 gentelella-col-xs-12 gentelella-form-group gentelella-pull-right gentelella-top_search">
+                <div class="gentelella-input-group">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+
+    <form action="/Arena20/BatchServices/GenerateRenewal" class="form-horizontal" id="registration-form" method="post" role="form">
+
+        @{ TempData["FullModel"] = Model; }
+        <input type="hidden" id="actionForm" name="actionForm" value="SAVE" />
+
+        <div class="gentelella-x_content">
+
+            <div class="gentelella-row gentelella-top_tiles">
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@("Season " + (Model.seasonH2HID - 1))</div>
+                        <h3>H2H (X1) Season</h3>
+                        <p>CURRENT H2H mode Season.</p>
+                    </div>
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@("Season " + (Model.seasonFUTID - 1))</div>
+                        <h3>FUT (UT) Season</h3>
+                        <p>CURRENT FUT mode Season.</p>
+                    </div>
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@("Season " + (Model.seasonPROID - 1))</div>
+                        <h3>PRO CLUB Season</h3>
+                        <p>CURRENT PRO CLUB mode Season.</p>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="gentelella-row gentelella-top_tiles">
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@("Season " + (Model.lastSeasonH2HID - 1))</div>
+                        <h3>H2H (X1) Season</h3>
+                        <p>LAST H2H mode Season.</p>
+                    </div>
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@("Season " + (Model.lastSeasonFUTID - 1))</div>
+                        <h3>FUT (UT) Season</h3>
+                        <p>LAST FUT mode Season.</p>
+                    </div>
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@("Season " + (Model.lastSeasonPROID - 1))</div>
+                        <h3>PRO CLUB Season</h3>
+                        <p>LAST PRO CLUB mode Season.</p>
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="gentelella-row gentelella-top_tiles">
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@Model.totalUsersBcoOnLine</div>
+                        <h3>Online Database</h3>
+                        <p>Total Users of the Online Database.</p>
+                    </div>
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@Model.totalUsersBcoStaging</div>
+                        <h3>Staging Database</h3>
+                        <p>Total Users of the Staging Database.</p>
+                    </div>
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">WC or Euro?</div>
+                        @if (Model.inRenewalWithEuro == 0 && Model.inRenewalWithWorldCup == 0)
+                        {
+                            <h3>NO</h3>
+                            <p>Next season won't have World Cup or Euro.</p>
+                        }
+                        else if (Model.inRenewalWithEuro == 0 && Model.inRenewalWithWorldCup == 1)
+                        {
+                            <h3>YES, WORLD CUP</h3>
+                            <p>Next season will have World Cup.</p>
+                        }
+                        else if (Model.inRenewalWithEuro == 1 && Model.inRenewalWithWorldCup == 0)
+                        {
+                            <h3>YES, UEFA EURO</h3>
+                            <p>Next season will have Uefa Euro.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+            <br><br>
+            <div class="gentelella-row gentelella-top_tiles">
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    @if (Model.renewalNewSeasonGenerated == true)
+                    {
+                    <div class="gentelella-tile-stats">
+                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                        <div class="gentelella-count">@Model.totalUserRenewalForNextSeason</div>
+                        <h3>Total Users for renewal</h3>
+                        <p>Total Users for renewal of the next season.</p>
+                    </div>
+                    }
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                </div>
+                <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
+                    @if (Model.emailsSent == true)
+                    {
+                        <div class="gentelella-tile-stats">
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                            <div class="gentelella-count">@Model.totalEmailSpoolerForRenewal</div>
+                            <h3>Total Emails for renewal</h3>
+                            <p>Total Emails that will be send for renewal of the next season.</p>
+                        </div>
+                    }
+                </div>
+            </div>
+
+
+        </div>
+
+        <br>
+
+        <div class="gentelella-form-group gentelella-a-right">
+            <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                <br>
+                <div class="gentelella-ln_solid"></div>
+                <button type="button" class="gentelella-btn gentelella-btn-warning">Prepare Database</button>
+                <button type="button" class="gentelella-btn gentelella-btn-success">Generate Renewal</button>
+                <button type="button" class="gentelella-btn gentelella-btn-info">Create Spooler of Emails</button>
+                <br>
+                <div class="gentelella-ln_solid"></div>
+                <button type="button" class="gentelella-btn gentelella-btn-danger" target="renewal">Cancel Renewals</button>
+                <button type="button" class="gentelella-btn gentelella-btn-danger" target="spooler">Cancel Spooler</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+<!-- /page content -->
+@Html.Partial("_QuestionModal")
+@section Scripts {
+    <script>
+        $(function () {
+            if (detectMobileDevice() == 1) {
+                //$("#includedContentMenuMobile").load("/arena20/includes/menu-logged-mobile.html");
+                //$("#includedContentMenuRankingMobile").load("menu-my-matches-mobile.html");
+                hidden_show_ObjectMobile("footerMobile", "block");
+            }
+        });
+
+        function includeFileScreenModalToPrepareSubmit() {
+            $("#modalScreeenDeleteTitle").html("PREPARE STAGING DATABASE");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to prepare the staging database before to generate the renewal?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('prepare-database-before'); });
+        }
+
+        function includeFileScreenModalToGenerateSubmit() {
+            $("#modalScreeenDeleteTitle").html("GENERATE RENEWAL");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to generate the renewal for next season?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('generate-renewal'); });
+        }
+
+        function includeFileScreenModalToCreateSpoolerSubmit() {
+            $("#modalScreeenDeleteTitle").html("RENEWAL GENERATED - SEND EMAILS");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to create spooler of emails to the renewal generated?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('create-spooler'); });
+        }
+
+        function includeFileScreenModalToCancelSpoolerSubmit() {
+            $("#modalScreeenDeleteTitle").html("SPOOLER - CANCEL");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to cancel spooler of emails to the renewal generated?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('cancel-spooler'); });
+        }
+
+        function includeFileScreenModalToCancelRenewalSubmit() {
+            $("#modalScreeenDeleteTitle").html("RENEWALS - CANCEL");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to cancel all of renewal processes for  next season?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('cancel-renewal'); });
+        }
+
+        function submitAction(actionForm) {
+            $("#actionForm").val(actionForm);
+            $("#registration-form").submit();
+        }
+
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+
+            if ('@TempData["actionSuccessfully"]' != '')
+                toastr.success('@TempData["actionSuccessfully"].');
+
+            if ('@Model.databaseStagingPrepared'== 'True') {
+                $("button.gentelella-btn-warning").attr('disabled', 'true');
+            }
+            else {
+                $("button.gentelella-btn-warning").on("click", function () {
+                    includeFileScreenModalToPrepareSubmit();
+                    $(this).attr("data-toggle", "modal");
+                    $(this).attr("data-target", "#bs-delete-modal-sm");
+                    $('#bs-delete-modal-sm').modal('show');
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+                });
+            }
+
+            if ('@Model.renewalNewSeasonGenerated'== 'True') {
+                $("button.gentelella-btn-success").attr('disabled', 'true');
+                $("button.gentelella-btn-danger[target='renewal']").on("click", function () {
+                    includeFileScreenModalToCancelRenewalSubmit();
+                    $(this).attr("data-toggle", "modal");
+                    $(this).attr("data-target", "#bs-delete-modal-sm");
+                    $('#bs-delete-modal-sm').modal('show');
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+                });
+            }
+            else {
+                $("button.gentelella-btn-danger[target='renewal']").attr('disabled', 'true');
+                if ('@Model.databaseStagingPrepared' == 'True') {
+                    $("button.gentelella-btn-success").on("click", function () {
+                        includeFileScreenModalToGenerateSubmit();
+                        $(this).attr("data-toggle", "modal");
+                        $(this).attr("data-target", "#bs-delete-modal-sm");
+                        $('#bs-delete-modal-sm').modal('show');
+                        $(this).attr("data-toggle", "");
+                        $(this).attr("data-target", "");
+                    });
+                }
+                else
+                    $("button.gentelella-btn-success").attr('disabled', 'true');
+            }
+
+            if ('@Model.emailsSent'== 'True') {
+                $("button.gentelella-btn-info").attr('disabled', 'true');
+                $("button.gentelella-btn-danger[target='spooler']").on("click", function () {
+                    includeFileScreenModalToCancelSpoolerSubmit();
+                    $(this).attr("data-toggle", "modal");
+                    $(this).attr("data-target", "#bs-delete-modal-sm");
+                    $('#bs-delete-modal-sm').modal('show');
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+                });
+            }
+            else {
+                $("button.gentelella-btn-danger[target='spooler']").attr('disabled', 'true');
+                if ('@Model.renewalNewSeasonGenerated' == 'True') {
+                    $("button.gentelella-btn-info").on("click", function () {
+                        includeFileScreenModalToCreateSpoolerSubmit();
+                        $(this).attr("data-toggle", "modal");
+                        $(this).attr("data-target", "#bs-delete-modal-sm");
+                        $('#bs-delete-modal-sm').modal('show');
+                        $(this).attr("data-toggle", "");
+                        $(this).attr("data-target", "");
+                    });
+                }
+                else
+                    $("button.gentelella-btn-info").attr('disabled', 'true');
+            }
+
+        });
+
+    </script>
+}
+

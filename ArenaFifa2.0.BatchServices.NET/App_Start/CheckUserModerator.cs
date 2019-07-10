@@ -15,12 +15,12 @@ namespace ArenaFifa20.NET.App_Start
                 HttpContext ctx = HttpContext.Current;
                 if (Convert.ToBoolean(HttpContext.Current.Session["session.active"]) == false)
                 {
-                    filterContext.Result = new RedirectResult("~/Arena20/HomeBatchServices/Signin");
+                    filterContext.Result = new RedirectResult("~/HomeBatchServices/Signin");
                     return;
                 }
                 else if (Convert.ToBoolean(HttpContext.Current.Session["user.isModerator"]) == false)
                 {
-                    filterContext.Result = new RedirectResult("~/Arena20/HomeBatchServices/Signin");
+                    filterContext.Result = new RedirectResult("~/HomeBatchServices/Signin");
                     return;
                 }
                 base.OnActionExecuting(filterContext);

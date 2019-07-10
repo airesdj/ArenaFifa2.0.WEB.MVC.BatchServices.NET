@@ -1,0 +1,120 @@
+﻿@using ArenaFifa20.BatchServices.NET.Models
+@model AcceptingNewSeasonViewModel
+@{
+    ViewBag.Title = "Moderator Menu - Accepting New Season";
+    string primaryKey = String.Empty;
+}
+
+
+<!-- page content -->
+<div class="gentelella-right_col" role="main" style="padding-left:20px">
+    <div class="gentelella-page-title">
+        <div class="gentelella-title">
+            <h3>MANUTENÇÃO DO CADASTRO DE CONFIRMAÇÕES PARA A NOVA TEMPORADA</h3>
+        </div>
+    </div>
+    <br>
+    @using (Html.BeginForm("Details", "Moderator", FormMethod.Post, new { @class = "form-horizontal", id = "registration-form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="hidden" id="actionForm" name="actionForm" />
+        <input type="hidden" id="selectedID" name="selectedID" />
+        <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+            <div class="gentelella-x_panel">
+                <div class="gentelella-x_content">
+
+
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                        <div class="gentelella-x_panel">
+                            <div class="gentelella-x_content">
+
+                                <button type="button" class="gentelella-btn gentelella-btn-round gentelella-btn-success" onClick="JAVASCRIPT: submeteModerator('AcceptingNewSeasonDetails', 'ADD');">Incluir Novo Item de Cadastro</button>
+                                <br><br>
+
+                                <table id="datatable-responsive" class="gentelella-table gentelella-table-striped gentelella-table-bordered gentelella-dt-responsive gentelella-nowrap" cellspacing="0" width="100%">
+                                    <thead style="background-color:#2C3E4F;color:white">
+                                        <tr>
+                                            <th width="8%" class="gentelella-a-center">Data</th>
+                                            <th width="20%">Status</th>
+                                            <th width="20%">Campeonato</th>
+                                            <th width="40%">Técnico/Manager</th>
+                                            <th width="12%" class="gentelella-a-center">Ação</th>
+                                            <th style="display:none" width="0%">Ordenação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model.listOfAccepting.Count > 0)
+                                        {
+                                            foreach (var item in Model.listOfAccepting)
+                                            {
+                                                primaryKey = Convert.ToString(item.seasonID) + ";" + 
+                                                             Convert.ToString(item.userID) + ";" + 
+                                                             Convert.ToString(item.championshipID);
+                                                <tr>
+                                                    <td class="gentelella-a-right">@item.DateconfirmationFormatted</td>
+                                                    <td confirmation_target="@item.confirmation">@item.confirmationDescription</td>
+                                                    <td>@item.championshipName</td>
+                                                    <td>@(item.userName + " (" + item.psnID + ")")</td>
+                                                    <td class="gentelella-a-center">
+                                                        <a href="JAVASCRIPT: submeteModerator('AcceptingNewSeasonDetails', 'VIEW', '@primaryKey');" title="Visualizar dados do item de cadastro." class="gentelella-btn gentelella-btn-primary gentelella-btn-xs"><i class="gentelella-fa gentelella-fa-folder gentelella-fa-1-2x"></i></a>
+                                                        <a href="JAVASCRIPT: submeteModerator('AcceptingNewSeasonDetails', 'EDIT', '@primaryKey');" title="Alterar dados do item de cadastro." class="gentelella-btn gentelella-btn-info gentelella-btn-xs"><i class="gentelella-fa gentelella-fa-edit gentelella-fa-1-2x"></i></a>
+                                                    </td>
+                                                    <td style="display:none">@item.ordering</td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr><td colspan="6">Não há registros para serem exibidos.</td></tr>
+                                        }
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<!-- /page content -->
+
+
+<div id="includedContentQuestionDelete"></div>
+<div id="includedContentResultMessage"></div>
+<div id="includedContentMessageGeneral"></div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            if (detectMobileDevice() == 1) {
+                //$("#includedContentMenuMobile").load("/arena20/includes/menu-logged-mobile.html");
+                //$("#includedContentMenuRankingMobile").load("menu-my-matches-mobile.html");
+                hidden_show_ObjectMobile("footerMobile", "block");
+            }
+        });
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+
+            if ('@TempData["actionSuccessfully"]' != '')
+                toastr.success('@TempData["actionSuccessfully"].');
+
+            if (detectMobileDevice() == 0)
+                activeSidebarMenu(window.location.pathname);
+
+            if ('@Model.listOfAccepting.Count' != 0) {
+                setOrderingDatatableResponsive([2, 'asc'], [5, 'asc'], [1, 'asc'])
+                $("tbody").find("td[confirmation_target='1']").addClass("gentelella-green").attr("style", "font-weight:bolder");
+                $("tbody").find("td[confirmation_target='0']").addClass("gentelella-red").attr("style","font-weight:bolder");
+            }
+        });
+
+    </script>
+}
+

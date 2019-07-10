@@ -16,6 +16,8 @@ namespace ArenaFifa20.BatchServices.NET
         public static string SPOOLER_EMAIL_NEW_ROUND_RELEASED = "SPOOLER_LIBERA_NOVA_RODADA";
         public static string SPOOLER_EMAIL_END_CURRENT_ROUND = "SPOOLER_FINALIZA_RODADA_ATUAL";
 
+        public static string DATABASE_NAME_STAGING = "Connection.Database.Staging";
+
         public static HttpClient WebApiClient = new HttpClient();
 
         static GlobalVariables()
