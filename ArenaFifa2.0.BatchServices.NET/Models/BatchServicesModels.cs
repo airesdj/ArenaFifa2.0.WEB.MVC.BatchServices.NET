@@ -50,6 +50,9 @@ namespace ArenaFifa20.BatchServices.NET.Models
         public DateTime drawDate { get; set; }
         public string modeType { get; set; }
         public string championshipType { get; set; }
+        public int itemID { get; set; }
+        public int poteNumber { get; set; }
+        public string itemName { get; set; }
 
         public List<StandardGenerateNewSeasonChampionshipLeagueDetailsModel> listChampionshipLeagueDetails { get; set; }
         public List<StandardGenerateNewSeasonChampionshipCupDetailsModel> listChampionshipCupDetails { get; set; }
@@ -110,10 +113,11 @@ namespace ArenaFifa20.BatchServices.NET.Models
     {
         public string modeType { get; set; }
         public string championshipType { get; set; }
-        public int typeItem { get; set; }
+        public int typeStandard { get; set; }
         public int id { get; set; }
         public string name { get; set; }
         public string psnID { get; set; }
         public int poteNumber { get; set; }
+        public string typeItem { get; set; }
     }
 }

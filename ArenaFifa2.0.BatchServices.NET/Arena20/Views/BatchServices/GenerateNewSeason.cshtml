@@ -3,8 +3,8 @@
 @{
     ViewBag.Title = "Batch Services - Generate New Season - H2H";
     int i = 0;
+    int totalCount = 0;
 }
-
 
 <!-- page content -->
 <div class="gentelella-right_col" role="main" style="padding-left:20px">
@@ -58,7 +58,7 @@
         </div>
         <br />
 
-        <div class="gentelella-x_panel">
+        <div class="gentelella-x_panel" id="championship-league-panel">
             <div class="gentelella-x_content">
 
                 <div class="gentelella-row">
@@ -75,7 +75,7 @@
                     <div class="gentelella-row">
                         <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
                             <label for="deacricao">Type :</label>
-                            <input type="text" id="txtChampionshipType" target="championshipType" class="gentelella-form-control" name="txtChampionshipType" data-parsley-maxlength="7" required value="@item.championshipType" />
+                            <input type="text" id="txtChampionshipTypeName" target="championshipType" class="gentelella-form-control" name="txtChampionshipTypeName" data-parsley-maxlength="7" required value="@item.championshipType" />
                         </div>
                         <!--<div class="gentelella-col-md-2 gentelella-col-sm gentelella-col-xs-12"></div>-->
                         <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
@@ -142,7 +142,7 @@
         <input type="hidden" id="actionForm" name="actionForm" value="SAVE-DETAILS-CHAMPIONSHIP-CUP" />
         @Html.AntiForgeryToken()
 
-        <div class="gentelella-x_panel">
+        <div class="gentelella-x_panel" id="championship-cup-panel">
             <div class="gentelella-x_content">
 
                 <div class="gentelella-row">
@@ -160,7 +160,7 @@
                     <div class="gentelella-row">
                         <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
                             <label for="deacricao">Type <i style="color:red">*</i> :</label>
-                            <input type="text" id="txtChampionshipType" target="championshipType" class="gentelella-form-control" name="txtChampionshipType" data-parsley-maxlength="7" required value="@item.championshipType" />
+                            <input type="text" id="txtChampionshipTypeName" target="championshipType" class="gentelella-form-control" name="txtChampionshipTypeName" data-parsley-maxlength="7" required value="@item.championshipType" />
                         </div>
                         <!--<div class="gentelella-col-md-2 gentelella-col-sm gentelella-col-xs-12"></div>-->
                         <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
@@ -263,6 +263,171 @@
 
     </form>
 
+
+    <br />
+    <br />
+
+    <form action="/Arena20/BatchServices/GenerateNewSeason" class="form-horizontal" id="registration-form-list-of-teams" data-parsley-validate method="post" role="form">
+
+        <input type="hidden" id="actionForm" name="actionForm" value="SAVE-DETAILS-TEAMS" />
+        <input type="hidden" id="championshipType" name="championshipType" value="" />
+        <input type="hidden" id="itemID" name="itemID" value="" />
+        <input type="hidden" id="itemName" name="itemName" value="" />
+        <input type="hidden" id="itemType" name="itemType" value="" />
+        <input type="hidden" id="standardID" name="standardID" value="1" />
+        @Html.AntiForgeryToken()
+
+        <div class="gentelella-x_panel">
+            <div class="gentelella-x_content">
+
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12 gentelella-a-center">
+                        <h3><code>LEAGUE-TYPE CHAMPIONSHIPS - LIST OF TEAMS:</code></h3>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-5 gentelella-col-sm-5 gentelella-col-xs-12"></div>
+                    <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                        <label class="gentelella-control-label" for="dtInicio">Championship<i style="color:red">*</i> :</label>
+                        <select id="txtChampionshipType" name="txtChampionshipType" class="gentelella-form-control" required>
+                            <option value="">...</option>
+                            @foreach (var item in Model.listChampionshipLeagueDetails)
+                            {
+                                <option value="@item.championshipType">@item.championshipType</option>
+                            }
+                            @foreach (var item in Model.listChampionshipCupDetails)
+                            {
+                                <option value="@item.championshipType">@item.championshipType</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                        <label class="gentelella-control-label" for="dtInicio">Team<i style="color:red">*</i> :</label>
+                        <select id="txtTeam" name="txtTeam" class="gentelella-form-control" required>
+                            <option value="">...</option>
+                            @foreach (var item in Model.listOfTeams.Where(s => s.championshipType == null))
+                            {
+                                <option value="@item.id">@item.name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                        <label class="gentelella-control-label" for="dtInicio">Pote<i style="color:red">*</i> :</label>
+                        <input type="textAmount" id="txtPotNumber" name="txtPotNumber" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="" />
+                    </div>
+                </div>
+                <div class="gentelella-form-group gentelella-a-right">
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12"></div>
+                    <div class="gentelella-col-md-8 gentelella-col-sm-8 gentelella-col-xs-12">
+                        <br>
+                        <div class="gentelella-ln_solid-comment"></div>
+                        <button type="button" class="gentelella-btn gentelella-btn-success" target="add-team">Add Team</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <br />
+        <div class="gentelella-row">
+            <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                @foreach (var modeType in Model.listChampionshipLeagueDetails)
+                {
+                    if (Model.listOfTeams.Where(s => s.championshipType == modeType.championshipType).Count() > 0)
+                    {
+                        <div class="gentelella-col-md-6 gentelella-col-sm-6 gentelella-col-xs-12">
+                            <div class="gentelella-x_panel">
+                                <div class="gentelella-x_content">
+                                    <center><h3><code>@modeType.championshipType</code></h3></center>
+                                    <br />
+                                    <table id="datatable-responsive-table" class="table-wrapper-scroll-y my-custom-scrollbar display gentelella-table gentelella-table-striped gentelella-table-bordered gentelella-dt-responsive gentelella-nowrap" cellspacing="0" width="100%">
+                                        <thead style="background-color:#2C3E4F;color:white">
+                                            <tr>
+                                                <th width="5%" class="gentelella-a-center">#</th>
+                                                <th width="5%" class="gentelella-a-center">ID</th>
+                                                <th width="50%" class="">Name</th>
+                                                <th width="20%" class="">User</th>
+                                                <th width="10%" class="gentelella-a-center">Pot</th>
+                                                <th width="10%" class="gentelella-a-center">Ação</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ totalCount = 1; }
+                                            @foreach (var item in Model.listOfTeams.Where(s => s.championshipType == modeType.championshipType))
+                                            {
+                                                <tr>
+                                                    <td class="gentelella-a-center">@totalCount.ToString("00")</td>
+                                                    <td class="gentelella-a-center">@item.id</td>
+                                                    <td class="">@item.name</td>
+                                                    <td class="">@item.psnID</td>
+                                                    <td class="gentelella-a-center">@item.poteNumber</td>
+                                                    <td class="gentelella-a-center" style="cursor:pointer">
+                                                        <span title="Click para excluir o item da lista." class="gentelella-btn gentelella-btn-danger gentelella-btn-xs" targetID="@item.id" targetName="@item.name" targetType="@modeType.championshipType"><i class="gentelella-fa gentelella-fa-trash gentelella-fa-1-2x"></i></span>
+                                                    </td>
+                                                </tr>
+                                                totalCount = totalCount + 1;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+        <br />
+        <div class="gentelella-row">
+            <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                @foreach (var modeType in Model.listChampionshipCupDetails)
+                {
+                    if (Model.listOfTeams.Where(s => s.championshipType == modeType.championshipType).Count() > 0)
+                    {
+                        <div class="gentelella-col-md-6 gentelella-col-sm-6 gentelella-col-xs-12">
+                            <div class="gentelella-x_panel">
+                                <div class="gentelella-x_content">
+                                    <center><h3><code>@modeType.championshipType</code></h3></center>
+                                    <br />
+                                    <table id="datatable-responsive-table" class="table-wrapper-scroll-y my-custom-scrollbar display gentelella-table gentelella-table-striped gentelella-table-bordered gentelella-dt-responsive gentelella-nowrap" cellspacing="0" width="100%">
+                                        <thead style="background-color:#2C3E4F;color:white">
+                                            <tr>
+                                                <th width="5%" class="gentelella-a-center">#</th>
+                                                <th width="5%" class="gentelella-a-center">ID</th>
+                                                <th width="50%" class="">Name</th>
+                                                <th width="20%" class="">User</th>
+                                                <th width="10%" class="gentelella-a-center">Pot</th>
+                                                <th width="10%" class="gentelella-a-center">Ação</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @{ totalCount = 1; }
+                                            @foreach (var item in Model.listOfTeams.Where(s => s.championshipType == modeType.championshipType))
+                                            {
+                                                <tr>
+                                                    <td class="gentelella-a-center">@totalCount.ToString("00")</td>
+                                                    <td class="gentelella-a-center">@item.id</td>
+                                                    <td class="">@item.name</td>
+                                                    <td class="">@item.psnID</td>
+                                                    <td class="gentelella-a-center">@item.poteNumber</td>
+                                                    <td class="gentelella-a-center" style="cursor:pointer">
+                                                        <span title="Click para excluir o item da lista." class="gentelella-btn gentelella-btn-danger gentelella-btn-xs" targetID="@item.id" targetName="@item.name" targetType="@modeType.championshipType"><i class="gentelella-fa gentelella-fa-trash gentelella-fa-1-2x"></i></span>
+                                                    </td>
+                                                </tr>
+                                                totalCount = totalCount + 1;
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </form>
+ 
 </div>
 <!-- /page content -->
 @Html.Partial("_QuestionModal")
@@ -288,6 +453,20 @@
             $("#modalScreeenDeleteSubTitle").html("");
             $("#modalScreeenDeleteQuestion").html("Would you like to subimit all the details of all cup-type championships?");
             $("#modalScreeenDeleteButton").on("click", function () { submitAction('registration-form-championship-cup'); });
+        }
+
+        function includeFileScreenModalToPrepareSubmitDeleteTeam(teamName) {
+            $("#modalScreeenDeleteTitle").html("DELETE TEAM");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to delete the selected team (" + teamName + ") of the championship?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('registration-form-list-of-teams'); });
+        }
+
+        function includeFileScreenModalToPrepareSubmitAddTeam(teamName) {
+            $("#modalScreeenDeleteTitle").html("DELETE TEAM");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to add the selected team (" + teamName + ") to the championship?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('registration-form-list-of-teams'); });
         }
 
         function submitAction(actionForm) {
@@ -325,6 +504,45 @@
                 $(this).attr("data-toggle", "");
                 $(this).attr("data-target", "");
             });
+
+            $("button.gentelella-btn-success[target='add-team']").on("click", function () {
+                if ($("#txtTeam").val() == "" || $("#txtChampionshipType").val() == "" || $("#txtPotNumber").val() == "")
+                    submitAction('registration-form-list-of-teams');
+                else {
+                    $("#registration-form-list-of-teams").find("#actionForm").val("add-team");
+                    includeFileScreenModalToPrepareSubmitAddTeam($("#txtTeam option:selected").text());
+                    $(this).attr("data-toggle", "modal");
+                    $(this).attr("data-target", "#bs-delete-modal-sm");
+                    $('#bs-delete-modal-sm').modal('show');
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+                }
+            });
+
+            $("span.gentelella-btn-danger").on("click", function () {
+                $("#registration-form-list-of-teams").find("#actionForm").val("delete-team");
+                $("#registration-form-list-of-teams").find("#championshipType").val($(this).attr("targetType"));
+                $("#registration-form-list-of-teams").find("#itemID").val($(this).attr("targetID"));
+                $("#registration-form-list-of-teams").find("#itemName").val($(this).attr("targetName"));
+                $("#txtTeam").prop("selectedIndex", 1);
+                $("#txtChampionshipType").prop("selectedIndex", 1);
+                $("#txtPotNumber").val("0");
+                includeFileScreenModalToPrepareSubmitDeleteTeam($(this).attr("targetName"));
+                $(this).attr("data-toggle", "modal");
+                $(this).attr("data-target", "#bs-delete-modal-sm");
+                $('#bs-delete-modal-sm').modal('show');
+                $(this).attr("data-toggle", "");
+                $(this).attr("data-target", "");
+            });
+
+            if ('@TempData["actionSuccessfully"]' != '') {
+                if ('@TempData["actionSuccessfully"]'.indexOf("league-mode") > -1)
+                    $("html, body").animate({ scrollTop: $('#championship-league-panel').offset().top }, "slow");
+                else if ('@TempData["actionSuccessfully"]'.indexOf("cup-mode") > -1)
+                    $("html, body").animate({ scrollTop: $('#championship-cup-panel').offset().top }, "slow");
+                else if ('@TempData["actionSuccessfully"]'.indexOf("The team") > -1)
+                    $("html, body").animate({ scrollTop: $('#registration-form-list-of-teams').offset().top }, "slow");
+            }
         });
 
     </script>

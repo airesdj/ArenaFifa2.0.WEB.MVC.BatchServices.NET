@@ -30,6 +30,17 @@
         {
             <link href="~/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
             <link href="~/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
+            <style>
+                .my-custom-scrollbar {
+                    position: relative;
+                    height: 250px;
+                    overflow: auto;
+                }
+
+                .table-wrapper-scroll-y {
+                    display: block;
+                }
+            </style>
         }
     }
 </head>
@@ -60,7 +71,7 @@ else
 
                 @RenderBody()
 
-                <!-- footer content -->222222
+                <!-- footer content -->
                 <footer id="footerMobile" style="display:none"><div style="line-height:1%">&nbsp;</div></footer>
                 <!-- /footer content -->
             </div>

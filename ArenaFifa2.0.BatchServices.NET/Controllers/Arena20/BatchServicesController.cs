@@ -321,6 +321,8 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
             GenerateNewSeasonDetailsModel modelReturnView = new GenerateNewSeasonDetailsModel();
             StandardGenerateNewSeasonChampionshipLeagueDetailsModel modelLeague = null;
             StandardGenerateNewSeasonChampionshipCupDetailsModel modelCup = null;
+            GenerateNewSeasonStandardDetailsModel modelTeam = null;
+            GenerateNewSeasonStandardDetailsModel modelTeamDetails = null;
 
             string actionForm = "show-settings";
 
@@ -353,6 +355,8 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
                         if (formHTML["chkChampionshipGroupsByPots-" + modelLeague.championshipType] == "on") { modelLeague.championship_byGroupPots = true; } else { modelLeague.championship_byGroupPots = false; }
                         if (formHTML["chkChampionshipDoubleRound-" + modelLeague.championshipType] == "on") { modelLeague.championship_DoubleRound = true; } else { modelLeague.championship_DoubleRound = false; }
                     }
+
+                    TempData["actionSuccessfully"] = "Set Up Initial for " + modelReturnJSON.modeType + " for league-mode was saved successfully";
 
                     modelReturnView.actionUser = "saveChampionshipsLeagueDetails";
                     response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnView).Result;
@@ -388,7 +392,37 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
                         if (formHTML["chkChampionshipSource-" + modelCup.championshipType] == "on") { modelCup.hasChampionshipSource = true; } else { modelCup.hasChampionshipSource = false; }
                     }
 
+                    TempData["actionSuccessfully"] = "Set Up Initial for " + modelReturnJSON.modeType + " for cup-mode was saved successfully";
+
                     modelReturnView.actionUser = "saveChampionshipsCupDetails";
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnView).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonDetailsModel>().Result;
+
+                    modelReturnJSON = modelReturnView;
+                }
+                else if (actionForm == "delete-team")
+                {
+                    modelReturnView.championshipType = formHTML["championshipType"];
+                    modelReturnView.itemID = Convert.ToInt32(formHTML["itemID"]);
+                    modelReturnView.itemName = formHTML["itemName"];
+
+                    modelReturnView.actionUser = "delTeam";
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnView).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonDetailsModel>().Result;
+
+                    TempData["actionSuccessfully"] = "The team (" + modelReturnView.itemName + ") was deleted successfully from " + modelReturnView.championshipType;
+
+                    modelReturnJSON = modelReturnView;
+                }
+                else if (actionForm == "add-team")
+                {
+                    modelReturnView.championshipType = formHTML["txtChampionshipType"];
+                    modelReturnView.itemID = Convert.ToInt32(formHTML["txtTeam"]);
+                    modelReturnView.poteNumber = Convert.ToInt16(formHTML["txtPotNumber"]);
+
+                    TempData["actionSuccessfully"] = "The team (" + modelReturnView.itemName + ") was added successfully to " + modelReturnView.championshipType;
+
+                    modelReturnView.actionUser = "addTeam";
                     response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnView).Result;
                     modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonDetailsModel>().Result;
 
@@ -406,7 +440,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
                     case HttpStatusCode.Created:
                         if (modelReturnJSON.returnMessage == "GenerateNewSeasonSuccessfully")
                         {
-                            TempData["actionSuccessfully"] = "Set Up Initial for " + modelReturnJSON.modeType + " mode was saved successfully";
+                            //nothing to do
                         }
                         else
                         {
@@ -433,6 +467,8 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
                 modelReturnView = null;
                 modelLeague = null;
                 modelCup = null;
+                modelTeam = null;
+                modelTeamDetails = null;
             }
         }
     }
