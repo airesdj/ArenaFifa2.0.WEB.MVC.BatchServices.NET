@@ -25,6 +25,12 @@
             <link href="~/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
             <link href="~/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
         }
+
+        if (ViewBag.inFormScript == "1")
+        {
+            <link href="~/Content/dashboard-gentelella/bootstrap.min-checkbox.css" rel="stylesheet" />
+            <link href="~/Content/dashboard-gentelella/docs.min-2.css" rel="stylesheet" />
+        }
     }
 </head>
 
@@ -70,6 +76,11 @@ else
         {
             @Scripts.Render("~/bundles/gentelella-datatable-script")
             @Scripts.Render("~/bundles/gentelella-datatable-script")
+        }
+
+        @if (ViewBag.inFormScript == "1")
+        {
+            @Scripts.Render("~/bundles/gentelella-form-script")
         }
 
         @Html.Partial("_Footer-BatchServices")

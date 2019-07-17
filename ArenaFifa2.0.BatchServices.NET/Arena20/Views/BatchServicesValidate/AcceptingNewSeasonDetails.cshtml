@@ -22,7 +22,7 @@
 
                 <form id="comeback-form" action=""></form>
 
-                <form action="/Arena20/Moderator/AcceptingNewSeasonDetails" class="form-horizontal" id="registration-form" method="post" role="form" data-parsley-validate>
+                <form action="/Arena20/BatchServicesValidate/AcceptingNewSeasonDetails" class="form-horizontal" id="registration-form" method="post" role="form" data-parsley-validate>
 
 
                     @Html.AntiForgeryToken()
@@ -117,7 +117,7 @@
                         <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
                             <br>
                             <div class="gentelella-ln_solid"></div>
-                            <input type="button" class="gentelella-btn gentelella-btn-primary" onClick="JAVASCRIPT: submeteModerator('AcceptingNewSeason', 'VOLTAR', '');" value="Voltar" />
+                            <input type="button" class="gentelella-btn gentelella-btn-primary" onClick="JAVASCRIPT: submeteBatchServices('AcceptingNewSeason', 'VOLTAR', '');" value="Voltar" />
                             <input type="submit" class="gentelella-btn gentelella-btn-success" value="Salvar Dados" />
                         </div>
                     </div>
@@ -138,11 +138,22 @@
             }
         });
 
+        function submeteBatchServices(actionName, actionForm, itemSelected) {
+            $("#actionForm").val(actionForm);
+            if (itemSelected != "") { $("#selectedID").val(itemSelected); }
+            $("#comeback-form").attr("action", "/Arena20/BatchServicesValidate/" + actionName);
+            $("#comeback-form").submit();
+
+        }
+
         $(document).ready(function () {
             if ('@TempData["returnMessage"]' != '')
                 toastr.error('Aviso: @TempData["returnMessage"].');
 
-            activateRegistrationForm("AcceptingNewSeasonDetails", '@Model.actionUser');
+            if ('@Model.actionUser' == 'VIEW') {
+                $("input[type!='button']").attr('disabled', 'true');
+                $("select").attr('disabled', 'true');
+            }
 
             if (detectMobileDevice() == 0)
                 activeSidebarMenu(window.location.pathname.replace("Details", ""));

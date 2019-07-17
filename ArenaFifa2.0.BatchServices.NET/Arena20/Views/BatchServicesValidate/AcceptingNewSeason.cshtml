@@ -56,8 +56,8 @@
                                                     <td>@item.championshipName</td>
                                                     <td>@(item.userName + " (" + item.psnID + ")")</td>
                                                     <td class="gentelella-a-center">
-                                                        <a href="JAVASCRIPT: submeteModerator('AcceptingNewSeasonDetails', 'VIEW', '@primaryKey');" title="Visualizar dados do item de cadastro." class="gentelella-btn gentelella-btn-primary gentelella-btn-xs"><i class="gentelella-fa gentelella-fa-folder gentelella-fa-1-2x"></i></a>
-                                                        <a href="JAVASCRIPT: submeteModerator('AcceptingNewSeasonDetails', 'EDIT', '@primaryKey');" title="Alterar dados do item de cadastro." class="gentelella-btn gentelella-btn-info gentelella-btn-xs"><i class="gentelella-fa gentelella-fa-edit gentelella-fa-1-2x"></i></a>
+                                                        <a href="JAVASCRIPT: submeteBatchServices('AcceptingNewSeasonDetails', 'VIEW', '@primaryKey');" title="Visualizar dados do item de cadastro." class="gentelella-btn gentelella-btn-primary gentelella-btn-xs"><i class="gentelella-fa gentelella-fa-folder gentelella-fa-1-2x"></i></a>
+                                                        <a href="JAVASCRIPT: submeteBatchServices('AcceptingNewSeasonDetails', 'EDIT', '@primaryKey');" title="Alterar dados do item de cadastro." class="gentelella-btn gentelella-btn-info gentelella-btn-xs"><i class="gentelella-fa gentelella-fa-edit gentelella-fa-1-2x"></i></a>
                                                     </td>
                                                     <td style="display:none">@item.ordering</td>
                                                 </tr>
@@ -98,6 +98,13 @@
             }
         });
 
+        function submeteBatchServices(actionName, actionForm, itemSelected) {
+            $("#actionForm").val(actionForm);
+            if (itemSelected != "") { $("#selectedID").val(itemSelected); }
+            $("#registration-form").attr("action", "/Arena20/BatchServicesValidate/" + actionName);
+            $("#registration-form").submit();
+
+        }
         $(document).ready(function () {
             if ('@TempData["returnMessage"]' != '')
                 toastr.error('Aviso: @TempData["returnMessage"].');

@@ -22,6 +22,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
         }
 
         // GET: BatchServicesValidate/RenewalH2H
+        [UserModerator]
         public ActionResult RenewalH2H()
         {
 
@@ -89,6 +90,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
 
 
         // GET: BatchServicesValidate/RenewalFUT
+        [UserModerator]
         public ActionResult RenewalFUT()
         {
 
@@ -148,6 +150,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
         }
 
         // GET: BatchServicesValidate/RenewalPRO
+        [UserModerator]
         public ActionResult RenewalPRO()
         {
 
@@ -208,6 +211,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
 
 
         // GET: BatchServicesValidate/RenewalPROSquad
+        [UserModerator]
         public ActionResult RenewalPROSquad(FormCollection formHTML)
         {
 
@@ -278,6 +282,8 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
             AcceptingNewSeasonViewModel modelReturnJSON = new AcceptingNewSeasonViewModel();
 
             setViewBagVariables();
+            ViewBag.inDataTables = "1";
+            ViewBag.inModeratorMenu = "1";
 
             try
             {
@@ -388,7 +394,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
 
                             if (actionForm == "save")
                             {
-                                return RedirectToAction("AcceptingNewSeason", "Moderator");
+                                return RedirectToAction("AcceptingNewSeason", "BatchServicesValidate");
                             }
                             else
                             {
@@ -411,6 +417,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
                                     userDetails2.psnID = userDetails.psnID;
                                     listOfUser.Add(userDetails2);
 
+                                    modelReturnJSON.actionUser = "getAccepting-staging";
                                     modelReturnJSON.dataBaseName = GlobalVariables.DATABASE_NAME_STAGING;
                                     response = GlobalVariables.WebApiClient.PostAsJsonAsync("AcceptingNewSeason", modelReturnJSON).Result;
                                     modelReturnJSON2 = response.Content.ReadAsAsync<AcceptingDetails>().Result;
@@ -465,7 +472,7 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
             }
             catch (Exception ex)
             {
-                TempData["returnMessage"] = "Internal error - when the system was trying to show the view - Accepting New Season Register Details - " + actionForm + ": (" + ex.InnerException.Message + ")";
+                TempData["returnMessage"] = "Internal error - when the system was trying to show the view - Accepting New Season Register Details - " + actionForm + ": (" + ex.Message + ")";
                 ModelState.AddModelError("", "application error.");
                 return View(modelReturnJSON);
 

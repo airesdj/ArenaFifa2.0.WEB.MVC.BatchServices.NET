@@ -25,6 +25,7 @@
     <form action="/Arena20/BatchServices/GenerateRenewal" class="form-horizontal" id="registration-form" method="post" role="form">
 
         @{ TempData["FullModel"] = Model; }
+        @Html.AntiForgeryToken()
         <input type="hidden" id="actionForm" name="actionForm" value="SAVE" />
 
         <div class="gentelella-x_content">
@@ -127,12 +128,12 @@
                 <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
                     @if (Model.renewalNewSeasonGenerated == true)
                     {
-                    <div class="gentelella-tile-stats">
-                        <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
-                        <div class="gentelella-count">@Model.totalUserRenewalForNextSeason</div>
-                        <h3>Total Users for renewal</h3>
-                        <p>Total Users for renewal of the next season.</p>
-                    </div>
+                        <div class="gentelella-tile-stats">
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o"></i></div>
+                            <div class="gentelella-count">@Model.totalUserRenewalForNextSeason</div>
+                            <h3>Total Users for renewal</h3>
+                            <p>Total Users for renewal of the next season.</p>
+                        </div>
                     }
                 </div>
                 <div class="gentelella-animated gentelella-flipInY gentelella-col-lg-3 gentelella-col-md-3 gentelella-col-sm-6 gentelella-col-xs-12" style="width:400px">
@@ -230,6 +231,9 @@
 
             if ('@TempData["actionSuccessfully"]' != '')
                 toastr.success('@TempData["actionSuccessfully"].');
+
+            if (detectMobileDevice() == 0)
+                activeSidebarMenu(window.location.pathname);
 
             if ('@Model.databaseStagingPrepared'== 'True') {
                 $("button.gentelella-btn-warning").attr('disabled', 'true');

@@ -1,0 +1,332 @@
+﻿@using ArenaFifa20.BatchServices.NET.Models
+@model GenerateNewSeasonDetailsModel
+@{
+    ViewBag.Title = "Batch Services - Generate New Season - H2H";
+    int i = 0;
+}
+
+
+<!-- page content -->
+<div class="gentelella-right_col" role="main" style="padding-left:20px">
+    <div class="gentelella-page-title">
+        <div class="gentelella-col-md-9 gentelella-col-sm-9 gentelella-col-xs-12">
+            <h3>BATCH SERVICES - GENERATE NEW SEASON - @Model.modeType</h3>
+        </div>
+        <div class="gentelella-col-md-3 gentelella-col-sm-3 gentelella-col-xs-12 gentelella-a-right">
+            <img title="COMPETIÇÕES DA MODALIDADE @Model.modeType" src="/Arena20/images/@("logo-" + Model.modeType + "-beige.jpg")" width="60" />
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+
+    @{ TempData["FullModel"] = Model; }
+    @Html.Partial("_MessageValidate")
+
+    <form action="/Arena20/BatchServices/GenerateNewSeason" class="form-horizontal" id="registration-form-championship-league" data-parsley-validate method="post" role="form">
+
+        <input type="hidden" id="actionForm" name="actionForm" value="SAVE-DETAILS-CHAMPIONSHIP-LEAGUE" />
+        @Html.AntiForgeryToken()
+
+        <div class="gentelella-x_panel">
+            <div class="gentelella-x_content">
+
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12 gentelella-a-center">
+                        <h3><code>SEASON DETAILS:</code></h3>
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                        <label for="deacricao">Name :</label>
+                        <input type="text" id="txtName" target="championshipType" class="gentelella-form-control" name="txtName" required value="@Model.seasonName" />
+                    </div>
+                    <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                        <label class="gentelella-control-label" for="dtInicio">Draw Date<i style="color:red">*</i> :</label>
+                        <input class="gentelella-form-control" data-val="true" data-val-date="The 'Draw Date' field must be a date." data-val-required="The 'Draw Date' field is required." id="txtDrawDate" name="txtDrawDate" type="date" required value="@Model.drawDate.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                        <label for="deacricao">User Name :</label>
+                        <input type="text" id="txtUserName" target="championshipType" class="gentelella-form-control" name="txtUserName" required value="@Model.userName" />
+                    </div>
+                    <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                        <label for="deacricao">PSN ID :</label>
+                        <input type="text" id="txtPSN" target="championshipType" class="gentelella-form-control" name="txtPSN" required value="@Model.psnID" />
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <br />
+
+        <div class="gentelella-x_panel">
+            <div class="gentelella-x_content">
+
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12 gentelella-a-center">
+                        <h3><code>LEAGUE-TYPE CHAMPIONSHIPS - DETAILS:</code></h3>
+                    </div>
+                </div>
+                <br />
+                @foreach (var item in Model.listChampionshipLeagueDetails)
+                {
+                    i++;
+                    if (i > 1)
+                    {<div class="gentelella-ln_solid-comment"></div> }
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <label for="deacricao">Type :</label>
+                            <input type="text" id="txtChampionshipType" target="championshipType" class="gentelella-form-control" name="txtChampionshipType" data-parsley-maxlength="7" required value="@item.championshipType" />
+                        </div>
+                        <!--<div class="gentelella-col-md-2 gentelella-col-sm gentelella-col-xs-12"></div>-->
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Start Date<i style="color:red">*</i> :</label>
+                            <input class="gentelella-form-control" data-val="true" data-val-date="The 'Start Date' field must be a date." data-val-required="The 'Start Date' field is required." id="txtStartDate-@(item.championshipType)" name="txtStartDate-@(item.championshipType)" type="date" required value="@item.startDate.ToString("yyyy-MM-dd")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Teams<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtTotalTeams-@(item.championshipType)" title="Total general of Teams" name="txtTotalTeams-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalTeams.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Stage 0<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtDaysStage0-@(item.championshipType)" title="Day to Play in the Stage0" name="txtDaysStage0-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalDaysToPlayStage0.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Playoff<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtDaysPlayoff-@(item.championshipType)" title="Day to Play in the Playoffs" name="txtDaysPlayoff-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalDaysToPlayPlayoff.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Relegate<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtRelegate-@(item.championshipType)" title="Total Teams that will be relegated" name="txtRelegate-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalRelegate.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipActive-@(item.championshipType)" name="chkChampionshipActive-@(item.championshipType)" class="styled" @if (item.hasChampionship) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Active?</label>
+                                <br /><br />
+                                <input type="checkbox" id="chkChampionshipByGroup-@(item.championshipType)" name="chkChampionshipByGroup-@(item.championshipType)" class="styled" @if (item.championship_ByGroup) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Group?</label>
+                            </div>
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Groups<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtTotalGroups-@(item.championshipType)" title="Total general of Groups" name="txtTotalGroups-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalGroups.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipGroupsByPots-@(item.championshipType)" name="chkChampionshipGroupsByPots-@(item.championshipType)" class="styled" @if (item.championship_byGroupPots) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Groups By Pots?</label>
+                                <br /><br />
+                                <input type="checkbox" id="chkChampionshipDoubleRound-@(item.championshipType)" name="chkChampionshipDoubleRound-@(item.championshipType)" class="styled" @if (item.championship_DoubleRound) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Double Round?</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="gentelella-form-group gentelella-a-right">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                        <br>
+                        <div class="gentelella-ln_solid-comment"></div>
+                        <button type="button" class="gentelella-btn gentelella-btn-success" target="save-details-championship-league">Save Datails</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <br />
+
+    <form action="/Arena20/BatchServices/GenerateNewSeason" class="form-horizontal" id="registration-form-championship-cup" data-parsley-validate method="post" role="form">
+
+        <input type="hidden" id="actionForm" name="actionForm" value="SAVE-DETAILS-CHAMPIONSHIP-CUP" />
+        @Html.AntiForgeryToken()
+
+        <div class="gentelella-x_panel">
+            <div class="gentelella-x_content">
+
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12 gentelella-a-center">
+                        <h3><code>CUP-TYPE CHAMPIONSHIPS - DETAILS:</code></h3>
+                    </div>
+                </div>
+                <br />
+                @{i = 0; }
+                @foreach (var item in Model.listChampionshipCupDetails)
+                {
+                    i++;
+                    if (i > 1)
+                    {<div class="gentelella-ln_solid-comment"></div> }
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <label for="deacricao">Type <i style="color:red">*</i> :</label>
+                            <input type="text" id="txtChampionshipType" target="championshipType" class="gentelella-form-control" name="txtChampionshipType" data-parsley-maxlength="7" required value="@item.championshipType" />
+                        </div>
+                        <!--<div class="gentelella-col-md-2 gentelella-col-sm gentelella-col-xs-12"></div>-->
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Start Date<i style="color:red">*</i> :</label>
+                            <input class="gentelella-form-control" data-val="true" data-val-date="The 'Start Date' field must be a date." data-val-required="The 'Start Date' field is required." id="txtStartDate-@(item.championshipType)" name="txtStartDate-@(item.championshipType)" type="date" required value="@item.startDate.ToString("yyyy-MM-dd")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Teams<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtTotalTeams-@(item.championshipType)" title="Total general of Teams" name="txtTotalTeams-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalTeams.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Stage 0<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtDaysStage0-@(item.championshipType)" title="Day to Play in the Stage0" name="txtDaysStage0-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalDaysToPlayStage0.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Playoff<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtDaysPlayoff-@(item.championshipType)" title="Day to Play in the Playoffs" name="txtDaysPlayoff-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalDaysToPlayPlayoff.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipActive-@(item.championshipType)" name="chkChampionshipActive-@(item.championshipType)" class="styled" @if (item.hasChampionship) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Active?</label>
+                                <br /><br />
+                                <input type="checkbox" id="chkChampionshipByGroup-@(item.championshipType)" name="chkChampionshipByGroup-@(item.championshipType)" class="styled" @if (item.championship_ByGroup) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Group?</label>
+                            </div>
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Groups<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtTotalGroups-@(item.championshipType)" title="Total general of Groups" name="txtTotalGroups-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalGroups.ToString("00")" />
+                        </div>
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <br />
+                                <input type="checkbox" id="chkChampionshipGroupsByPots-@(item.championshipType)" name="chkChampionshipGroupsByPots-@(item.championshipType)" class="styled" @if (item.championship_byGroupPots) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Groups By Pots?</label>
+                            </div>
+                        </div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12">
+                            <label class="gentelella-control-label" for="dtInicio">Pre Cup<i style="color:red">*</i> :</label>
+                            <input type="textAmount" id="txtTotalTeamsPreCup-@(item.championshipType)" title="Total general of Teams in the PRE-CUP" name="txtTotalTeamsPreCup-@(item.championshipType)" data-parsley-min="0" data-parsley-max="72" data-parsley-maxlength="2" class="gentelella-form-control" data-parsley-type="integer" required value="@item.totalTeamsPreCup.ToString("00")" />
+                        </div>
+                    </div>
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipJustSerieA-@(item.championshipType)" name="chkChampionshipJustSerieA-@(item.championshipType)" class="styled" @if (item.hasJust_SerieA) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Only Serie A Teams?</label>
+                                <br /><br />
+                                <input type="checkbox" id="chkChampionshipJustSerieB-@(item.championshipType)" name="chkChampionshipJustSerieB-@(item.championshipType)" class="styled" @if (item.hasJust_SerieB) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Only Serie B Teams?</label>
+                            </div>
+                        </div>
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipJustSerieC-@(item.championshipType)" name="chkChampionshipJustSerieC-@(item.championshipType)" class="styled" @if (item.hasJust_SerieC) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Only Serie C Teams?</label>
+                                <br /><br />
+                                <input type="checkbox" id="chkChampionshipSerieA_B-@(item.championshipType)" name="chkChampionshipSerieA_B-@(item.championshipType)" class="styled" @if (item.has_SerieA_B) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Serie A & B Teams?</label>
+                            </div>
+                        </div>
+                        <div class="gentelella-col-md-3 gentelella-col-sm-3 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipSerieA_B_C-@(item.championshipType)" name="chkChampionshipSerieA_B_C-@(item.championshipType)" class="styled" @if (item.has_SerieA_B_C) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Serie A & B & C Teams?</label>
+                                <br /><br />
+                                <input type="checkbox" id="chkChampionshipSerieA_B_C_D-@(item.championshipType)" name="chkChampionshipSerieA_B_C_D-@(item.championshipType)" class="styled" @if (item.has_SerieA_B_C_D) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Serie A & B & C & D Teams?</label>
+                            </div>
+                        </div>
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <br />
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipNationalTeams-@(item.championshipType)" name="chkChampionshipNationalTeams-@(item.championshipType)" class="styled" @if (item.has_NationalTeams) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Only National Teams?</label>
+                            </div>
+                        </div>
+                        <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                            <div class="gentelella-checkbox gentelella-checkbox-success">
+                                <input type="checkbox" id="chkChampionshipDestiny-@(item.championshipType)" name="chkChampionshipDestiny-@(item.championshipType)" class="styled" @if (item.hasChampionshipDestiny) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Has Champ. Destiny?</label>
+                                <br /><br />
+                                <input type="checkbox" id="chkChampionshipSource-@(item.championshipType)" name="chkChampionshipSource-@(item.championshipType)" class="styled" @if (item.hasChampionshipSource) { @Html.Raw("checked") ; } />
+                                <label class="gentelella-control-label" for="dtInicio" style="font-weight:bold">Has Champ. Source?</label>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="gentelella-form-group gentelella-a-right">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                        <br>
+                        <div class="gentelella-ln_solid-comment"></div>
+                        <button type="button" class="gentelella-btn gentelella-btn-success" target="save-details-championship-cup">Save Datails</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<!-- /page content -->
+@Html.Partial("_QuestionModal")
+@section Scripts {
+    <script>
+        $(function () {
+            if (detectMobileDevice() == 1) {
+                //$("#includedContentMenuMobile").load("/arena20/includes/menu-logged-mobile.html");
+                //$("#includedContentMenuRankingMobile").load("menu-my-matches-mobile.html");
+                hidden_show_ObjectMobile("footerMobile", "block");
+            }
+        });
+
+        function includeFileScreenModalToPrepareSubmitLeagueDetails() {
+            $("#modalScreeenDeleteTitle").html("SUBMIT LEAGUE-TYPE CHAMPIONSHIPS DETAILS");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to subimit all the details of all league-type championships?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('registration-form-championship-league'); });
+        }
+
+        function includeFileScreenModalToPrepareSubmitCupDetails() {
+            $("#modalScreeenDeleteTitle").html("SUBMIT CUP-TYPE CHAMPIONSHIPS DETAILS");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to subimit all the details of all cup-type championships?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('registration-form-championship-cup'); });
+        }
+
+        function submitAction(actionForm) {
+            $("#" + actionForm).submit();
+        }
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+
+            if ('@TempData["actionSuccessfully"]' != '')
+                toastr.success('@TempData["actionSuccessfully"].');
+
+            if (detectMobileDevice() == 0)
+                activeSidebarMenu(window.location.pathname.replace('@Model.modeType','') + '@Model.modeType');
+
+            $("div.gentelella-right_col").find("input[type=textAmount]").attr("style", "width:50px;text-align:center");
+            $("code").attr("style", "height:0px;background-color:#FFF")
+            $("input[target='championshipType']").addClass("disabled").attr("disabled", "true");
+
+            $("button.gentelella-btn-success[target='save-details-championship-league']").on("click", function () {
+                includeFileScreenModalToPrepareSubmitLeagueDetails();
+                $(this).attr("data-toggle", "modal");
+                $(this).attr("data-target", "#bs-delete-modal-sm");
+                $('#bs-delete-modal-sm').modal('show');
+                $(this).attr("data-toggle", "");
+                $(this).attr("data-target", "");
+            });
+
+            $("button.gentelella-btn-success[target='save-details-championship-cup']").on("click", function () {
+                includeFileScreenModalToPrepareSubmitCupDetails();
+                $(this).attr("data-toggle", "modal");
+                $(this).attr("data-target", "#bs-delete-modal-sm");
+                $('#bs-delete-modal-sm').modal('show');
+                $(this).attr("data-toggle", "");
+                $(this).attr("data-target", "");
+            });
+        });
+
+    </script>
+}
+

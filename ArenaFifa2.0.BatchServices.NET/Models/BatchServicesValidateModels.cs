@@ -299,6 +299,9 @@ namespace ArenaFifa20.BatchServices.NET.Models
         public string name { get; set; }
         public string type { get; set; }
         public string pathImg { get; set; }
+        public int typeItem { get; set; }
+        public string psnID { get; set; }
+        public int poteNumber { get; set; }
     }
 
     public class ChampionshipMatchTableViewModel
