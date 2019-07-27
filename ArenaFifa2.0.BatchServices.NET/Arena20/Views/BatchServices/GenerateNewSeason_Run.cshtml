@@ -1,0 +1,743 @@
+﻿@using ArenaFifa20.BatchServices.NET.Models
+@model GenerateNewSeasonGenerateModel
+@{
+    ViewBag.Title = "Batch Services - Generate New Season";
+}
+
+<!-- page content -->
+<div class="gentelella-right_col" role="main" style="padding-left:20px">
+    <div class="gentelella-page-title">
+        <div class="gentelella-col-md-9 gentelella-col-sm-9 gentelella-col-xs-12">
+            <h3>BATCH SERVICES - GENERATE NEW SEASON - RUN</h3>
+        </div>
+    </div>
+    <div class="clearfix">&nbsp;</div>
+
+    @{ TempData["FullModel"] = Model; }
+    @Html.Partial("_MessageValidate")
+
+    <form action="/Arena20/BatchServices/GenerateNewSeason_Run" class="form-horizontal" id="registration-form-new-season" data-parsley-validate method="post" role="form">
+
+        <input type="hidden" id="actionForm" name="actionForm" value="SAVE-DETAILS-CHAMPIONSHIP-LEAGUE" />
+        @Html.AntiForgeryToken()
+
+        <div class="gentelella-x_panel">
+            <div class="gentelella-x_content">
+
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12 gentelella-a-center">
+                        <h3><code>NEW SEASON GENERATED - DETAILS:</code></h3>
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                        <label for="deacricao">Name :</label>
+                        &nbsp; @Model.seasonName
+                    </div>
+                    <div class="gentelella-col-md-5 gentelella-col-sm-5 gentelella-col-xs-12">
+                        <label class="gentelella-control-label" for="dtInicio">Process Date:</label>
+                        &nbsp;
+                        @if (Model.seasonID > 0)
+                        {
+                            if (Model.NewSeasonIsGenerated)
+                            {
+                                <span>
+                                    @(Model.startDate.ToString("dd/MM/yyy hh:mm:ss")) &nbsp; &nbsp;<b>TO</b>&nbsp; &nbsp; @(Model.endDate.ToString("dd/MM/yyy hh:mm:ss"))
+                                </span>
+                            }
+                            else
+                            {
+                                <span>
+                                    @(Model.startDate.ToString("dd/MM/yyy hh:mm:ss")) &nbsp; &nbsp;<b>TO</b>&nbsp; &nbsp; (processing...)
+                                </span>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12">
+                        <label for="deacricao">User Name :</label>
+                        &nbsp; @Model.userName
+                    </div>
+                    <div class="gentelella-col-md-2 gentelella-col-sm-2 gentelella-col-xs-12">
+                        <label for="deacricao">PSN ID :</label>
+                        &nbsp; @Model.psnID
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+        <br />
+
+        <div class="gentelella-x_panel" id="championship-league-panel">
+            <div class="gentelella-x_content">
+
+
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12 gentelella-a-center">
+                        <h3><code>GENERATE NEW SEASON - STEP BY STEP - DETAILS:</code></h3>
+                    </div>
+                </div>
+                <br />
+
+
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12" style="color:steelblue;font-weight:bolder;font-size:14px">
+                        Preparation Before Generation
+                    </div>
+                </div>
+                <div class="gentelella-ln_solid-comment"></div>
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.preparationBkpDatabaseIsDone)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prepare Databases (OnLine, Staging & Bkp)
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.preparationCommentDatabaseIsDone)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prepare Database Comment
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.seasonID > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Get New Season ID
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.calculateEndOfSeasonIsDone)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calculate End Of The Season
+                    </div>
+                </div>
+                <br /><br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12" style="color:steelblue;font-weight:bolder;font-size:14px">
+                        Generating Championships H2H (X1)
+                    </div>
+                </div>
+                <div class="gentelella-ln_solid-comment"></div>
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.serieAID_H2H > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série A
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.serieBID_H2H > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série B
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.serieCID_H2H > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série C
+                    </div>
+                </div>
+                <br />
+                @if (Model.hasSerieD_H2H)
+                {
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                            @if (Model.serieDID_H2H > 0)
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                            else
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série D
+                        </div>
+                    </div>
+                    <br />
+                }
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.rellocationOfSeries_H2H)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rellocations Of H2H Series
+                    </div>
+                </div>
+                <br />
+                @if (Model.hasWorldCup)
+                {
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                            @if (Model.worldCupID_H2H > 0)
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                            else
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copa do Mundo do Arena
+                        </div>
+                    </div>
+                    <br />
+                }
+                @if (Model.hasEuroCup)
+                {
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                            @if (Model.euroCupID_H2H > 0)
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                            else
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Eurocopa do Arena
+                        </div>
+                    </div>
+                    <br />
+                }
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.championsLeagueID > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liga dos Campeões da Europa
+                    </div>
+                </div>
+                <br />
+                @if (Model.hasEuropeLeague)
+                {
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                            @if (Model.europeLeagueID > 0)
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                            else
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Liga Europa
+                        </div>
+                    </div>
+                    <br />
+                }
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.uefaCupID > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copa UEFA
+                    </div>
+                </div>
+                <br /><br />
+                <div class="gentelella-row" id="animate-waiting-process">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12" style="color:steelblue;font-weight:bolder;font-size:14px">
+                        Generating Championships FUT (Ultimate Team)
+                    </div>
+                </div>
+                <div class="gentelella-ln_solid-comment"></div>
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.serieAID_FUT > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série A
+                    </div>
+                </div>
+                <br />
+                @if (Model.hasSerieB_FUT)
+                {
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                            @if (Model.serieBID_FUT > 0)
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                            else
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série B
+                        </div>
+                    </div>
+                    <br />
+                }
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.futCupID > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copa FUT
+                    </div>
+                </div>
+                <br /><br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12" style="color:steelblue;font-weight:bolder;font-size:14px">
+                        Generating Championships PRO CLUB
+                    </div>
+                </div>
+                <div class="gentelella-ln_solid-comment"></div>
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.serieAID_PRO > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série A
+                    </div>
+                </div>
+                <br />
+                @if (Model.hasSerieB_PRO)
+                {
+                    <div class="gentelella-row">
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                        <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                            @if (Model.serieBID_PRO > 0)
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                            else
+                            {
+                                <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                            }
+                        </div>
+                        <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Série B
+                        </div>
+                    </div>
+                    <br />
+                }
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.proCupID > 0)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copa PRO CLUB
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.validationSquadOfProClubIsDone)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Import Squad PRO CLUB
+                    </div>
+                </div>
+                <br /><br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12" style="color:steelblue;font-weight:bolder;font-size:14px">
+                        Championships Maintenance and Database Cleaning
+                    </div>
+                </div>
+                <div class="gentelella-ln_solid-comment"></div>
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.maintenanceOfBenchIsDone)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-6 gentelella-col-sm-6 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Championships Maintenance & Share Championships among Moderators
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.tableOfClashesIsDone)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-4 gentelella-col-sm-4 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Generate Clashes Table
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-row">
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-center"></div>
+                    <div class="gentelella-col-md-1 gentelella-col-sm-1 gentelella-col-xs-12 gentelella-a-right">
+                        @if (Model.purgingOfSystemTablesIsDone)
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-check-square-o" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                        else
+                        {
+                            <div class="gentelella-icon"><i class="gentelella-fa gentelella-fa-stop" style="color:#BAB8B8;font-size:30px;line-height:0;vertical-align:middle;padding:0"></i></div>
+                        }
+                    </div>
+                    <div class="gentelella-col-md-6 gentelella-col-sm-6 gentelella-col-xs-12" style="vertical-align:middle;font-weight:bold">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cleaning Tables & Prepare for Next Season
+                    </div>
+                </div>
+                <br />
+                <div class="gentelella-form-group gentelella-a-right">
+                    <div class="gentelella-col-md-12 gentelella-col-sm-12 gentelella-col-xs-12">
+                        <br>
+                        <div class="gentelella-ln_solid-comment"></div>
+                        <div id="waiting" class="gentelella-col-md-5 gentelella-col-sm-5 gentelella-col-xs-12 gentelella-a-center">
+                            <span id="spWaiting">Wait, process in progress...</span><br />
+                            <img width="70" heigh="70" src="/Arena20/images/aguarde.gif" />
+                        </div>
+                        <button type="button" class="gentelella-btn gentelella-btn-warning">Prepare Databases</button>
+                        <button type="button" class="gentelella-btn gentelella-btn-success">Generate New Season</button>
+                        <button type="button" class="gentelella-btn gentelella-btn-info">Create Spooler of Emails</button>
+                        <br>
+                        <div class="gentelella-ln_solid"></div>
+                        <!--<button type="button" class="gentelella-btn gentelella-btn-danger" target="all">Cancel Everything</button>-->
+                        <button type="button" class="gentelella-btn gentelella-btn-danger" target="newSeason">Cancel New Season</button>
+                        <button type="button" class="gentelella-btn gentelella-btn-danger" target="spooler">Cancel Spooler</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+        <br />
+
+</div>
+<!-- /page content -->
+@Html.Partial("_QuestionModal")
+@section Scripts {
+    <script>
+        $(function () {
+            if (detectMobileDevice() == 1) {
+                //$("#includedContentMenuMobile").load("/arena20/includes/menu-logged-mobile.html");
+                //$("#includedContentMenuRankingMobile").load("menu-my-matches-mobile.html");
+                hidden_show_ObjectMobile("footerMobile", "block");
+            }
+        });
+
+        var msgStandardWaiting = "Wait, process in progress...";
+
+        function includeFileScreenModalToPrepareSubmit() {
+            $("#modalScreeenDeleteTitle").html("PREPARE STAGING/BKP DATABASES");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to prepare the staging & bkp databases before to generate new season?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('prepare-databases-before', 'Preparing Database BKP in progress...'); });
+        }
+
+        function includeFileScreenModalToGenerateSubmit() {
+            $("#modalScreeenDeleteTitle").html("GENERATE NEW SEASON");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to generate new season?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('generate-new-season', 'Generating New Season - Prepare Database...'); });
+        }
+
+        function includeFileScreenModalToCreateSpoolerSubmit() {
+            $("#modalScreeenDeleteTitle").html("NEW SEASON GENERATED - SEND EMAILS");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to create spooler of emails to the new season generated?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('create-spooler', ''); });
+        }
+
+        function includeFileScreenModalToCancelSpoolerSubmit() {
+            $("#modalScreeenDeleteTitle").html("SPOOLER - CANCEL");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to cancel spooler of emails to the new season generated?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('cancel-spooler', ''); });
+        }
+
+        function includeFileScreenModalToCancelRenewalSubmit() {
+            $("#modalScreeenDeleteTitle").html("NEW SEASON - CANCEL");
+            $("#modalScreeenDeleteSubTitle").html("");
+            $("#modalScreeenDeleteQuestion").html("Would you like to cancel the processes of new season generated?");
+            $("#modalScreeenDeleteButton").on("click", function () { submitAction('cancel-new-season', ''); });
+        }
+
+        function submitAction(actionForm, msgWaiting) {
+            if (msgWaiting == '') { msgWaiting = msgStandardWaiting; }
+            $("#actionForm").val(actionForm);
+            $("#spWaiting").html(msgWaiting);
+            $("#waiting").show();
+            $("#registration-form-new-season").submit();
+        }
+
+
+        $(document).ready(function () {
+            if ('@TempData["returnMessage"]' != '')
+                toastr.error('Aviso: @TempData["returnMessage"].');
+
+            if ('@TempData["actionSuccessfully"]' != '')
+                toastr.success('@TempData["actionSuccessfully"].');
+
+            if (detectMobileDevice() == 0)
+                activeSidebarMenu("/Arena20/BatchServices/GenerateNewSeasonShowView");
+
+            $("div.gentelella-right_col").find("input[type=textAmount]").attr("style", "width:50px;text-align:center");
+            $("code").attr("style", "height:0px;background-color:#FFF")
+            $("#waiting").hide();
+
+            if ('@Model.DatabasesLookTheSame'== 'True') {
+                $("button.gentelella-btn-warning").attr('disabled', 'true');
+            }
+            else {
+                $("button.gentelella-btn-warning").on("click", function () {
+                    includeFileScreenModalToPrepareSubmit();
+                    $(this).attr("data-toggle", "modal");
+                    $(this).attr("data-target", "#bs-delete-modal-sm");
+                    $('#bs-delete-modal-sm').modal('show');
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+                });
+            }
+
+            if ('@Model.NewSeasonIsGenerated'== 'True') {
+                $("button.gentelella-btn-success").attr('disabled', 'true');
+                $("button.gentelella-btn-danger[target='newSeason']").on("click", function () {
+                    includeFileScreenModalToCancelRenewalSubmit();
+                    $(this).attr("data-toggle", "modal");
+                    $(this).attr("data-target", "#bs-delete-modal-sm");
+                    $('#bs-delete-modal-sm').modal('show');
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+                });
+            }
+            else {
+                $("button.gentelella-btn-danger[target='newSeason']").attr('disabled', 'true');
+                if ('@Model.DatabasesLookTheSame' == 'True') {
+                    $("button.gentelella-btn-success").on("click", function () {
+                        includeFileScreenModalToGenerateSubmit();
+                        $(this).attr("data-toggle", "modal");
+                        $(this).attr("data-target", "#bs-delete-modal-sm");
+                        $('#bs-delete-modal-sm').modal('show');
+                        $(this).attr("data-toggle", "");
+                        $(this).attr("data-target", "");
+                    });
+                }
+                else
+                    $("button.gentelella-btn-success").attr('disabled', 'true');
+            }
+
+            if ('@Model.emailsSent'== 'True') {
+                $("button.gentelella-btn-info").attr('disabled', 'true');
+                $("button.gentelella-btn-danger[target='spooler']").on("click", function () {
+                    includeFileScreenModalToCancelSpoolerSubmit();
+                    $(this).attr("data-toggle", "modal");
+                    $(this).attr("data-target", "#bs-delete-modal-sm");
+                    $('#bs-delete-modal-sm').modal('show');
+                    $(this).attr("data-toggle", "");
+                    $(this).attr("data-target", "");
+                });
+            }
+            else {
+                $("button.gentelella-btn-danger[target='spooler']").attr('disabled', 'true');
+                if ('@Model.NewSeasonIsGenerated' == 'True') {
+                    $("button.gentelella-btn-info").on("click", function () {
+                        includeFileScreenModalToCreateSpoolerSubmit();
+                        $(this).attr("data-toggle", "modal");
+                        $(this).attr("data-target", "#bs-delete-modal-sm");
+                        $('#bs-delete-modal-sm').modal('show');
+                        $(this).attr("data-toggle", "");
+                        $(this).attr("data-target", "");
+                    });
+                }
+                else
+                    $("button.gentelella-btn-info").attr('disabled', 'true');
+            }
+
+            if ('@Model.actionUser'.indexOf("generate-new-season") > -1) {
+                var strMsgWaiting = '';
+
+                if ('@Model.actionUser' == 'generate-new-season-caulculate-h2h')
+                    strMsgWaiting = "Wait, generating new season - calculate H2H season in progress...";
+                else if ('@Model.actionUser' == 'generate-new-season-caulculate-fut')
+                    strMsgWaiting = "Wait, generating new season - calculate FUT season in progress...";
+                else if ('@Model.actionUser' == 'generate-new-season-caulculate-pro')
+                    strMsgWaiting = "Wait, generating new season - calculate PRO CLUB season in progress...";
+                else if ('@Model.actionUser' == 'generate-new-season-leagues-h2h')
+                    strMsgWaiting = "Wait, generating new season - generate H2H league championships in progress...";
+                else if ('@Model.actionUser' == 'generate-new-season-cups-h2h')
+                    strMsgWaiting = "Wait, generating new season - generate H2H cup championships in progress...";
+                else if ('@Model.actionUser' == 'generate-new-season-fut')
+                    strMsgWaiting = "Wait, generating new season - generate FUT championships in progress...";
+                else if ('@Model.actionUser' == 'generate-new-season-pro')
+                    strMsgWaiting = "Wait, generating new season - generate PRO CLUB championships in progress...";
+                else if ('@Model.actionUser' == 'generate-new-season-maintenance')
+                    strMsgWaiting = "Wait, generating new season - maintenance and preparation of the database in progress...";
+
+                if (strMsgWaiting != '') {
+                    $("button.gentelella-btn-success").attr('disabled', 'true');
+                    submitAction('@Model.actionUser', strMsgWaiting);
+                }
+
+                $("html, body").animate({ scrollTop: $('#animate-waiting-process').offset().top }, "slow");
+            }
+            else if ('@Model.actionUser' == 'ERROR') {
+                $('.bs-callout-warning').toggleClass('gentelella-hidden', false);
+                $("div.bs-callout-warning").html('<b>ERROR OCURRED IN THE PROCESS: </b>' + '<br /><br />' + '@TempData["returnMessage"]');
+                $("html, body").animate({ scrollTop: $('div.bs-callout-warning').offset().top }, "slow");
+            }
+        });
+
+    </script>
+}
+

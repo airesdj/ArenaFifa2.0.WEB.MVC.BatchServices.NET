@@ -471,5 +471,232 @@ namespace ArenaFifa20.BatchServices.NET.Controllers
                 modelTeamDetails = null;
             }
         }
+
+
+        // GET: BatchServices/GenerateNewSeasonShowView
+        [UserModerator]
+        public ActionResult GenerateNewSeasonShowView()
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            GenerateNewSeasonDetailsModel modelReturnJSON = new GenerateNewSeasonDetailsModel();
+            GenerateNewSeasonGenerateModel modelReturnView = new GenerateNewSeasonGenerateModel();
+
+            setViewBagVariables();
+            ViewBag.inFormScript = "1";
+
+            try
+            {
+                modelReturnJSON.actionUser = "validate";
+                response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.Created:
+                        return View("GenerateNewSeason_Run", modelReturnView);
+
+                    default:
+                        TempData["returnMessage"] = "Some error occurred when the system was trying to show the view: Generate New Season - Validate. (" + response.StatusCode + ")";
+                        ModelState.AddModelError("", "application error.");
+                        return View("GenerateNewSeason_Run", modelReturnView);
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["returnMessage"] = "Internal error - when the system was trying to show the view: Generate New Season - Validate. (" + ex.Message + ")";
+                ModelState.AddModelError("", "application error.");
+                return View("GenerateNewSeason_Run", modelReturnView);
+            }
+            finally
+            {
+                response = null;
+                modelReturnJSON = null;
+                modelReturnView = null;
+            }
+        }
+
+
+
+        // GET: BatchServices/GenerateNewSeason_Run
+        [UserModerator]
+        [ValidateAntiForgeryToken]
+        public ActionResult GenerateNewSeason_Run(FormCollection formHTML)
+        {
+            HttpResponseMessage response = new HttpResponseMessage();
+            GenerateNewSeasonDetailsModel modelReturnJSON = new GenerateNewSeasonDetailsModel();
+            GenerateNewSeasonGenerateModel modelReturnView = new GenerateNewSeasonGenerateModel();
+            //GenerateNewSeasonGenerateModel modelReturnForm = new GenerateNewSeasonGenerateModel();
+
+            string actionForm = "validateNewSeasonIsGenerated";
+
+            if (formHTML["actionForm"] != null)
+                actionForm = formHTML["actionForm"].ToLower();
+
+            setViewBagVariables();
+            ViewBag.inFormScript = "1";
+
+            try
+            {
+                if (TempData["FullModel"] != null) { modelReturnView = (GenerateNewSeasonGenerateModel)TempData["FullModel"]; }
+
+                if (actionForm == "validateNewSeasonIsGenerated")
+                {
+                    modelReturnJSON.actionUser = "validate";
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                }
+                else if (actionForm == "prepare-databases-before")
+                {
+                    modelReturnJSON.actionUser = "prepare-database-bkp";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                }
+                else if (actionForm == "generate-new-season")
+                {
+                    modelReturnJSON.actionUser = "prepare-generate";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+
+                    //reset the model
+                    modelReturnView = new GenerateNewSeasonGenerateModel();
+                    modelReturnView.DatabasesLookTheSame = modelReturnJSON.newSeasonModel.DatabasesLookTheSame;
+                    modelReturnView.NewSeasonIsGenerated = modelReturnJSON.newSeasonModel.NewSeasonIsGenerated;
+                    modelReturnView.hasEuroCup = modelReturnJSON.newSeasonModel.hasEuroCup;
+                    modelReturnView.hasEuropeLeague = modelReturnJSON.newSeasonModel.hasEuropeLeague;
+                    modelReturnView.hasSerieB_FUT = modelReturnJSON.newSeasonModel.hasSerieB_FUT;
+                    modelReturnView.hasSerieB_PRO = modelReturnJSON.newSeasonModel.hasSerieB_PRO;
+                    modelReturnView.hasSerieD_H2H = modelReturnJSON.newSeasonModel.hasSerieD_H2H;
+                    modelReturnView.hasWorldCup = modelReturnJSON.newSeasonModel.hasWorldCup;
+
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    modelReturnJSON.newSeasonModel.startDate = DateTime.Now;
+                    modelReturnJSON.newSeasonModel.userID = Convert.ToInt32(Session["user.id"].ToString());
+                    modelReturnJSON.newSeasonModel.userName = Session["user.name"].ToString();
+                    modelReturnJSON.newSeasonModel.psnID = Session["user.psnID"].ToString();
+
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-caulculate-h2h";
+                }
+                else if (actionForm == "generate-new-season-caulculate-h2h")
+                {
+                    modelReturnJSON.actionUser = "generate-calculate-season-h2h";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-caulculate-fut";
+                }
+                else if (actionForm == "generate-new-season-caulculate-fut")
+                {
+                    modelReturnJSON.actionUser = "generate-calculate-season-fut";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-caulculate-pro";
+                }
+                else if (actionForm == "generate-new-season-caulculate-pro")
+                {
+                    modelReturnJSON.actionUser = "generate-calculate-season-pro";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-leagues-h2h";
+                }
+                else if (actionForm == "generate-new-season-leagues-h2h")
+                {
+                    modelReturnJSON.actionUser = "generate-championships-league-h2h";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-cups-h2h";
+                }
+                else if (actionForm == "generate-new-season-cups-h2h")
+                {
+                    modelReturnJSON.actionUser = "generate-championships-cup-h2h";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-fut";
+                }
+                else if (actionForm == "generate-new-season-fut")
+                {
+                    modelReturnJSON.actionUser = "generate-championships-fut";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-pro";
+                }
+                else if (actionForm == "generate-new-season-pro")
+                {
+                    modelReturnJSON.actionUser = "generate-championships-pro";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-maintenance";
+                }
+                else if (actionForm == "generate-new-season-maintenance")
+                {
+                    modelReturnJSON.actionUser = "generate-maintenance";
+                    modelReturnJSON.newSeasonModel = modelReturnView;
+                    response = GlobalVariables.WebApiClient.PostAsJsonAsync("GenerateNewSeason", modelReturnJSON).Result;
+                    modelReturnView = response.Content.ReadAsAsync<GenerateNewSeasonGenerateModel>().Result;
+                    modelReturnView.actionUser = "generate-new-season-end";
+                    modelReturnView.endDate = DateTime.Now;
+                }
+                else
+                {
+                    modelReturnView.returnMessage = "GenerateNewSeasonSuccessfully";
+                    modelReturnView.actionUser = actionForm.ToUpper();
+                    response.StatusCode = HttpStatusCode.Created;
+                }
+
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.Created:
+                        if (modelReturnView.returnMessage == "GenerateNewSeasonSuccessfully")
+                        {
+                            if (actionForm == "prepare-databases-before")
+                            {
+                                TempData["actionSuccessfully"] = "Staging Database was prepared successfully";
+                            }
+                            else if (actionForm == "generate-new-season-maintenance")
+                            {
+                                TempData["actionSuccessfully"] = "The New Season were generated successfully";
+                            }
+                            else if (actionForm == "cancel-renewal")
+                            {
+                                TempData["actionSuccessfully"] = "All renewal processes were cancelled successfully";
+                            }
+                        }
+                        else
+                        {
+                            TempData["returnMessage"] = "Some error occurred when the system was trying to show the view: Generate New Season - Generate. (" + modelReturnView.returnMessage + ")";
+                            modelReturnView.actionUser = "ERROR";
+                        }
+                        return View(modelReturnView);
+
+                    default:
+                        TempData["returnMessage"] = "Some error occurred when the system was trying to show the view: Generate New Season - Generate. (" + response.StatusCode + ")";
+                        ModelState.AddModelError("", "application error.");
+                        modelReturnView.actionUser = "ERROR";
+                        return View(modelReturnView);
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["returnMessage"] = "Internal error - when the system was trying to show the view: Generate New Season - Generate. (" + ex.Message + ")";
+                ModelState.AddModelError("", "application error.");
+                modelReturnView.actionUser = "ERROR";
+                return View(modelReturnView);
+            }
+            finally
+            {
+                response = null;
+                modelReturnJSON = null;
+                modelReturnView = null;
+            }
+        }
+
+
     }
 }
